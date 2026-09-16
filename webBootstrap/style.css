@@ -1,0 +1,45 @@
+.card.col{
+position: relative;
+left: 250px;
+}
+
+.nav-item{
+    position: relative;
+    left: 350px;
+    display: flex;
+    direction: row;
+
+    /* if(max-width: 500px) {
+        left: 500px;
+    } */
+}
+
+.nav-link{
+    
+}
+
+#a{
+    position: relative;
+    left: 17%;
+    border-radius: 10px;
+    bottom: 180px;
+}
+
+.img-fluid{
+    position: relative;
+    z-index: -1;
+    margin-left: 0;
+    margin-right: 0;
+    right: -10%;
+    padding-bottom: 5%;
+}
+
+.container{
+    display: inline-block;
+}
+
+#c{
+    position: relative;
+    left: 12%;
+    bottom: 190px;
+}
