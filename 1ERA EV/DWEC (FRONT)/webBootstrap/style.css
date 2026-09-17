@@ -1,45 +1,211 @@
-.card.col{
-position: relative;
-left: 250px;
+body {
+    color: #292b2f;
+    font-size: 0.78rem;
 }
 
-.nav-item{
+.navbar {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-brand {
     position: relative;
-    left: 350px;
+    font-size: 0.95rem;
+}
+
+.navbar-text {
     display: flex;
-    direction: row;
+    gap: 10%;
 
-    /* if(max-width: 500px) {
-        left: 500px;
-    } */
-}
-
-.nav-link{
-    
-}
-
-#a{
     position: relative;
-    left: 17%;
-    border-radius: 10px;
-    bottom: 180px;
+    left: 25%;
+    top: 0.3rem;
+    font-size: 0.75rem;
 }
 
-.img-fluid{
+.navbar-text span:hover {
+    text-decoration: wavy underline;
+    cursor: pointer;
+}
+
+.navbar-nav {
+    gap: 0.7rem;
+}
+
+.navbar-brand:hover {
+    font-size: 0.95rem;
+}
+
+.navbar-brand::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    width: 80px;
+    height: 80px;
+    background: url("resources/images/agoodshop.png") center / contain no-repeat;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.navbar-brand:hover::after {
+    opacity: 1;
+}
+
+.product-image {
     position: relative;
-    z-index: -1;
-    margin-left: 0;
-    margin-right: 0;
-    right: -10%;
-    padding-bottom: 5%;
 }
 
-.container{
-    display: inline-block;
+.product-image img {
+    display: block;
+    width: 100%;
 }
 
-#c{
-    position: relative;
-    left: 12%;
-    bottom: 190px;
+.storage-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    padding: 0.4rem 0.55rem;
+    color: #fff;
+    background: #20bf63;
+    font-weight: 700;
+}
+
+.offer-label {
+    margin-bottom: 0.35rem;
+    color: #e31b23;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+h1 {
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+}
+
+.product-info p {
+    max-width: 42rem;
+    line-height: 1.45;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.25rem 0;
+}
+
+.price-row strong {
+    font-size: 1.35rem;
+}
+
+.benefits {
+    line-height: 1.35;
+}
+
+.benefit-icon {
+    margin-right: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.accessories {
+    margin-top: 2.2rem;
+}
+
+h2 {
+    margin-bottom: 0.9rem;
+    font-size: 1.45rem;
+}
+
+.card {
+    border-color: #d9dde2;
+}
+
+.card-img-top {
+    margin: 0.65rem;
+    width: calc(100% - 1.3rem);
+}
+
+.card-body {
+    padding: 0.25rem 0.65rem 0.8rem;
+}
+
+.card-title {
+    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+}
+
+.card-text {
+    margin-top: 0.55rem;
+    line-height: 1.4;
+}
+
+.badge {
+    font-weight: 400;
+}
+
+.raffle {
+    margin-top: 1.4rem;
+    padding: 2rem 2.75rem;
+    background: #eaf3ff;
+}
+
+.raffle h2 {
+    max-width: 23rem;
+    font-size: 1.6rem;
+}
+
+.raffle p {
+    max-width: 38rem;
+    line-height: 1.45;
+}
+
+.raffle .form-control {
+    font-size: 0.75rem;
+}
+
+footer {
+    margin-top: 1.4rem;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+}
+
+@media (max-width: 767.98px) {
+    .navbar .container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    main.container {
+        padding-right: 0.55rem;
+        padding-left: 0.55rem;
+    }
+
+    .product-info {
+        padding-right: 0.55rem;
+        padding-left: 0.55rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .benefits .col-12 {
+        width: 50%;
+    }
+
+    .raffle {
+        padding: 1rem 0.8rem;
+    }
+
+    .raffle h2 {
+        font-size: 1.6rem;
+    }
 }
