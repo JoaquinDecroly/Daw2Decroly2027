@@ -1,0 +1,45 @@
+body {
+    background-color: #f2f7f4;
+    color: #24352f;
+}
+
+.exercise-page {
+    min-height: 100vh;
+}
+
+.exercise-card {
+    width: min(100%, 26rem);
+    border: 1px solid #dce8e1;
+    border-top: 4px solid #27815e;
+    border-radius: 0.75rem;
+    box-shadow: 0 1rem 2.5rem rgba(36, 53, 47, 0.08);
+}
+
+.exercise-label {
+    color: #27815e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.form-control:focus {
+    border-color: #27815e;
+    box-shadow: 0 0 0 0.2rem rgba(39, 129, 94, 0.18);
+}
+
+.btn-primary {
+    --bs-btn-bg: #237451;
+    --bs-btn-border-color: #237451;
+    --bs-btn-hover-bg: #195d40;
+    --bs-btn-hover-border-color: #195d40;
+    --bs-btn-active-bg: #164f37;
+    --bs-btn-active-border-color: #164f37;
+}
+
+.result-message:not(:empty) {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #edf6f0;
+    color: #195d40;
+    font-weight: 600;
+}

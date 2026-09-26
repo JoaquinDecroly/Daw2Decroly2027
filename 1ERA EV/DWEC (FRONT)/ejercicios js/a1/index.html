@@ -2,13 +2,115 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Nota</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>DWEC - DAW</title>
 </head>
 <body>
-    <input id="nota" type="number" min="0" max="10" placeholder="Nota">
-    <button id="calcular">Calcular</button>
-    <p id="resultado"></p>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                ENTRENAMIENTO JS 1
+                </a>
+            </div>
+        </nav>
+  </header>
+  <main class="container exercise-page py-5" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; align-items: stretch;">
+    
+    <!-- ACTIVIDAD 1 [NOTAS] -->
+    <section class="card exercise-card" aria-labelledby="titulo-notas">
+      <div class="card-body p-4 p-sm-5">
+        <p class="exercise-label mb-2">EJERCICIO 01</p>
+        <h2 class="card-title h3 mb-2" id="titulo-notas">Calculadora de notas</h2>
+        <p class="text-secondary mb-4">Introduce una calificación para ver el resultado.</p>
+
+        <form id="form-nota">
+          <label for="nota" class="form-label fw-semibold">Nota</label>
+          <div class="input-group mb-3">
+            <input class="form-control" id="nota" name="nota" type="number" min="0" max="10" step="any" placeholder="0 - 10" required>
+            <span class="input-group-text">/ 10</span>
+          </div>
+          <button class="btn btn-primary w-100" id="calcular" type="submit">Calcular resultado</button>
+        </form>
+
+        <p class="result-message mb-0 mt-4" id="resultado" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 2 [HORA] -->
+    <section class="card exercise-card" aria-labelledby="titulo-hora">
+      <div class="card-body p-4 p-sm-5">
+        <p class="exercise-label mb-2">EJERCICIO 02</p>
+        <h2 class="card-title h3 mb-2" id="titulo-hora">Hora futurista</h2>
+        <p class="text-secondary mb-4">Muestra una hora personalizada.</p>
+
+        <div class="bg-light rounded p-3 text-center">
+          <span class="fw-semibold">Hora:</span>
+          <form id="form-hora">
+            <div class="input-group mb-2">
+                <input class="form-control" id="hora" name="horas" type="number" min="0" max="23" step="1" value="0-23" required>
+            </div>
+            <div class="input-group mb-2">
+                <input class="form-control" id="minuto" name="minutos" type="number" min="0" max="59" step="1" value="0-59" required>
+            </div>
+            <div class="input-group mb-2">
+                <input class="form-control" id="segundo" name="segundos" type="number" min="0" max="59" step="1" value="0-59" required>
+            </div>
+            <button class="btn btn-primary w-100" id="horaBtn" type="submit">Hora + 1 segundo</button>
+          </form>
+          <div class="fs-4 mt-2" id="hora-text">-- : -- : --</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 3 [PIEDRA, PAPEL, TIJERA] -->
+    <section class="card exercise-card" aria-labelledby="titulo-ppt">
+      <div class="card-body p-4 p-sm-5">
+        <p class="exercise-label mb-2">EJERCICIO 03</p>
+        <h2 class="card-title h3 mb-2" id="titulo-ppt">Piedra, papel o tijera</h2>
+        <p class="text-secondary mb-4">Juega contra la computadora.</p>
+
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-primary" type="button">Piedra</button>
+          <button class="btn btn-outline-primary" type="button">Papel</button>
+          <button class="btn btn-outline-primary" type="button">Tijera</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 4 [ARRAY 100 NÚMEROS REALES (0.0-1.0)] -->
+    <section class="card exercise-card" aria-labelledby="titulo-array1">
+      <div class="card-body p-4 p-sm-5">
+        <p class="exercise-label mb-2">EJERCICIO 04</p>
+        <h2 class="card-title h3 mb-2" id="titulo-array1">Array aleatorio 0.0 - 1.0</h2>
+        <p class="text-secondary mb-4">Genera 100 números reales en ese rango.</p>
+
+        <div class="bg-light rounded p-3">
+          <small class="text-muted">Total de valores:</small>
+          <div class="fs-5 fw-bold mt-1">100</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVIDAD 5 [ARRAY 100 NUMEROS REALES (0.0-10.0)] -->
+    <section class="card exercise-card" aria-labelledby="titulo-array2">
+      <div class="card-body p-4 p-sm-5">
+        <p class="exercise-label mb-2">EJERCICIO 05</p>
+        <h2 class="card-title h3 mb-2" id="titulo-array2">Array aleatorio 0.0 - 10.0</h2>
+        <p class="text-secondary mb-4">Genera 100 valores reales en un rango mayor.</p>
+
+        <div class="bg-light rounded p-3">
+          <small class="text-muted">Rango:</small>
+          <div class="fs-5 fw-bold mt-1">0.0 a 10.0</div>
+        </div>
+      </div>
+    </section>
+  </main>
 
     <script src="a1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
