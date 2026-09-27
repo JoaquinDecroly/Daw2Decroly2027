@@ -138,3 +138,172 @@ document.addEventListener("DOMContentLoaded", () => {
 
     actualizarHora();
 });
+
+// ----------------PIEDRA, PAPEL, TIJERA-----------
+const piedraBtn = document.getElementById("piedra");
+const papelBtn = document.getElementById("papel");
+const tijerasBtn = document.getElementById("tijeras");
+
+// puntos
+const j1Points = document.getElementById("j1Points");
+const iaPoints = document.getElementById("iaPoints");
+const eliminarPuntos = document.getElementById("eliminarPuntuacion");
+
+const gifContainer = document.getElementById("gif");
+
+const puntosGuardados = JSON.parse(localStorage.getItem("puntos-ppt") ?? "null");
+let puntosJugador = Number(puntosGuardados?.jugador) || 0;
+let puntosIA = Number(puntosGuardados?.ia) || 0;
+let eleccionJugador = "";
+let eleccionAI = "";
+
+function guardarPuntos() {
+    j1Points.textContent = puntosJugador;
+    iaPoints.textContent = puntosIA;
+    eliminarPuntos.disabled = (puntosJugador === 0 && puntosIA === 0);
+
+    localStorage.setItem("puntos-ppt", JSON.stringify({
+        jugador: puntosJugador,
+        ia: puntosIA
+    }));
+}
+
+function mostrarGif(nombre, quitarDespues = true) {
+    gifContainer.replaceChildren();
+
+    const imagen = document.createElement("img");
+    imagen.className = "img-fluid rounded mt-3";
+    imagen.src = `resources/img/${nombre}`;
+    imagen.alt = "Resultado de la partida";
+
+    gifContainer.appendChild(imagen);
+
+    imagen.addEventListener("load", () => {
+        requestAnimationFrame(() => {
+            imagen.classList.add("visible");
+        });
+    });
+
+    if (quitarDespues) {
+        setTimeout(() => {
+            imagen.classList.remove("visible");
+            setTimeout(() => {
+                imagen.remove();
+            }, 500);
+        }, 3000);
+    }
+
+}
+
+function eleccionIA() {
+    const opcionIA = Math.floor(Math.random() * 3) + 1;
+
+    switch (opcionIA) {
+        case 1:
+            eleccionAI = "Piedra";
+            break;
+        case 2:
+            eleccionAI = "Papel";
+            break;
+        case 3:
+            eleccionAI = "Tijera";
+            break;
+    }
+}
+
+function decidirGanador() {
+    if (eleccionJugador === "Piedra") {
+        if (eleccionAI === "Piedra") {
+            console.log("Empate con la IA. No hay punto para nadie");
+            mostrarGif("piedra-piedra.gif");
+        } else if (eleccionAI === "Papel") {
+            console.log("Perdiste, gano la IA. +1 punto para la IA");
+            puntosIA++;
+            mostrarGif("piedra-papel.gif");
+        } else {
+            console.log("Ganaste a la IA. +1 punto para el jugador");
+            puntosJugador++;
+            mostrarGif("tijera-piedra.gif");
+        }
+    } else if (eleccionJugador === "Papel") {
+        if (eleccionAI === "Piedra") {
+            console.log("Ganaste a la IA. +1 punto para el jugador");
+            puntosJugador++;
+            mostrarGif("piedra-papel.gif");
+        } else if (eleccionAI === "Papel") {
+            console.log("Empate con la IA. No hay punto para nadie");
+            mostrarGif("papel-papel.gif");
+        } else {
+            console.log("Perdiste, gano la IA. +1 punto para la IA");
+            puntosIA++;
+            mostrarGif("tijera-papel.gif");
+        }
+    } else {
+        if (eleccionAI === "Piedra") {
+            console.log("Perdiste, gano la IA. +1 punto para la IA");
+            puntosIA++;
+            mostrarGif("tijera-piedra.gif");
+        } else if (eleccionAI === "Papel") {
+            console.log("Ganaste a la IA. +1 punto para el jugador");
+            puntosJugador++;
+            mostrarGif("tijera-papel.gif");
+        } else {
+            console.log("Empate con la IA. No hay punto para nadie");
+            mostrarGif("tijera-tijera.gif");
+        }
+    }
+
+    guardarPuntos();
+}
+
+const gifSuspense = "suspense-ruleta-rusa.gif";
+
+function jugarConSuspense(eleccion) {
+    eleccionJugador = eleccion;
+    eleccionIA();
+    mostrarGif(gifSuspense, false);
+
+    setTimeout(() => {
+        const gifActual = gifContainer.querySelector("img");
+
+        if (gifActual) {
+            gifActual.classList.remove("visible");
+            setTimeout(() => {
+                gifActual.remove();
+                decidirGanador();
+            }, 600);
+        } else {
+            decidirGanador();
+        }
+    }, 3000);
+}
+
+// EVENTOS
+piedraBtn.addEventListener("click", () => {
+    jugarConSuspense("Piedra");
+});
+
+papelBtn.addEventListener("click", () => {
+    jugarConSuspense("Papel");
+});
+
+tijerasBtn.addEventListener("click", () => {
+    jugarConSuspense("Tijera");
+});
+
+
+// eliminar puntos
+eliminarPuntos.disabled = puntosJugador === 0 && puntosIA === 0;
+
+eliminarPuntos.addEventListener("click", () => {
+    localStorage.removeItem("puntos-ppt");
+
+    puntosJugador = 0;
+    puntosIA = 0;
+
+    j1Points.textContent = 0;
+    iaPoints.textContent = 0;
+    eliminarPuntos.disabled = true;
+});
+
+guardarPuntos();

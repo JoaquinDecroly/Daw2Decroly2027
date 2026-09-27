@@ -72,11 +72,20 @@
         <p class="exercise-label mb-2">EJERCICIO 03</p>
         <h2 class="card-title h3 mb-2" id="titulo-ppt">Piedra, papel o tijera</h2>
         <p class="text-secondary mb-4">Juega contra la computadora.</p>
+          <small><span id="puntos">Puntos J1: <span id="j1Points">0</span><span id="puntos">  |  Puntos IA: </span><span id="iaPoints">0</span></span></small>
 
         <div class="d-grid gap-2">
-          <button class="btn btn-outline-primary" type="button">Piedra</button>
-          <button class="btn btn-outline-primary" type="button">Papel</button>
-          <button class="btn btn-outline-primary" type="button">Tijera</button>
+          <button class="btn btn-outline-primary" type="button" id="eliminarPuntuacion" style="background-color: red; color: black; font-weight: bold;" disabled>Borrar puntos</button>
+          <button class="btn btn-outline-primary" type="button" id="piedra">Piedra</button>
+          <button class="btn btn-outline-primary" type="button" id="papel">Papel</button>
+          <button class="btn btn-outline-primary" type="button" id="tijeras">Tijera</button>
+        </div>
+        <div id="gif">
+          <!-- <img
+            class="img-fluid rounded mt-3"
+            src="resources/img/black%20and%20white%20illustration%20GIF%20by%20Laur%C3%A8ne%20Boglio.gif"
+            alt="Ilustración animada de piedra, papel o tijera"
+          > -->
         </div>
       </div>
     </section>
