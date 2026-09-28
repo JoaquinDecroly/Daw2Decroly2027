@@ -307,3 +307,28 @@ eliminarPuntos.addEventListener("click", () => {
 });
 
 guardarPuntos();
+
+// ---------ARRAY 100 NÚMEROS REALES (0.0-1.0)---------
+const array1 = [];
+
+for (let index = 0; index < 100; index++) {
+    array1.push(Math.random().toFixed(2));
+}
+
+
+document.getElementById("array11").addEventListener("click", () => {
+    alert(array1.join() + " ");
+});
+
+// -----------ARRAY 100 NÚMEROS REALES (0.0-10.0)----------
+const array2 = [];
+
+for (let index = 0; index < 100; index++) {
+    array2.push(Math.random().toFixed(2) * 10);
+}
+
+
+document.getElementById("array22").addEventListener("click", () => {
+    alert(array2.join() + " ");
+});
+
