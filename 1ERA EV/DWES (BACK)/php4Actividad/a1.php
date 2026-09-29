@@ -70,7 +70,6 @@
     ?>
 
     // ejercicio 4
-    ?>
     <form action="" method="post">
         <label>Nombre: <input type="text" name="nombre"></label><br>
         <label>Comentario: <input type="text" name="comentario"></label><br>
