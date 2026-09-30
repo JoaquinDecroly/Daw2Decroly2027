@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="resources/images/agoodshop.png" type="image/png">
+    <title>agoodshop</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        </head>
+    <body>
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand"><strong>agoodshop</strong></a>
+                <p class="navbar-text">
+                    <span>Tienda</span>
+                    <span>Accesorios</span>
+                    <span>Soporte</span>
+                </p>
+                <button class="btn btn-light">Contactar</button>
+            </div>
+</nav>
+        <main class="container py-4">
+            <section id="producto" class="product row g-4 g-lg-5 align-items-center" aria-labelledby="product-title">
+                <div class="col-12 col-md-5">
+                    <div class="product-image">
+                        <span class="storage-badge">128Gb</span>
+                        <img src="https://placehold.co/500x500" class="img-fluid" alt="iPhone 13 Pro">
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 product-info">
+                    <p class="offer-label">OFERTA</p>
+                    <h1 id="product-title">Compra un iPhone 13 Pro</h1>
+                    <p>iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. El chip que hace morder el polvo a la competencia. Un subidón de autonomía que vaya si notarás.</p>
+                    <p>Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.</p>
+                    <div class="price-row">
+                        <strong>938,99€</strong>
+                        <button class="btn btn-primary" type="button">Comprar</button>
+                    </div>
+                    <div class="benefits row g-3" aria-label="Ventajas de compra">
+                        <div class="col-12 col-sm-4"><span class="benefit-icon">▣</span>Envío rápido, gratuito y sin contacto</div>
+                        <div class="col-12 col-sm-4"><span class="benefit-icon">↻</span>Devoluciones fáciles y gratuitas</div>
+                        <div class="col-12 col-sm-4"><span class="benefit-icon">$</span>Posibilidad de pago a plazos</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="accesorios" class="accessories" aria-labelledby="accessories-title">
+                <h2 id="accessories-title">Accesorios recomendados</h2>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+                    <article class="col"><div class="card h-100"><img src="https://placehold.co/300x180" class="card-img-top" alt="Cargador"><div class="card-body"><h3 class="card-title">Cargador</h3><p class="card-text">El adaptador de corriente USB-C de 20 W es muy rápido y eficiente, así que va de perlas para cargar tus dispositivos en cualquier lugar.</p></div></div></article>
+                    <article class="col"><div class="card h-100"><img src="https://placehold.co/300x180" class="card-img-top" alt="Base de carga inalámbrica"><div class="card-body"><h3 class="card-title">Base de carga inalámbrica</h3><span class="badge text-bg-danger">Oferta</span><p class="card-text">Sistema de soporte para que sigas usando tu smartphone cómodamente mientras lo cargas. Compatible con carga rápida de 20W.</p></div></div></article>
+                    <article class="col"><div class="card h-100"><img src="https://placehold.co/300x180" class="card-img-top" alt="Funda piel"><div class="card-body"><h3 class="card-title">Funda piel</h3><p class="card-text">Fabricadas en piel europea curtida y teñida con un proceso especial, son suaves al tacto y adquieren un tono natural con el tiempo.</p></div></div></article>
+                    <article class="col"><div class="card h-100"><img src="https://placehold.co/300x180" class="card-img-top" alt="Cargador"><div class="card-body"><h3 class="card-title">Cargador</h3><span class="badge text-bg-primary">Nuevo</span><p class="card-text">El adaptador de corriente USB-C de 20 W es muy rápido y eficiente, así que va de perlas para cargar tus dispositivos en cualquier lugar.</p></div></div></article>
+                </div>
+            </section>
+
+            <section id="sorteo" class="raffle row g-4 align-items-center" aria-labelledby="raffle-title">
+                <div class="col-12 col-lg-8"><h2 id="raffle-title">Participa en el sorteo de un iPhone 13</h2><p>Este verano, ¡venimos cargados de premios! Así que antes de irte de vacaciones, ¡participa en nuestro sorteo! y podrás llevarte un regalo increíble como un nuevo iPhone 13</p><p>Rellena este formulario para ser uno de los afortunados.</p></div>
+                <form class="col-12 col-lg-4"><label for="name" class="form-label">Nombre</label><input id="name" class="form-control mb-3" type="text" placeholder="Air Gold"><label for="email" class="form-label">Email</label><input id="email" class="form-control mb-3" type="email" placeholder="airgold@mga.com"><button class="btn btn-primary" type="submit">Enviar</button></form>
+            </section>
+
+            <section class="exercise-card py-4" aria-labelledby="titulo-ppt">
+                <div class="row g-4">
+                    <div class="col-12 col-lg-8">
+                        <h2 id="titulo-ppt" class="h4 mb-4">Carrito compra</h2>
+                        <div class="row g-2 border-bottom pb-2 mb-2 text-secondary small d-none d-md-flex">
+                            <div class="col-md-5">Producto</div>
+                            <div class="col-md-3 text-center">Cantidad</div>
+                            <div class="col-md-2">Unidad</div>
+                            <div class="col-md-2 text-end">Total</div>
+                        </div>
+                        <div id="productsList" class="list-group list-group-flush" aria-live="polite"></div>
+                    </div>
+                    <aside class="col-12 col-lg-4" aria-labelledby="total-title">
+                        <div class="bg-light p-4">
+                            <h3 id="total-title" class="h4 mb-3">Total</h3>
+                            <ul id="listaCompra" class="list-unstyled mb-3"></ul>
+                            <div class="d-flex justify-content-between border-top pt-3">
+                                <span>TOTAL</span>
+                                <strong id="cartTotal">0,00 €</strong>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center"><small>©<strong>agoodshop</strong></small></footer>
+        
+        <script src="scripts/carritoVista.js" defer></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    </body>
+</html>
