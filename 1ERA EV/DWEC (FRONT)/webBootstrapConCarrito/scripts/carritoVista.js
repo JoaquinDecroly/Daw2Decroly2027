@@ -1,6 +1,6 @@
             async function fetchProducts() {
                 try{
-                    const response = await fetch("https://api.jsonblob.com/api/v1/products/01a0f28b-99b0-77e5-afdf-7ee34f9acf50");
+                    const response = await fetch("https://agoodshop.free.beeceptor.com"); //https://app.beeceptor.com/ (disponible durante 30 días gratuito sin logear)
 
                     if(!response.ok){
                         throw new Error(`HTTP error! ${response.status}`)
