@@ -1,14 +1,57 @@
+            // Obtiene los productos primero de la caché y, si no están guardados,
+            // los solicita al servicio web.
             async function fetchProducts() {
-                try{
-                    const response = await fetch("https://agoodshop.free.beeceptor.com"); //https://app.beeceptor.com/ (disponible durante 30 días gratuito sin logear)
+                // Esta clave identifica los datos de productos guardados en localStorage.
+                const cacheKey = "carritoVista.products";
 
+                // Intenta leer los productos guardados para no llamar al API en cada recarga.
+                try {
+                    const cachedData = localStorage.getItem(cacheKey);
+                    if (cachedData) {
+                        // localStorage guarda texto, así que se convierte de JSON a objeto.
+                        const data = JSON.parse(cachedData);
+
+                        // Comprueba que los datos guardados tengan la lista esperada.
+                        if (data && Array.isArray(data.products)) {
+                            // Si la caché es válida, muestra sus productos y no hace el fetch.
+                            displayProducts(data.products, data.currency);
+                            return data;
+                        }
+
+                        // Si el contenido no tiene el formato esperado, se elimina.
+                        localStorage.removeItem(cacheKey);
+                    }
+                } catch (error) {
+                    // Informa si hubo un problema al acceder a la caché o interpretar el JSON.
+                    console.error("Error al leer la caché de productos: ", error);
+                }
+
+                // Si no había datos válidos en caché, consulta el API.
+                try{
+                    //https://app.beeceptor.com/ (disponible durante 30 días gratuito sin loggear)
+                    //tiene límite diario de respuestas de la API REST
+                    const response = await fetch("https://agoodshop.free.beeceptor.com"); 
+
+                    // fetch no considera los estados HTTP de error como excepciones.
+                    // Se genera una para gestionarlos en el catch.
                     if(!response.ok){
                         throw new Error(`HTTP error! ${response.status}`)
                     }
+
+                    // Convierte el cuerpo de la respuesta de JSON a objeto JavaScript.
                     const data = await response.json();
 
-                    if(data != null){
+                    // Solo muestra y guarda la respuesta si contiene una lista de productos.
+                    if(data && Array.isArray(data.products)){
                         displayProducts(data.products, data.currency);
+
+                        // Guarda la respuesta completa como texto para usarla en próximas visitas.
+                        try {
+                            localStorage.setItem(cacheKey, JSON.stringify(data));
+                        } catch (error) {
+                            // La página sigue funcionando aunque el navegador no permita guardar.
+                            console.error("Error al guardar la caché de productos: ", error);
+                        }
                     }
                         return data;
                     
@@ -18,59 +61,88 @@
                 }
             }
 
-            function displayProducts(products, currency = "€"){
+            // Construye en la página la lista de productos recibida.
+            function displayProducts(products, currency = "€") {
+                // Obtiene los elementos HTML donde se mostrarán los productos y el carrito.
                 const productsList = document.getElementById("productsList");
                 const summaryList = document.getElementById("listaCompra");
                 const cartTotal = document.getElementById("cartTotal");
 
+                // Comprueba que products sea realmente una lista antes de recorrerla.
                 if (!Array.isArray(products)) {
                     throw new Error("La respuesta de la API no es una lista.");
                 }
 
+                // Limpia el contenido anterior para evitar duplicarlo al volver a mostrar productos.
                 productsList.replaceChildren();
                 summaryList.replaceChildren();
-                const productLines = [];
-                const formatPrice = (price) => `${new Intl.NumberFormat("es-ES", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }).format(price)} ${currency}`;
 
+                // Guarda los datos que se necesitan para calcular cada producto del carrito.
+                const productLines = [];
+
+                // Formatea importes según el formato español y añade el símbolo de moneda.
+                const formatPrice = (price) => {
+                    const formattedPrice = new Intl.NumberFormat("es-ES", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    }).format(price);
+
+                    return `${formattedPrice} ${currency}`;
+                };
+
+                // Vuelve a dibujar el resumen y recalcula el importe total del carrito.
                 function updateCart() {
+                    // El resumen se reconstruye con las cantidades actuales.
                     summaryList.replaceChildren();
                     let total = 0;
 
+                    // Recorre los productos añadidos al carrito.
                     productLines.forEach((line) => {
+                        // No incluye en el resumen los productos con cantidad cero.
                         if (line.quantity === 0) return;
 
-                        const subtotal = line.price * line.quantity;
-                        total += subtotal;
+                        // Crea una fila con el nombre del producto y su subtotal.
                         const summaryItem = document.createElement("li");
                         summaryItem.className = "d-flex justify-content-between gap-3 mb-2";
                         const summaryName = document.createElement("span");
                         summaryName.textContent = line.name;
                         const summaryPrice = document.createElement("span");
+
+                        // El subtotal es el precio unitario multiplicado por la cantidad.
+                        const subtotal = line.price * line.quantity;
                         summaryPrice.textContent = formatPrice(subtotal);
+
+                        // Añade el subtotal al total general y la fila a la lista del resumen.
+                        total += subtotal;
                         summaryItem.append(summaryName, summaryPrice);
                         summaryList.append(summaryItem);
                     });
 
+                    // Actualiza el total que aparece debajo del resumen.
                     cartTotal.textContent = formatPrice(total);
                 }
 
+                // Recorre la lista recibida y crea los elementos HTML de cada producto.
                 products.forEach((product) => {
+                    // Contenedor principal de la fila del producto.
                     const item = document.createElement("div");
                     item.className = "list-group-item px-0";
+
+                    // Fila de Bootstrap que distribuye los datos en columnas.
                     const row = document.createElement("div");
                     row.className = "row align-items-center g-2";
 
+                    // Columna donde se muestra el nombre y, si existe, la referencia.
                     const details = document.createElement("div");
                     details.className = "col-12 col-md-5";
 
+                    // Usa name o title como nombre; si faltan ambos, muestra un texto alternativo.
                     const name = document.createElement("h3");
                     name.className = "h5 mb-1";
                     name.textContent = product.name ?? product.title ?? "Producto sin nombre";
                     details.append(name);
 
+                    // Acepta SKU o sku como referencia y la muestra si tiene valor.
                     const reference = product.SKU ?? product.sku;
                     if (reference) {
                         const referenceText = document.createElement("p");
@@ -79,24 +151,32 @@
                         details.append(referenceText);
                     }
 
+                    // Acepta price o precio y comprueba que se pueda convertir a número.
                     const rawPrice = product.price ?? product.precio;
                     const price = Number(rawPrice);
                     const hasPrice = rawPrice !== undefined && rawPrice !== null && Number.isFinite(price);
+
+                    // Guarda el estado de este producto para poder actualizar cantidad y subtotal.
                     const line = { name: name.textContent, price: hasPrice ? price : 0, quantity: 0 };
                     productLines.push(line);
 
+                    // Columna que contiene los controles para cambiar la cantidad.
                     const quantityColumn = document.createElement("div");
                     quantityColumn.className = "col-6 col-md-3 d-flex justify-content-md-center";
+
+                    // Agrupa los botones y el campo numérico como un control de Bootstrap.
                     const quantityControls = document.createElement("div");
                     quantityControls.className = "input-group input-group-sm";
                     quantityControls.style.maxWidth = "9rem";
 
+                    // Botón para restar una unidad.
                     const decrease = document.createElement("button");
                     decrease.className = "btn btn-outline-secondary";
                     decrease.type = "button";
                     decrease.textContent = "-";
                     decrease.setAttribute("aria-label", `Quitar una unidad de ${line.name}`);
 
+                    // Campo para escribir directamente la cantidad deseada.
                     const quantityInput = document.createElement("input");
                     quantityInput.className = "form-control text-center";
                     quantityInput.type = "number";
@@ -106,46 +186,63 @@
                     quantityInput.value = "0";
                     quantityInput.setAttribute("aria-label", `Cantidad de ${line.name}`);
 
+                    // Botón para sumar una unidad.
                     const increase = document.createElement("button");
                     increase.className = "btn btn-outline-secondary";
                     increase.type = "button";
                     increase.textContent = "+";
                     increase.setAttribute("aria-label", `Añadir una unidad de ${line.name}`);
 
-                    const setQuantity = (quantity) => {
-                        line.quantity = Math.max(0, Math.min(99, quantity));
+                    // Muestra el subtotal de este producto; inicialmente la cantidad es cero.
+                    const lineTotal = document.createElement("span");
+                    lineTotal.textContent = hasPrice ? formatPrice(0) : "-";
+
+                    // Actualiza la cantidad, el campo, el subtotal y el resumen del carrito.
+                    function setQuantity(quantity) {
+                        // Limita la cantidad a un entero entre 0 y 99.
+                        line.quantity = Math.max(0, Math.min(99, Math.trunc(quantity)));
                         quantityInput.value = String(line.quantity);
                         lineTotal.textContent = hasPrice ? formatPrice(line.price * line.quantity) : "-";
                         updateCart();
-                    };
+                    }
 
+                    // Desactiva los controles cuando el producto no tiene un precio válido.
                     decrease.disabled = !hasPrice;
                     increase.disabled = !hasPrice;
                     quantityInput.disabled = !hasPrice;
+
+                    // Asocia los botones y el campo con la función que actualiza la cantidad.
                     decrease.addEventListener("click", () => setQuantity(line.quantity - 1));
                     increase.addEventListener("click", () => setQuantity(line.quantity + 1));
                     quantityInput.addEventListener("change", () => {
                         const quantity = Number(quantityInput.value);
+                        // Si el valor introducido no es un entero, se establece en cero.
                         setQuantity(Number.isInteger(quantity) ? quantity : 0);
                     });
+
+                    // Inserta los controles dentro de su columna.
                     quantityControls.append(decrease, quantityInput, increase);
                     quantityColumn.append(quantityControls);
 
+                    // Columna que muestra el precio por unidad.
                     const unitColumn = document.createElement("div");
                     unitColumn.className = "col-3 col-md-2 text-nowrap";
                     unitColumn.textContent = hasPrice ? formatPrice(line.price) : "-";
 
+                    // Columna que muestra el subtotal para la cantidad seleccionada.
                     const totalColumn = document.createElement("div");
                     totalColumn.className = "col-3 col-md-2 text-end text-nowrap fw-semibold";
-                    const lineTotal = document.createElement("span");
-                    lineTotal.textContent = hasPrice ? formatPrice(0) : "-";
                     totalColumn.append(lineTotal);
 
+                    // Reúne las columnas en la fila, y la fila en la lista de productos.
                     row.append(details, quantityColumn, unitColumn, totalColumn);
                     item.append(row);
                     productsList.append(item);
                 });
 
+                // Muestra el total inicial, que será cero hasta que se añadan productos.
                 updateCart();
-            } 
+            }
+
+        // Espera a que el HTML esté cargado antes de buscar sus elementos y obtener los productos.
         document.addEventListener("DOMContentLoaded", fetchProducts);
