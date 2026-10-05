@@ -1,36 +1,35 @@
-            // Obtiene los productos primero de la caché y, si no están guardados,
-            // los solicita al servicio web.
+            // Usa la caché durante una hora y después consulta si hay cambios.
             async function fetchProducts() {
-                // Esta clave identifica los datos de productos guardados en localStorage.
                 const cacheKey = "carritoVista.products";
+                const cacheDuration = 60 * 60 * 1000;
+                let cachedData;
 
-                // Intenta leer los productos guardados para no llamar al API en cada recarga.
+                // Lee y muestra la última respuesta guardada.
                 try {
-                    const cachedData = localStorage.getItem(cacheKey);
-                    if (cachedData) {
-                        // localStorage guarda texto, así que se convierte de JSON a objeto.
-                        const data = JSON.parse(cachedData);
-
-                        // Comprueba que los datos guardados tengan la lista esperada.
+                    const storedData = localStorage.getItem(cacheKey);
+                    if (storedData) {
+                        const data = JSON.parse(storedData);
                         if (data && Array.isArray(data.products)) {
-                            // Si la caché es válida, muestra sus productos y no hace el fetch.
+                            cachedData = data;
                             displayProducts(data.products, data.currency);
-                            return data;
-                        }
 
-                        // Si el contenido no tiene el formato esperado, se elimina.
-                        localStorage.removeItem(cacheKey);
+                            const cacheAge = Date.now() - data._cachedAt;
+                            if (Number.isFinite(data._cachedAt) && cacheAge >= 0 && cacheAge < cacheDuration) {
+                                return data;
+                            }
+                        } else {
+                            localStorage.removeItem(cacheKey);
+                        }
                     }
                 } catch (error) {
-                    // Informa si hubo un problema al acceder a la caché o interpretar el JSON.
                     console.error("Error al leer la caché de productos: ", error);
                 }
 
-                // Si no había datos válidos en caché, consulta el API.
+                // Si falta la caché o ya caducó, consulta la API para comprobar si hay cambios.
                 try{
                     //https://app.beeceptor.com/ (disponible durante 30 días gratuito sin loggear)
                     //tiene límite diario de respuestas de la API REST
-                    const response = await fetch("https://agoodshop.free.beeceptor.com"); 
+                    const response = await fetch("https://agoodshop.free.beeceptor.com", { cache: "no-store" }); 
 
                     // fetch no considera los estados HTTP de error como excepciones.
                     // Se genera una para gestionarlos en el catch.
@@ -41,23 +40,25 @@
                     // Convierte el cuerpo de la respuesta de JSON a objeto JavaScript.
                     const data = await response.json();
 
-                    // Solo muestra y guarda la respuesta si contiene una lista de productos.
-                    if(data && Array.isArray(data.products)){
-                        displayProducts(data.products, data.currency);
-
-                        // Guarda la respuesta completa como texto para usarla en próximas visitas.
-                        try {
-                            localStorage.setItem(cacheKey, JSON.stringify(data));
-                        } catch (error) {
-                            // La página sigue funcionando aunque el navegador no permita guardar.
-                            console.error("Error al guardar la caché de productos: ", error);
-                        }
+                    if (!data || !Array.isArray(data.products)) {
+                        throw new Error("La respuesta de la API no contiene una lista de productos.");
                     }
-                        return data;
-                    
-                }catch(error){
-                    console.error("Error: ", error);
-                    
+
+                    displayProducts(data.products, data.currency);
+
+                    // Guarda los datos y la hora de consulta para controlar su caducidad.
+                    try {
+                        localStorage.setItem(cacheKey, JSON.stringify({
+                            ...data,
+                            _cachedAt: Date.now()
+                        }));
+                    } catch (error) {
+                        console.error("Error al guardar la caché de productos: ", error);
+                    }
+                    return data;
+                } catch(error) {
+                    console.error("Error al obtener los productos de la API: ", error);
+                    return cachedData;
                 }
             }
 
