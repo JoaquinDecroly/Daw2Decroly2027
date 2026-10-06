@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Descubre libros de historia en Entre Hojas.">
+  <title>Entre Hojas | Librería</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="sentinela"></div>
+<!--cabecera-->
+<header id="header" class="header">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#inicio" aria-label="Entre Hojas, inicio">
+        <img src="img/zarla-entre-hojas-1x1-2400x2400-20220518-qkw8cbyjtjvyqyt3j6p6.png" width="40" class="center-content" alt="Entre Hojas">
+      </a>
+      <form class="d-flex tema generico" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar libro, por ISBN o autor" aria-label="Buscar libros">
+        <button class="fas fa-search" type="submit" aria-label="Buscar"></button>
+      </form>
+      <div class="header-right d-flex align-items-center">
+        <div><a class="text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#miModal">Sign In</a></div>
+        <div><a class="text-decoration-none" href="#">Cart</a></div>
+        <i class="fas fa-shopping-cart" role="button"></i>
+      </div>
+    </div>
+  </nav>
+  <ul class="nav nav-tabs" aria-label="Navegación principal">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#header">Inicio</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Libros</a>
+      <ul class="dropdown-menu">
+        <li><h4 class="dropdown-header text-center">Novedades</h4></li>
+        <li><a class="dropdown-item p-1" href="#">Románticas</a></li>
+        <li><a class="dropdown-item p-1" href="#">Policíacas</a></li>
+        <li><a class="dropdown-item p-1" href="#">Acción</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-center" href="#"><h4>Otros</h4></a></li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="locationDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ubicación</a>
+      <ul class="dropdown-menu map-dropdown" aria-labelledby="locationDropdown">
+        <li>
+          <iframe id="iframe" title="Ubicación de la librería Entre Hojas" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d11586.923861130093!2d-3.5784597281018846!3d43.44533453780093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDPCsDI2JzQzLjIiTiAzwrAzNCcwNS40Ilc!5e0!3m2!1ses!2es!4v1747673628724!5m2!1ses!2es" width="100%" height="360" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</header>
+<!--main, contenido-->
+<main class="main">
+<!-- imagen destacada -->
+  <div class="featured-image">
+    <img src="img/zarla-entre-hojas-1x1-2400x2400-20220518-qkw8cbyjtjvyqyt3j6p6.png" class="d-block mx-auto carousel-img" alt="Logo de Entre Hojas">
+  </div>
+
+<!--    grid-->
+  <div class="container p-1 text-start">
+    <!-- linea1 -->
+    <div class="row text-start">
+      <div class="col col-md-4">
+        <!-- carta -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/9788499926223.png" class="card-img-top" alt="Sapiens: De animales a dioses">
+          <div class="card-body">
+            <h5 class="card-title">Sapiens: De animales a dioses</h5>
+            <p class="card-text">Yuval Noah Harari<br>Un recorrido fascinante por la historia de la humanidad.</p>
+            <a href="https://www.amazon.es/dp/8499924219" class="btn btn-primary" target="_blank">Ver libro</a>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-4">
+        <!-- carta -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/280a3f59-bb58-471f-9955-c6d9416b9b19_cover.png" class="card-img-top" alt="Una historia de la guerra civil que no va a gustar a nadie">
+          <div class="card-body">
+            <h5 class="card-title">Una historia de la guerra civil que no va a gustar a nadie</h5>
+            <p class="card-text">Juan Eslava Galán<br>Relato ameno y crítico sobre la Guerra Civil Española.</p>
+            <a href="https://www.amazon.es/dp/8408141107" class="btn btn-primary" target="_blank">Ver libro</a>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-4">
+        <!-- carta -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/9788411001526jfif.png" class="card-img-top" alt="Breve historia del mundo">
+          <div class="card-body">
+            <h5 class="card-title">Breve historia del mundo</h5>
+            <p class="card-text">Ernst H. Gombrich<br>Un clásico que resume la historia universal de forma sencilla.</p>
+            <a href="https://www.amazon.es/dp/8498387566" class="btn btn-primary" target="_blank">Ver libro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- linea2 -->
+    <div class="row text-start">
+      <div class="col col-md-4">
+        <!-- carta -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/41RpQleo4dL.png" class="card-img-top" alt="Historia mínima de España">
+          <div class="card-body">
+            <h5 class="card-title">Historia mínima de España</h5>
+            <p class="card-text">Juan Pablo Fusi<br>Una síntesis clara y rigurosa de la historia española.</p>
+            <a href="https://www.amazon.es/dp/8430609292" class="btn btn-primary" target="_blank">Ver libro</a>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-4">
+        <!-- carta -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/61qrPVfOAJL.png" class="card-img-top" alt="La Segunda Guerra Mundial">
+          <div class="card-body">
+            <h5 class="card-title">La Segunda Guerra Mundial</h5>
+            <p class="card-text">Antony Beevor<br>El relato definitivo sobre el conflicto más grande del siglo XX.</p>
+            <a href="https://www.amazon.es/dp/8499924219" class="btn btn-primary" target="_blank">Ver libro</a>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-4">
+        <!-- carta -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/historia-de-espana-contada-para-escepticos-676x1024.jpg" class="card-img-top" alt="Historia de España contada para escépticos">
+          <div class="card-body">
+            <h5 class="card-title">Historia de Roma contada para escépticos</h5>
+            <p class="card-text">Juan Eslava Galán<br>Una visión divertida y didáctica de la historia romana.</p>
+            <a href="https://www.amazon.es/dp/8408141107" class="btn btn-primary" target="_blank">Ver libro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--    hero banner-->
+  <aside class="aside right-aside text-end">
+    <div class="hero-banner" id="scrollspy-promocion">
+      <img src="img/9788499926223.png" alt="Promoción especial" class="hero-img">
+      <div class="hero-content">
+        <h2>Sapiens: De animales a dioses</h2>
+        <p>Yuval Noah Harari · Un recorrido fascinante por la historia de la humanidad.</p>
+        <a href="#" class="btn btn-primary">Ver promoción</a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+
+<!-- footer-->
+<footer class="footer text-center text-lg-start bg-light text-muted">
+  <div class="container text-center">
+    <span class="text-muted">Sitio de venta de libros históricos</span>
+    <div class="mt-2">
+      <a href="#" class="mx-2 text-muted">Aviso legal</a> |
+      <a href="#" class="mx-2 text-muted">Política de privacidad</a>
+    </div>
+    <div class="mt-2">
+      <a href="#" class="mx-2 text-muted"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="mx-2 text-muted"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="mx-2 text-muted"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="mt-2">
+      <select class="form-select d-inline w-auto" aria-label="Selector de idioma">
+        <option selected>Español</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </div>
+  <div class="footer-content text-center p-3 bg-light">
+    <p>© 2025 Zarla. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!--modal, sign in-->
+<div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="miModalLabel">Registrese para ser cliente </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3">
+            </div>
+          </div>
+          <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Género</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  Trabajador
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  Estudiante
+                </label>
+              </div>
+            </div>
+          </fieldset>
+          <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  Condiciones
+                </label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
