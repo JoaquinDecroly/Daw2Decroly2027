@@ -1,63 +1,68 @@
-const cacheKey = "carroVista.products";
+            // Usa la caché durante una hora y después consulta si hay cambios.
+            async function fetchProducts() {
+                const cacheKey = "carritoVista.products";
+                const cacheDuration = 60 * 60 * 1000;
+                let cachedData;
 
-const storedData = localStorage.getItem(cacheKey);
+                // Lee y muestra la última respuesta guardada.
+                try {
+                    const storedData = localStorage.getItem(cacheKey);
+                    if (storedData) {
+                        const data = JSON.parse(storedData);
+                        if (data && Array.isArray(data.products)) {
+                            cachedData = data;
+                            displayProducts(data.products, data.currency);
 
-let cachedData;
-
-let cachedDuration = 5 * 60 * 60 * 1000;
-        
-// Primer try, para comprobar si hay datos almacenados
-try{
-    if(storedData){
-        const data = JSON.parse(storedData);
-
-        if(data && Array.isArray(data.products)){
-            cachedData = data;
-
-            displayProducts(data.products, data.currency);
-
-            const cachedAge = (Date.now() - cachedData._cachedAt);
-
-                if(Number.isFinite(data._cachedAt) && cachedAge >= 0 && cachedAge < cachedDuration){
-                    return data;
+                            const cacheAge = Date.now() - data._cachedAt;
+                            if (Number.isFinite(data._cachedAt) && cacheAge >= 0 && cacheAge < cacheDuration) {
+                                return data;
+                            }
+                        } else {
+                            localStorage.removeItem(cacheKey);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error al leer la caché de productos: ", error);
                 }
-        }else{
-            localStorage.removeItem(cacheKey);
-        }
-    }
-} catch (error){
-    console.error("Atense los cinturones, toca trabajo", error);
-}
 
-// Después de comprobar la caché, intentamos el fetch a la url
-try{
-    fetch("https://agoodshop.free.beeceptor.com")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP Error ${response.status}`);
+                // Si falta la caché o ya caducó, consulta la API para comprobar si hay cambios.
+                try{
+                    //https://app.beeceptor.com/ (disponible durante 30 días gratuito sin loggear)
+                    //tiene límite diario de respuestas de la API REST
+                    const response = await fetch("https://agoodshop.free.beeceptor.com", { cache: "no-store" }); 
+
+                    // fetch no considera los estados HTTP de error como excepciones.
+                    // Se genera una para gestionarlos en el catch.
+                    if(!response.ok){
+                        throw new Error(`HTTP error! ${response.status}`)
+                    }
+
+                    // Convierte el cuerpo de la respuesta de JSON a objeto JavaScript.
+                    const data = await response.json();
+
+                    if (!data || !Array.isArray(data.products)) {
+                        throw new Error("La respuesta de la API no contiene una lista de productos.");
+                    }
+
+                    displayProducts(data.products, data.currency);
+
+                    // Guarda los datos y la hora de consulta para controlar su caducidad.
+                    try {
+                        localStorage.setItem(cacheKey, JSON.stringify({
+                            ...data,
+                            _cachedAt: Date.now()
+                        }));
+                    } catch (error) {
+                        console.error("Error al guardar la caché de productos: ", error);
+                    }
+                    return data;
+                } catch(error) {
+                    console.error("Error al obtener los productos de la API: ", error);
+                    return cachedData;
+                }
             }
-            return response.json();
-        })
-        .then(data => {
-            if (!data || !Array.isArray(data.products)) {
-                throw new Error("La respuesta no contiene una lista de productos.");
-            }
 
-            displayProducts(data.products, data.currency);
-
-            localStorage.setItem(cacheKey, JSON.stringify({
-                ...data,
-                _cachedAt: Date.now()
-            }));
-        })
-        .catch(error => {
-            console.error("Error al obtener los productos:", error);
-        });
-}catch(error){
-    console.error("Atense los cinturones, toca trabajo", error);
-}
-
-// Construye en la página la lista de productos recibida.
+            // Construye en la página la lista de productos recibida.
             function displayProducts(products, currency = "€") {
                 // Obtiene los elementos HTML donde se mostrarán los productos y el carrito.
                 const productsList = document.getElementById("productsList");
