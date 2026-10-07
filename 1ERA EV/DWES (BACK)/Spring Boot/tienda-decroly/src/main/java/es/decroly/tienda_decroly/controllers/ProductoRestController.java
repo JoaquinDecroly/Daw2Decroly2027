@@ -31,12 +31,18 @@ public class ProductoRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> obtenerProducto(@PathVariable Long id) {
-        return productos.stream()
-                .filter(producto -> producto.getId().equals(id))
-                .findFirst()
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
+//        return productos.stream()
+//                .filter(producto -> producto.getId().equals(id))
+//                .findFirst()
+//                .map(ResponseEntity::ok)
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+        for( Producto p : productos){
+            if(p.getId().equals(id)){
+                ResponseEntity.ok(p);
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping("")
@@ -50,9 +56,9 @@ public class ProductoRestController {
         for (int i = 0; i < productos.size(); i++) {
             Producto p = productos.get(i);
             if (p.getId().equals(id)) {
-                    p.setNombre(producto.getNombre());
-                    p.setPrecio(producto.getPrecio());
-                    p.setStock(producto.getStock());
+                p.setNombre(producto.getNombre());
+                p.setPrecio(producto.getPrecio());
+                p.setStock(producto.getStock());
                 return ResponseEntity.ok(p);
             }
         }
