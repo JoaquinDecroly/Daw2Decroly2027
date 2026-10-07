@@ -1,0 +1,70 @@
+{
+  "currency": "€",
+  "products": [
+    {
+      "SKU": "0K3QOSOV4V",
+      "title": "iFhone 13 Pro",
+      "price": "938.99"
+    },
+    {
+      "SKU": "TGD5XORY1L",
+      "title": "Cargador",
+      "price": "49.99"
+    },
+    {
+      "SKU": "IOKW9BQ9F3",
+      "title": "Funda de piel",
+      "price": "79.99"
+    },
+    {
+      "SKU": "G4K8V9N2B1",
+      "title": "Laptop UltraSlim",
+      "price": "1299.99"
+    },
+    {
+      "SKU": "X7P3L9Z8Q5",
+      "title": "Auriculares con Cancelación de Ruido",
+      "price": "149.50"
+    },
+    {
+      "SKU": "M2R6W1C4O8",
+      "title": "Ratón Ergonómico Inalámbrico",
+      "price": "59.95"
+    },
+    {
+      "SKU": "A9T5F0Y3E2",
+      "title": "Teclado Mecánico RGB",
+      "price": "119.99"
+    },
+    {
+      "SKU": "H6J1S7D0K4",
+      "title": "Monitor Curvo 27\"",
+      "price": "349.00"
+    },
+    {
+      "SKU": "E9V8N3B5C1",
+      "title": "Smartwatch Z5",
+      "price": "210.75"
+    },
+    {
+      "SKU": "L4P7O2I9U6",
+      "title": "Cámara de Acción 4K",
+      "price": "199.99"
+    },
+    {
+      "SKU": "Z8X3C5V6B7",
+      "title": "Mochila Antirrobo para Portátil",
+      "price": "89.90"
+    },
+    {
+      "SKU": "Q1W2E3R4T5",
+      "title": "Power Bank 20000mAh",
+      "price": "45.50"
+    },
+    {
+      "SKU": "Y7U8I9O0P1",
+      "title": "Altavoz Inteligente con Asistente",
+      "price": "99.99"
+    }
+  ]
+}
