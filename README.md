@@ -136,24 +136,35 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 ---
 
 # 🛠️ Tecnologías
-
 <div align="center">
 
-### Frontend
+<br><br>
 
-<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap" />
+ #  ⚡FRONT
+
+
+<!-- AUTO-STACK:START -->
+
+<p align="center">
+  <img
+    src="https://skillicons.dev/icons?i=js,html,css,php&perline=8"
+    alt="Tecnologías detectadas"
+  />
+</p>
+<!-- AUTO-STACK:END -->
 
 <br><br>
 
-### Backend
+# ⚙️BACK
+<!-- AUTO-ENV:START -->
 
-<img src="https://skillicons.dev/icons?i=java,php,spring" />
-
-<br><br>
-
-### Desarrollo & Despliegue
-
-<img src="https://skillicons.dev/icons?i=git,github,docker" />
+<p align="center">
+  <img
+    src="https://skillicons.dev/icons?i=git,github,githubactions,spring,bootstrap&perline=8"
+    alt="Entorno de desarrollo"
+  />
+</p>
+<!-- AUTO-ENV:END -->
 
 </div>
 
@@ -183,7 +194,13 @@ Daw2Decroly2027/
 
 ### 2026 / 2027
 
-![Progress](https://progress-bar.dev/35/?title=Primera%20Evaluación\&width=500\&color=2563EB)
+<svg width="500" height="45" viewBox="0 0 500 45" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="5" width="500" height="20" rx="10" fill="#111827"/>
+  <rect x="0" y="5" width="175" height="20" rx="10" fill="#2563EB"/>
+  <text x="250" y="40" text-anchor="middle" fill="#2563EB" font-size="16">
+    Primera Evaluación · 35%
+  </text>
+</svg>
 
 <br>
 
