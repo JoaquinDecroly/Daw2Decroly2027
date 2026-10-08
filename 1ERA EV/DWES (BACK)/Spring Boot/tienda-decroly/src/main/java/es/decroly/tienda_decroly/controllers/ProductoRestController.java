@@ -1,84 +1,72 @@
 package es.decroly.tienda_decroly.controllers;
 
 import es.decroly.tienda_decroly.domain.Producto;
-import org.springframework.boot.SpringApplication;
+import es.decroly.tienda_decroly.exceptions.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+
 @RequestMapping("/productos")
 @RestController
 public class ProductoRestController {
     private final List<Producto> productos = new ArrayList<>();
     private final AtomicLong secuencia = new AtomicLong();
 
-    public ProductoRestController(){
+    public ProductoRestController() {
         add("teclado", 49.8, 15);
         add("raton", 66.3, 40);
         add("mando", 87.5, 17);
     }
 
-    public void add(String nombre, double precio, int stock){
+    public void add(String nombre, double precio, int stock) {
         Long nuevoId = secuencia.incrementAndGet();
         productos.add(new Producto(nuevoId, nombre, precio, stock));
     }
 
-    @GetMapping()
+    @GetMapping
     public List<Producto> listarProductos() {
         return productos;
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
-//        return productos.stream()
-//                .filter(producto -> producto.getId().equals(id))
-//                .findFirst()
-//                .map(ResponseEntity::ok)
-//                .orElseGet(() -> ResponseEntity.notFound().build());
-        for( Producto p : productos){
-            if(p.getId().equals(id)){
-                ResponseEntity.ok(p);
-            }
-        }
-        return ResponseEntity.notFound().build();
+        Producto producto = exists(id);
+        return ResponseEntity.ok(producto);
     }
 
-    @PostMapping("")
-    public Producto add(@RequestBody Producto producto){
+    @PostMapping
+    public Producto add(@RequestBody Producto producto) {
         add(producto.getNombre(), producto.getPrecio(), producto.getStock());
-        return producto;
+        return productos.get(productos.size() - 1);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Producto> modProd(@PathVariable Long id, @RequestBody Producto producto) {
-        for (int i = 0; i < productos.size(); i++) {
-            Producto p = productos.get(i);
-            if (p.getId().equals(id)) {
-                p.setNombre(producto.getNombre());
-                p.setPrecio(producto.getPrecio());
-                p.setStock(producto.getStock());
-                return ResponseEntity.ok(p);
-            }
-        }
-        return ResponseEntity.notFound().build();
+        Producto productoExistente = exists(id);
+            productoExistente.setNombre(producto.getNombre());
+            productoExistente.setPrecio(producto.getPrecio());
+            productoExistente.setStock(producto.getStock());
+        return ResponseEntity.ok(productoExistente);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remove(@PathVariable Long id){
+    public ResponseEntity<Void> remove(@PathVariable Long id) {
         boolean eliminado = productos.removeIf(producto -> producto.getId().equals(id));
-        if (eliminado) {
-            return ResponseEntity.noContent().build();
+
+        if (!eliminado) {
+            throw new NotFoundException("No se encontró el producto con id: " + id);
         }
-        return ResponseEntity.notFound().build();
+
+            throw new NotFoundException("Se encontró y se borró exitosamente el producto con id: " + id);
     }
 
-
-
-    public static void main(String[] args){
-        SpringApplication.run(ProductoRestController.class, args);
+    public Producto exists(Long id) {
+        return productos.stream()
+                .filter(producto -> producto.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new NotFoundException("No se encontró el producto con id: " + id));
     }
-
-
 }
