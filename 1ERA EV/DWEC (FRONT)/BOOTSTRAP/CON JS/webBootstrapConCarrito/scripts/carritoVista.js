@@ -1,3 +1,5 @@
+import { CarritoCompra } from "./carrito.js";
+
 // ------FUNCIÓN PARA OBTENER PRODUCTOS MEDIANTE CONEXIÓN A API (SE USA BEECEPTOR (GRATUITO SIN LOGUEAR, LÍMITE DE 50 PETICIONES/DÍA))---------
 function fetchProducts() {
     const cacheKey = "carroVista.products";
@@ -68,7 +70,7 @@ function fetchProducts() {
                 productsList.replaceChildren();
                 summaryList.replaceChildren();
 
-                const productLines = [];
+                const carrito = new CarritoCompra(products, currency);
 
                 const formatPrice = (price) => { 
                     const formattedPrice = new Intl.NumberFormat("es-ES", {
@@ -81,21 +83,17 @@ function fetchProducts() {
 
                 function updateCart() {
                     summaryList.replaceChildren();
-                    let total = 0;
+                    const { productos: productosEnCarrito, total } = carrito.obtenerCarrito();
 
-                    productLines.forEach((line) => {
-                        if (line.quantity === 0) return;
-
+                    productosEnCarrito.forEach((line) => {
                         const summaryItem = document.createElement("li");
                         summaryItem.className = "d-flex justify-content-between gap-3 mb-2";
                         const summaryName = document.createElement("span");
-                        summaryName.textContent = line.name;
+                        summaryName.textContent = `${line.unidades} x ${line.nombre}`;
                         const summaryPrice = document.createElement("span");
 
-                        const subtotal = line.price * line.quantity;
-                        summaryPrice.textContent = formatPrice(subtotal);
+                        summaryPrice.textContent = formatPrice(line.subtotal);
 
-                        total += subtotal;
                         summaryItem.append(summaryName, summaryPrice);
                         summaryList.append(summaryItem);
                     });
@@ -103,7 +101,7 @@ function fetchProducts() {
                     cartTotal.textContent = formatPrice(total);
                 }
 
-                products.forEach((product) => {
+                products.forEach((_, index) => {
                     const item = document.createElement("div");
                     item.className = "list-group-item px-0";
 
@@ -115,10 +113,11 @@ function fetchProducts() {
 
                     const name = document.createElement("h3");
                     name.className = "h5 mb-1";
-                    name.textContent = product.name ?? product.title ?? "Producto sin nombre";
+                    const line = carrito.obtenerInfoProductos(index);
+                    name.textContent = line.nombre;
                     details.append(name);
 
-                    const reference = product.SKU ?? product.sku;
+                    const reference = line.sku;
                     if (reference) {
                         const referenceText = document.createElement("p");
                         referenceText.className = "text-secondary small mb-0";
@@ -126,12 +125,7 @@ function fetchProducts() {
                         details.append(referenceText);
                     }
 
-                    const rawPrice = product.price ?? product.precio;
-                    const price = Number(rawPrice);
-                    const hasPrice = rawPrice !== undefined && rawPrice !== null && Number.isFinite(price);
-
-                    const line = { name: name.textContent, price: hasPrice ? price : 0, quantity: 0 };
-                    productLines.push(line);
+                    const hasPrice = line.precio !== null;
 
                     const quantityColumn = document.createElement("div");
                     quantityColumn.className = "col-6 col-md-3 d-flex justify-content-md-center";
@@ -144,7 +138,7 @@ function fetchProducts() {
                     decrease.className = "btn btn-outline-secondary";
                     decrease.type = "button";
                     decrease.textContent = "-";
-                    decrease.setAttribute("aria-label", `Quitar una unidad de ${line.name}`);
+                    decrease.setAttribute("aria-label", `Quitar una unidad de ${line.nombre}`);
 
                     const quantityInput = document.createElement("input");
                     quantityInput.className = "form-control text-center";
@@ -153,21 +147,21 @@ function fetchProducts() {
                     quantityInput.max = "99";
                     quantityInput.step = "1";
                     quantityInput.value = "0";
-                    quantityInput.setAttribute("aria-label", `Cantidad de ${line.name}`);
+                    quantityInput.setAttribute("aria-label", `Cantidad de ${line.nombre}`);
 
                     const increase = document.createElement("button");
                     increase.className = "btn btn-outline-secondary";
                     increase.type = "button";
                     increase.textContent = "+";
-                    increase.setAttribute("aria-label", `Añadir una unidad de ${line.name}`);
+                    increase.setAttribute("aria-label", `Añadir una unidad de ${line.nombre}`);
 
                     const lineTotal = document.createElement("span");
                     lineTotal.textContent = hasPrice ? formatPrice(0) : "-";
 
                     function setQuantity(quantity) {
-                        line.quantity = Math.max(0, Math.min(99, Math.trunc(quantity)));
-                        quantityInput.value = String(line.quantity);
-                        lineTotal.textContent = hasPrice ? formatPrice(line.price * line.quantity) : "-";
+                        carrito.actualizarUnidades(line.id, quantity);
+                        quantityInput.value = String(line.unidades);
+                        lineTotal.textContent = hasPrice ? formatPrice(line.precio * line.unidades) : "-";
                         updateCart();
                     }
 
@@ -175,8 +169,8 @@ function fetchProducts() {
                     increase.disabled = !hasPrice;
                     quantityInput.disabled = !hasPrice;
 
-                    decrease.addEventListener("click", () => setQuantity(line.quantity - 1));
-                    increase.addEventListener("click", () => setQuantity(line.quantity + 1));
+                    decrease.addEventListener("click", () => setQuantity(line.unidades - 1));
+                    increase.addEventListener("click", () => setQuantity(line.unidades + 1));
                     quantityInput.addEventListener("change", () => {
                         const quantity = Number(quantityInput.value);
                         setQuantity(Number.isInteger(quantity) ? quantity : 0);
@@ -187,7 +181,7 @@ function fetchProducts() {
 
                     const unitColumn = document.createElement("div");
                     unitColumn.className = "col-3 col-md-2 text-nowrap";
-                    unitColumn.textContent = hasPrice ? formatPrice(line.price) : "-";
+                    unitColumn.textContent = hasPrice ? formatPrice(line.precio) : "-";
 
                     const totalColumn = document.createElement("div");
                     totalColumn.className = "col-3 col-md-2 text-end text-nowrap fw-semibold";
