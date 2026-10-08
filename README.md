@@ -143,6 +143,12 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <!-- AUTO-STACK:END -->
 
+<br><br>
+
+<!-- AUTO-ENV:START -->
+
+<!-- AUTO-ENV:END -->
+
 </div>
 
 ---
