@@ -139,21 +139,9 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <div align="center">
 
-### Frontend
+<!-- AUTO-STACK:START -->
 
-<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap" />
-
-<br><br>
-
-### Backend
-
-<img src="https://skillicons.dev/icons?i=java,php,spring" />
-
-<br><br>
-
-### Desarrollo & Despliegue
-
-<img src="https://skillicons.dev/icons?i=git,github,docker" />
+<!-- AUTO-STACK:END -->
 
 </div>
 
