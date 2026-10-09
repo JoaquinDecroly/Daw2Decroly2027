@@ -1,0 +1,186 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffcc00;
+    padding: 1rem 2rem;
+}
+
+.logo img {
+    width: 150px; /* Tamaño fijo para el logo */
+    height: auto; /* Mantiene la proporción */
+    max-height: 80px; /* Limita la altura máxima */
+    object-fit: contain; /* Evita distorsión del logo */
+}
+
+.main-nav {
+    flex: 1; /* Ocupa el espacio entre el logo y los botones */
+    margin-left: 2rem;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: flex-end; /* Alinea el menú hacia la derecha */
+    list-style: none;
+    font-size: x-large;
+}
+
+.main-nav ul li {
+    margin: 0 1rem;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: #ff0000;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.cta-buttons .button {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-buttons .button:hover {
+    background-color: #d90000;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(to right, #ffcc00, #ff0000);
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: x-large;
+}
+
+.hero-banner .banner-image img {
+    height: auto;
+    border-radius: 10px;
+    max-width: fit-content;
+}
+
+/* Categorías */
+.categories {
+    text-align: center;
+    margin: 2rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    font-size: x-large;
+}
+.category-item a.button{
+    text-decoration: none;
+    color: #000000;
+    background-color: #d9000098;
+}
+.offer-item a.button{
+    text-decoration: none;
+    color: #000000;
+    background-color: #d9000098;
+}
+
+.category-item img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+    
+    filter: drop-shadow(0 0 10px rgb(0, 0, 0));
+}
+
+
+/* Ofertas */
+.offers {
+    background: #fff;
+    padding: 3rem;
+    text-align: center;
+}
+
+.offers-grid {
+    gap: 2rem;
+    justify-content: center;
+    font-size: x-large;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.offer-item img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 10px rgb(0, 0, 0));
+}
+
+/* Footer */
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    font-size: x-large;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    width: 30%;
+    min-width: 200px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffcc00;
+}
+
+.footer-bottom {
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid #fff;
+    padding-top: 1rem;
+    font-size: small;
+}

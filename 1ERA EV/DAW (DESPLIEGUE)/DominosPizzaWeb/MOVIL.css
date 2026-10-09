@@ -1,0 +1,124 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #006491; /* Color azul típico de Domino's */
+    padding: 1rem;
+    color: white;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.nav-bar a {
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-bar a:hover {
+    color: #fbd000; /* Color amarillo para destacar el hover */
+}
+
+main {
+    padding: 2rem;
+    text-align: center;
+}
+
+h1 {
+    color: #e31837; /* Rojo característico de Domino's */
+    margin-bottom: 2rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Tres columnas para 6 pizzas */
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.item {
+    background-color: #ffffff;
+    border: 2px solid #e31837; /* Borde rojo */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* Ancho máximo */
+    max-height: 200px; /* Alto máximo */
+    min-width: 150px; /* Ancho mínimo */
+    min-height: 100px; /* Alto mínimo */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    border-bottom: 2px solid #e31837;
+}
+
+.item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 1rem 0 0.5rem;
+}
+
+.item p {
+    font-size: 1rem;
+    color: #666;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 1rem auto;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #e31837;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 0;
+}
+
+button:hover {
+    background-color: #c81d25;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #333;
+    color: white;
+    font-size: 0.9rem;
+}
