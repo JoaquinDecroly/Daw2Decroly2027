@@ -240,18 +240,7 @@ Daw2Decroly2027/
 
 </div>
 
----
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:7C3AED,100:2563EB&height=120&section=footer&animation=twinkling" width="100%"/>
-
-### 💻 2º DAW · 2026/2027
-
-**Aprender · Practicar · Crear · Desplegar**
-
-`HTML` · `CSS` · `JavaScript` · `PHP` · `Java` · `Spring Boot` · `Docker` · `Cloud`
-
-⭐ **Repositorio académico · Desarrollo de Aplicaciones Web**
-
 </div>
