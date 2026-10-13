@@ -140,7 +140,7 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <br><br>
 
- #  ⚡FRONT
+ ### ⚡FRONT 
 
 
 <!-- AUTO-STACK:START -->
@@ -155,7 +155,7 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <br><br>
 
-# ⚙️BACK
+### ⚙️BACK
 <!-- AUTO-ENV:START -->
 
 <p align="center">
