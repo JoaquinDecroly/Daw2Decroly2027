@@ -171,6 +171,18 @@ h2 {
     font-size: 0.75rem;
 }
 
+/* Ocultar flechas en Chrome, Safari, Edge y Opera */
+input[type="number"].form-control.text-center::-webkit-inner-spin-button,
+input[type="number"].form-control.text-center::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Ocultar flechas en Firefox */
+input[type="number"].form-control.text-center {
+  appearance: textfield;
+}
+
 footer {
     margin-top: 1.4rem;
     padding: 1rem;
