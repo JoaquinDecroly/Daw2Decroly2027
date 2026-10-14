@@ -147,7 +147,7 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <p align="center">
   <img
-    src="https://skillicons.dev/icons?i=js,html,css,php&perline=8"
+    src="https://skillicons.dev/icons?i=html,js,css,php&perline=8"
     alt="Tecnologías detectadas"
   />
 </p>
