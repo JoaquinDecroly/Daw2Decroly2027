@@ -3,6 +3,7 @@ package es.decroly.tienda_decroly.controllers;
 import es.decroly.tienda_decroly.domain.Producto;
 import es.decroly.tienda_decroly.exceptions.BadRequestException;
 import es.decroly.tienda_decroly.exceptions.NotFoundException;
+import es.decroly.tienda_decroly.services.ProductoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +17,11 @@ public class ProductoRestController {
     private final List<Producto> productos = new ArrayList<>();
     private final AtomicLong secuencia = new AtomicLong();
 
+    private final ProductoService productoService;
+
     //Constructor
-    public ProductoRestController() {
-        add("teclado", 49.8, 15);
-        add("raton", 66.3, 40);
-        add("mando", 87.5, 17);
+    public ProductoRestController(ProductoService productoService) {//USO DEL CONSTRUCTOR DE PRODUCTO-SERVICE-MEMORIA
+        this.productoService = productoService;
     }
 
 ///////////////////////////////////////////////////////////////
@@ -30,52 +31,32 @@ public class ProductoRestController {
     //Listar todos los productos
     @GetMapping
         public List<Producto> listarProductos() {
-            return productos;
+            return productoService.listarProductos();
         }
 
     //Obtener un producto por id
     @GetMapping("/{id}")
-        public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
-            Producto producto = exists(id);
-            return ResponseEntity.ok(producto);
+        public Producto getProductoById(@PathVariable Long id) {
+            return productoService.buscarPorId(id);
         }
 
     //Añade un producto
     @PostMapping
         public Producto add(@RequestBody Producto producto) {
-            if (producto.getNombre() == null || producto.getNombre().trim().isEmpty()) {
-                throw new BadRequestException("El nombre del producto no puede estar vacío");
-            }
-            if (producto.getPrecio() <= 0) {
-                throw new BadRequestException("El precio debe ser mayor que 0");
-            }
-            if (producto.getStock() < 0) {
-                throw new BadRequestException("El stock no puede ser negativo");
-            }
-            add(producto.getNombre(), producto.getPrecio(), producto.getStock());
-            return productos.getLast();
+            return productoService.crear(producto.getNombre(), producto.getPrecio(), producto.getStock());
         }
 
     //Modificar un producto por id
     @PutMapping("/{id}")
-        public ResponseEntity<Producto> modProd(@PathVariable Long id, @RequestBody Producto producto) {
-            Producto productoExistente = exists(id);
-                productoExistente.setNombre(producto.getNombre());
-                productoExistente.setPrecio(producto.getPrecio());
-                productoExistente.setStock(producto.getStock());
-            return ResponseEntity.ok(productoExistente);
+        public Producto modProd(@PathVariable Long id, @RequestBody Producto producto) {
+            return productoService.modificar(id, producto);
         }
 
     //Eliminar un producto por id
     @DeleteMapping("/{id}")
-        public ResponseEntity<Void> remove(@PathVariable Long id) {
-            boolean eliminado = productos.removeIf(producto -> producto.getId().equals(id));
-
-            if (!eliminado) {
-                throw new NotFoundException("No se encontró el producto con id: " + id);
-            }
-                throw new NotFoundException("Se encontró y se borró exitosamente el producto con id: " + id);
-        }
+        public void remove(@PathVariable Long id) {
+            productoService.eliminar(id);
+    }
 
 ///////////////////////////////////////////////////////////////
 /// FUNCIONES AUXILIARES
