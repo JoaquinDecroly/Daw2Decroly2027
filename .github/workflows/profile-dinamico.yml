@@ -1,3 +1,4 @@
+
 name: Actualizar perfil dinámico
 
 on:
@@ -14,12 +15,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: actualizar-perfil-dinamico
+  cancel-in-progress: false
+
 jobs:
   update-profile:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Descargar perfil
+      - name: Descargar repositorio
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
@@ -44,5 +49,6 @@ jobs:
             echo "No hay cambios en el perfil."
           else
             git commit -m "chore: actualizar tecnologías"
-            git push
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
