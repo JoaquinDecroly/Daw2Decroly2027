@@ -144,12 +144,8 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 
 <!-- AUTO-STACK:START -->
-
 <p align="center">
-  <img
-    src="https://skillicons.dev/icons?i=html&perline=8"
-    alt="Tecnologías detectadas"
-  />
+  <img src="https://skillicons.dev/icons?i=html,java,css,js&perline=8" alt="Lenguajes detectados"/>
 </p>
 <!-- AUTO-STACK:END -->
 
@@ -157,12 +153,8 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 ### ⚙️BACK
 <!-- AUTO-ENV:START -->
-
 <p align="center">
-  <img
-    src="https://skillicons.dev/icons?i=git,github,githubactions,spring,bootstrap&perline=8"
-    alt="Entorno de desarrollo"
-  />
+  <img src="https://skillicons.dev/icons?i=git,github,githubactions,maven,spring,bootstrap&perline=8" alt="Entorno de desarrollo"/>
 </p>
 <!-- AUTO-ENV:END -->
 
