@@ -14,18 +14,18 @@ import java.util.List;
 @ConditionalOnProperty(name = "tienda.productos.origen",
         havingValue = "json")
 
-public class ProductoServiceJSON extends ProductoServiceBase {
+    public class ProductoServiceJSON extends ProductoServiceBase {
 
 
-    public ProductoServiceJSON(ObjectMapper mapper) throws IOException {
-        super((ArrayList<Producto>) cargar(mapper));
+        public ProductoServiceJSON(ObjectMapper mapper) throws IOException {
+            super((ArrayList<Producto>) cargar(mapper));
 
-    }
+        }
 
-    private static List<Producto> cargar(ObjectMapper mapper) throws IOException {
-        ClassPathResource fichero = new ClassPathResource("productos.json");
-        try (InputStream entrada = fichero.getInputStream()) {
-            return List.of(mapper.readValue(entrada, Producto[].class));
+        private static List<Producto> cargar(ObjectMapper mapper) throws IOException {
+            ClassPathResource fichero = new ClassPathResource("productos.json");
+            try (InputStream entrada = fichero.getInputStream()) {
+                return List.of(mapper.readValue(entrada, Producto[].class));
+            }
         }
     }
-}

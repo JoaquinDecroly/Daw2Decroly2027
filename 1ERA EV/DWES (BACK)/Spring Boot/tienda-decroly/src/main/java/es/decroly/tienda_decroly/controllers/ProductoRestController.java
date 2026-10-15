@@ -4,6 +4,9 @@ import es.decroly.tienda_decroly.domain.Producto;
 import es.decroly.tienda_decroly.exceptions.BadRequestException;
 import es.decroly.tienda_decroly.exceptions.NotFoundException;
 import es.decroly.tienda_decroly.services.ProductoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Tag(name = "Productos", description = "Gestión de productos")
 @RequestMapping("/productos")
 @RestController
 public class ProductoRestController {
@@ -35,6 +39,9 @@ public class ProductoRestController {
         }
 
     //Obtener un producto por id
+    @Operation(summary = "Obtener un producto por id")
+    @ApiResponse(responseCode = "200", description = "Producto encontrado")
+    @ApiResponse(responseCode = "404", description = "Producto no encontrado")
     @GetMapping("/{id}")
         public Producto getProductoById(@PathVariable Long id) {
             return productoService.buscarPorId(id);

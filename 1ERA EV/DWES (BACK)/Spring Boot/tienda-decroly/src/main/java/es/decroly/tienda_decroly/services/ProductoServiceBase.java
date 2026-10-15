@@ -17,15 +17,15 @@ public abstract class ProductoServiceBase implements ProductoService{
     private AtomicLong secuencia = new AtomicLong();
 
     //Constructor
-    public ProductoServiceBase(ArrayList<Producto> productos) {
+    public ProductoServiceBase(List<Producto> productosInd) {
 //        crear("teclado", 49.8, 15);
 //        crear("raton", 66.3, 40);
 //        crear("mando", 87.5, 17);
-        this.productos = new ArrayList<>(productos);
+        this.productos = new ArrayList<>(productosInd);
 
         long maxId = 0;
 
-        for(Producto p : productos){
+        for(Producto p : productosInd){
             if(p.getId() > maxId){
                 maxId = p.getId();
             }
