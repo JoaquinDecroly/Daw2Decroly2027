@@ -15,6 +15,7 @@ function fetchProducts() {
                 cachedData = data;
                 displayProducts(data.products, data.currency);
 
+                // SI LA CACHÉ SIGUE VIGENTE, NO HACE FALTA CONSULTAR LA API
                 const cachedAge = Date.now() - data._cachedAt;
                 if (Number.isFinite(data._cachedAt) && cachedAge >= 0 && cachedAge < cachedDuration) {
                     return Promise.resolve(data);
@@ -53,6 +54,7 @@ function fetchProducts() {
         })
         .catch(error => {
             console.error("Error al obtener los productos:", error);
+            // SI FALLA LA API, SE CONSERVAN LOS PRODUCTOS DE LA CACHÉ, AUNQUE ESTÉN CADUCADOS
             return cachedData;
         });
 }
@@ -85,6 +87,7 @@ function fetchProducts() {
                     summaryList.replaceChildren();
                     const { productos: productosEnCarrito, total } = carrito.obtenerCarrito();
 
+                    // MOSTRAR SOLO LOS PRODUCTOS CON UNIDADES Y ACTUALIZAR EL TOTAL
                     productosEnCarrito.forEach((line) => {
                         const summaryItem = document.createElement("li");
                         summaryItem.className = "d-flex justify-content-between gap-3 mb-2";
@@ -158,6 +161,7 @@ function fetchProducts() {
                     const lineTotal = document.createElement("span");
                     lineTotal.textContent = hasPrice ? formatPrice(0) : "-";
 
+                    // MANTENER SINCRONIZADOS EL CONTROL DE CANTIDAD, EL SUBTOTAL Y EL CARRITO
                     function setQuantity(quantity) {
                         carrito.actualizarUnidades(line.id, quantity);
                         quantityInput.value = String(line.unidades);
@@ -173,6 +177,7 @@ function fetchProducts() {
                     increase.addEventListener("click", () => setQuantity(line.unidades + 1));
                     quantityInput.addEventListener("change", () => {
                         const quantity = Number(quantityInput.value);
+                        // EVITAR QUE UN VALOR NO ENTERO SE AÑADA AL CARRITO
                         setQuantity(Number.isInteger(quantity) ? quantity : 0);
                     });
 
