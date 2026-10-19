@@ -1,0 +1,75 @@
+    <!-- -------NAVBAR---------- -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand"><strong>agoodshop</strong></a>
+                <p class="navbar-text">
+                    <span>Tienda</span>
+                    <span>Accesorios</span>
+                    <span>Soporte</span>
+                </p>
+                <button class="btn btn-light">Contactar</button>
+            </div>
+        </nav>
+
+        
+        <div
+          class="card card_giftcard" >
+          <img class="card-img-top" alt="Title" />
+          <div class="card-body">
+            <h4 class="card-title">Soy el primer hijo</h4>
+            <p class="card-text">
+              <app-componente-hijo></app-componente-hijo>
+            </p>
+          </div>
+
+          <div class="card-body">
+            <h4 class="card-title">Soy el segundo hijo</h4>
+            <p class="card-text">
+              <app-componente-hijo2></app-componente-hijo2>
+            </p>
+          </div>
+
+          <div class="card-body">
+            <h4 class="card-title">Soy el tercer hijo</h4>
+            <p class="card-text">
+              <app-componente-hijo3></app-componente-hijo3>
+            </p>
+          </div>
+    
+        </div>
+        
+
+        <!-- ---------CONTENEDORES---PRODUCTOS--------- -->
+        <main class="container py-4">
+            <section class="exercise-card py-4" aria-labelledby="titulo-ppt">
+            <!-- ------CONTENEDOR----LISTA------- -->
+                <div class="row g-4">
+                    <div class="col-12 col-lg-8">
+                        <h2 id="titulo-ppt" class="h4 mb-4">Carrito compra</h2>
+                        <div class="row g-2 border-bottom pb-2 mb-2 text-secondary small d-none d-md-flex">
+                            <div class="col-md-5">Producto</div>
+                            <div class="col-md-3 text-center">Cantidad</div>
+                            <div class="col-md-2">Unidad</div>
+                            <div class="col-md-2 text-end">Total</div>
+                        </div>
+                        <div id="productsList" class="list-group list-group-flush" aria-live="polite"></div>
+                    </div>
+
+                    <!-- ------CONTENEDOR---TOTAL----------- -->
+                    <aside class="col-12 col-lg-4" aria-labelledby="total-title">
+                        <div class="bg-light p-4">
+                            <h3 id="total-title" class="h4 mb-3">Total</h3>
+                            <ul id="listaCompra" class="list-unstyled mb-3"></ul>
+                            <div class="d-flex justify-content-between border-top pt-3">
+                                <span>TOTAL</span>
+                                <strong id="cartTotal">0,00 €</strong>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center"><small>©<strong>agoodshop</strong></small></footer>
+        
+    
