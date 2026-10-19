@@ -1,6 +1,6 @@
 // -------HELPER PARA OBTENER ELEMENTOS HTML TIPADOS----------
 function obtener<T extends HTMLElement>(id:string): T{
-    let obj = document.getElementById(id);;
+    let obj = document.getElementById(id);
     if(!obj){
         throw new Error(`No se encontró el elemento con id "${id}"`);
     }
