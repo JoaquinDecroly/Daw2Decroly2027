@@ -1,5 +1,5 @@
 <?php
-    //variables
+    //array productos
     $productos = [
 
         ["nombre" => "Teclado",  "precio" => 25.50,  "stock" => 12],
@@ -14,7 +14,7 @@
 
     // Mostrar un listado de todos los productos con su nombre, precio y stock.
     foreach ($productos as $p) {
-        echo $p["nombre"] . " - " . $p["precio"] . " - " . $p["stock"] . "<br>";
+        echo $p["nombre"] . " - " . $p["precio"] . "€ - " . $p["stock"] . "ud<br>";
     }
 
     //Calcular y mostrar el valor total del inventario (suma de precio × stock de todos los productos).
@@ -29,6 +29,22 @@
         echo $p["nombre"] . " - " . $p["precio"] . " - " . ($p["stock"] < 5 ? ($p["stock"] == 0 ? "Agotado" : "Stock bajo") : $p["stock"]) . "<br>";
     }
     
+    // Indicar cuál es el producto más caro y cuál tiene más stock.
+        //NO FUNCIONA MUY ALLA
+        foreach ($productos as $p) {
+        $max1 = PHP_INT_MIN;
+        $max2 = PHP_INT_MIN;
+
+            $precioMax = max($p["precio"], $max1);
+            $stockMax = max($p["stock"], $max2);
+        }
+        echo "<br><br>" . $precioMax . " €" . ", y el stock máximo es: " . $stockMax;
+        
+    //Mostrar cuántos productos en total están agotados.
+    foreach ($productos as $p) {
+        $cont = 0;
+        echo ($p["stock"] == 0 ? ($cont=$cont + 1) : null) . " producto agotado<br>";
+    }
     
     
     
