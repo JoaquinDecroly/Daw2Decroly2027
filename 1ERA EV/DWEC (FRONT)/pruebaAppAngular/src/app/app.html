@@ -1,0 +1,53 @@
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark site-nav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#inicio">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      órbita<span class="brand-dot">.</span>
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <div class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+        <a class="nav-link" href="#destinos">Destinos</a>
+        <a class="nav-link" href="#experiencia">La experiencia</a>
+        <a class="btn btn-sm btn-light rounded-pill px-4 fw-semibold mt-2 mt-lg-0" href="#destinos">Reservar viaje <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- hero-section -->
+  <app-hero-component></app-hero-component>
+
+  <!-- trustbar-->
+  <section class="trust-strip" aria-label="Datos de Órbita">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-md-3"><span class="trust-number">18</span><span class="trust-label">destinos únicos</span></div>
+        <div class="col-6 col-md-3"><span class="trust-number">100%</span><span class="trust-label">vistas garantizadas</span></div>
+        <div class="col-6 col-md-3"><span class="trust-number">0</span><span class="trust-label">experiencia necesaria</span></div>
+        <div class="col-6 col-md-3"><span class="trust-number">∞</span><span class="trust-label">recuerdos por contar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- cards-->
+  <app-destination-card></app-destination-card>
+
+  <!-- experience banner -->
+  <app-experience-banner></app-experience-banner>
+
+</main>
+
+<!-- footer -->
+<footer class="site-footer">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+    <a class="footer-brand text-decoration-none" href="#inicio"><span class="brand-mark" aria-hidden="true">✦</span> órbita<span class="brand-dot">.</span></a>
+    <p class="mb-0">Hecho para los que nunca dejaron de mirar arriba. <span aria-hidden="true">✦</span></p>
+    <span class="footer-copy">© 2027 ÓRBITA EXPLORACIONES</span>
+  </div>
+</footer>
