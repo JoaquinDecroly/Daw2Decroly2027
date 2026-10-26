@@ -1,0 +1,65 @@
+<div class="container py-5">
+
+  <header class="text-center mb-5">
+    <h1 class="display-5 fw-bold">Mi Blog</h1>
+    <p class="text-secondary">Publica y consulta las últimas noticias</p>
+  </header>
+
+  <div class="row g-4">
+
+    <!-- ÁREA FORMULARIO -->
+    <aside class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white fw-semibold">
+          Nueva publicación
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="titulo" class="form-label">Título</label>
+              <input type="text" id="titulo" class="form-control" placeholder="Título de la noticia">
+            </div>
+
+            <div class="mb-3">
+              <label for="imagen" class="form-label">URL de la imagen</label>
+              <input type="url" id="imagen" class="form-control" placeholder="https://...">
+            </div>
+
+            <div class="mb-3">
+              <label for="texto" class="form-label">Texto</label>
+              <textarea id="texto" rows="5" class="form-control" placeholder="Cuerpo de la noticia"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="fecha" class="form-label">Fecha de publicación</label>
+              <input type="date" id="fecha" class="form-control">
+            </div>
+
+            <div class="alert alert-danger py-2" role="alert">
+              Todos los campos son obligatorios.
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Publicar</button>
+          </form>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ÁREA LISTADO -->
+    <section class="col-lg-8">
+      <h2 class="h4 mb-3">Noticias</h2>
+
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+
+        <!-- Tarjeta de noticia (esta es la que repetirás) -->
+       <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <app-noticia></app-noticia>
+            </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</div>
