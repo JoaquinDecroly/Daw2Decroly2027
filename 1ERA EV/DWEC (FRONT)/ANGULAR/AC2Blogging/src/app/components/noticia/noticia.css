@@ -2,3 +2,12 @@
   display: block;
   height: 100%;
 }
+
+button.btn.btn-sm.btn-outline-danger.container-fluid.col-9.border-danger-subtle.position-relative{ /*boton editar noticia */
+  left: 10%;
+  padding: 1%;
+}
+
+button.btn.btn-sm.btn-outline-primary.container-fluid.mb-3.mt-2{ /*boton eliminar noticia */
+  padding: 2%;
+}

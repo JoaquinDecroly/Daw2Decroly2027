@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Noticia as NoticiaModel } from '../../interfaces/noticia.interfaces';
 
 @Component({
@@ -8,10 +8,23 @@ import { Noticia as NoticiaModel } from '../../interfaces/noticia.interfaces';
   templateUrl: './noticia.html',
 })
 export class Noticia {
+
   @Input() noticia: NoticiaModel = {
     titulo: '',
     imagen: '',
     texto: '',
     fecha: '',
   };
+
+  @Output() eliminar = new EventEmitter<NoticiaModel>();
+
+  @Output() editar = new EventEmitter<void>();
+
+  borrar():void{
+    this.eliminar.emit(this.noticia);
+  }
+
+  editarNoticia(): void {
+  this.editar.emit();
+}
 }
