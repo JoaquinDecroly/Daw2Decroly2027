@@ -1,0 +1,27 @@
+.navbar {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-text {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-text span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 1.4rem;
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-text {
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.75rem;
+  }
+}
