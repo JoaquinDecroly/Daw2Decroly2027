@@ -1,0 +1,289 @@
+button.btn-outline.btn-solid.theme-primary.container-fluid.mb-1.col-9.btn.position-relative.text-center{
+    left: 10.5%;
+}
+/* ////////////////////////////////////////////////////////////////////////////// */
+/* ---------- 1. Paleta de marca ---------- */
+:root,
+:host {
+  --travel-navy: #0b3b5e;
+  --travel-navy-dark: #082e49;
+  --travel-teal: #008f9c;
+  --travel-teal-text: #007a85;
+  --travel-teal-soft: #e6f5f7;
+  --travel-coral: #ff7950;
+  --travel-coral-text: #b44a1e;
+  --travel-cream: #f7ead7;
+  --travel-ink: #12334b;
+  --travel-muted: #5b7385;
+  --travel-border: #dce5ea;
+  --travel-border-strong: #c9dae5;
+}
+
+
+/* ---------- 2. Tokens de Bootstrap ---------- */
+:root,
+:host {
+  --bs-fg-body: var(--travel-ink);
+  --bs-fg-3: var(--travel-muted);
+  --bs-heading-color: var(--travel-navy);
+  --bs-heading-font-weight: var(--bs-font-weight-bold);
+  --bs-border-color: var(--travel-border);
+  --bs-link-color: var(--travel-teal-text);
+
+  --bs-primary-base: var(--travel-teal);
+  --bs-primary-fg: var(--travel-teal-text);
+  --bs-primary-fg-emphasis: var(--travel-navy);
+  --bs-primary-bg: var(--travel-teal);
+  --bs-primary-bg-subtle: var(--travel-teal-soft);
+  --bs-primary-bg-muted: color-mix(in oklch, var(--travel-teal) 25%, #fff);
+  --bs-primary-border: color-mix(in oklch, var(--travel-teal) 45%, #fff);
+  --bs-primary-focus-ring: color-mix(in oklch, var(--travel-teal) 50%, #fff);
+  --bs-primary-contrast: #fff;
+}
+
+
+/* ---------- 3. Utilidades de color ---------- */
+@layer custom {
+  .text-brand {
+    color: var(--travel-teal-text);
+  }
+  .text-navy {
+    color: var(--travel-navy);
+  }
+}
+
+
+/* ---------- 4. Botones ---------- */
+@layer custom {
+  .btn-brand {
+    --bs-theme-base: var(--travel-teal);
+    --bs-theme-fg: var(--travel-teal-text);
+    --bs-theme-fg-emphasis: var(--travel-navy);
+    --bs-theme-bg: var(--travel-teal);
+    --bs-theme-bg-subtle: var(--travel-teal-soft);
+    --bs-theme-bg-muted: color-mix(in oklch, var(--travel-teal) 25%, #fff);
+    --bs-theme-border: color-mix(in oklch, var(--travel-teal) 45%, #fff);
+    --bs-theme-focus-ring: color-mix(in oklch, var(--travel-teal) 50%, #fff);
+    --bs-theme-contrast: #fff;
+  }
+  .btn-action {
+    --bs-theme-base: var(--travel-coral);
+    --bs-theme-fg: var(--travel-coral-text);
+    --bs-theme-fg-emphasis: #8a3514;
+    --bs-theme-bg: var(--travel-coral);
+    --bs-theme-bg-subtle: var(--travel-cream);
+    --bs-theme-bg-muted: color-mix(in oklch, var(--travel-coral) 30%, #fff);
+    --bs-theme-border: color-mix(in oklch, var(--travel-coral) 50%, #fff);
+    --bs-theme-focus-ring: color-mix(in oklch, var(--travel-coral) 50%, #fff);
+    --bs-theme-contrast: #fff;
+  }
+  .btn-navy {
+    --bs-theme-base: var(--travel-navy);
+    --bs-theme-fg: var(--travel-navy);
+    --bs-theme-fg-emphasis: var(--travel-navy-dark);
+    --bs-theme-bg: var(--travel-navy);
+    --bs-theme-bg-subtle: color-mix(in oklch, var(--travel-navy) 10%, #fff);
+    --bs-theme-bg-muted: color-mix(in oklch, var(--travel-navy) 20%, #fff);
+    --bs-theme-border: color-mix(in oklch, var(--travel-navy) 40%, #fff);
+    --bs-theme-focus-ring: color-mix(in oklch, var(--travel-navy) 50%, #fff);
+    --bs-theme-contrast: #fff;
+  }
+}
+
+
+/* ---------- 5. Enlaces ---------- */
+@layer custom {
+  .link-brand {
+    font-weight: var(--bs-font-weight-semibold);
+    color: var(--travel-teal-text);
+    text-decoration: none;
+  }
+  .link-brand:hover,
+  .link-brand:focus-visible {
+    color: var(--travel-navy);
+    text-decoration: underline;
+  }
+}
+
+
+/* ---------- 6. Navbar ---------- */
+@layer custom {
+  .travel-navbar {
+    --bs-navbar-min-height: 5rem;
+    --bs-navbar-color: var(--travel-ink);
+    --bs-navbar-hover-color: var(--travel-teal-text);
+    --bs-navbar-active-color: var(--travel-teal-text);
+    --bs-navbar-brand-font-size: var(--bs-font-size-xl);
+    --bs-navbar-brand-font-weight: var(--bs-font-weight-bold);
+    --bs-navbar-nav-link-padding-x: .75rem;
+  }
+  @media (width >= 1280px) {
+    .travel-navbar {
+      --bs-navbar-brand-font-size: var(--bs-font-size-2xl);
+      --bs-navbar-nav-link-padding-x: 1.5rem;
+    }
+  }
+  .travel-navbar .nav-link {
+    position: relative;
+    font-size: var(--bs-font-size-lg);
+  }
+  .travel-navbar .nav-link.active::after {
+    position: absolute;
+    inset-inline: var(--bs-nav-link-padding-x);
+    bottom: -.25rem;
+    height: 3px;
+    content: "";
+    background-color: var(--travel-teal);
+    border-radius: var(--bs-radius-pill);
+  }
+}
+
+
+/* ---------- 7. Hero ---------- */
+@layer custom {
+  .travel-hero {
+    --bs-heading-color: #fff;
+    padding-block: 3.5rem 4rem;
+    color: #fff;
+    background-color: var(--travel-navy);
+    background-image:
+      linear-gradient(90deg, rgb(11 59 94 / .6) 0%, rgb(11 59 94 / .25) 45%, rgb(11 59 94 / 0) 70%),
+      url("../img/hero.svg");
+    background-position: 30% bottom;
+    background-size: cover;
+  }
+  .travel-hero-title {
+    font-size: clamp(1.75rem, 1rem + 2.6vw, 3rem);
+    line-height: 1.05;
+  }
+  .travel-hero-title > :last-child {
+    font-size: 1.25em;
+  }
+  @media (width >= 768px) {
+    .travel-hero {
+      background-position: center bottom;
+    }
+  }
+  @media (width >= 1024px) {
+    .travel-hero {
+      padding-block: 4rem 4.5rem;
+    }
+  }
+}
+
+
+/* ---------- 8. Buscador ---------- */
+@layer custom {
+  .travel-search {
+    position: relative;
+    z-index: 1;
+    padding: 1.25rem;
+    margin-top: -1.5rem;
+    background-color: var(--bs-bg-body);
+    border: 1px solid var(--travel-border-strong);
+    border-radius: var(--bs-radius-9);
+    box-shadow: var(--bs-box-shadow);
+  }
+  .travel-search .form-label {
+    font-size: var(--bs-font-size-sm);
+    color: var(--bs-fg-3);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .travel-select {
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    text-align: start;
+    cursor: pointer;
+  }
+  .travel-search .menu {
+    --bs-menu-font-size: var(--bs-font-size-md);
+    --bs-menu-min-width: 12rem;
+  }
+  @media (width >= 1024px) {
+    .travel-search {
+      padding: .75rem 1.5rem;
+    }
+    .travel-search-field {
+      padding-inline: 1rem;
+    }
+    .travel-search-field:first-child {
+      padding-inline-start: 0;
+    }
+    .travel-search-field:last-child {
+      padding-inline: 1.5rem 0;
+    }
+    .travel-search .form-label {
+      padding-inline: .5rem;
+      margin-bottom: .125rem;
+    }
+    .travel-search .form-control {
+      --bs-control-border-color: transparent;
+      --bs-control-box-shadow: none;
+      --bs-control-padding-x: .5rem;
+      --bs-control-font-size: var(--bs-font-size-lg);
+    }
+  }
+}
+
+
+/* ---------- 9. Ventajas ---------- */
+@layer custom {
+  .travel-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.375rem;
+    color: var(--travel-teal-text);
+    background-color: var(--travel-teal-soft);
+    border-radius: 50%;
+  }
+}
+
+
+/* ---------- 10. Tarjetas de destino ---------- */
+@layer custom {
+  .travel-card {
+    --bs-card-spacer-x: 1.25rem;
+    --bs-card-spacer-y: 1.125rem;
+    --bs-card-body-gap: .25rem;
+    --bs-hover-lift-box-shadow: var(--bs-box-shadow);
+  }
+  .travel-card > .card-body {
+    border-inline-start: 0;
+  }
+  .travel-card-img {
+    flex-shrink: 0;
+    width: 38%;
+    max-width: 10.5rem;
+    height: auto;
+    min-height: 8rem;
+    margin: .5rem;
+    margin-inline-end: 0;
+    object-fit: cover;
+    border-radius: var(--bs-radius-4);
+  }
+}
+
+
+/* ---------- 11. Pie ---------- */
+@layer custom {
+  .travel-footer {
+    color: #fff;
+    background-color: var(--travel-navy-dark);
+  }
+  .travel-footer .nav {
+    --bs-nav-link-color: #c7d9e2;
+    --bs-nav-link-hover-color: #fff;
+    --bs-nav-link-hover-bg: transparent;
+    --bs-nav-link-padding-x: .75rem;
+    margin-inline: -.75rem;
+  }
+  .travel-footer .nav-link:hover {
+    text-decoration: underline;
+  }
+}
