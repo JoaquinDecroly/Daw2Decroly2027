@@ -1,112 +1,55 @@
-<header>
-  <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/" aria-label="Agoodshop, inicio">
-        <strong>agoodshop</strong>
-      </a>
-      <p class="navbar-text">
-        <span>Tienda</span>
-        <span>Accesorios</span>
-        <span>Soporte</span>
-      </p>
-      <button class="btn btn-light" type="button">Contactar</button>
-    </div>
-  </nav>
-</header>
-
-<main class="container py-4">
-  <section class="py-4" aria-labelledby="cart-title">
-    <div class="row g-4">
-      <div class="col-12 col-lg-8">
-        <h1 id="cart-title" class="h4 mb-4">Carrito compra</h1>
-
-        <div class="row g-2 border-bottom pb-2 mb-2 text-secondary small d-none d-md-flex">
-          <div class="col-md-5">Producto</div>
-          <div class="col-md-3 text-center">Cantidad</div>
-          <div class="col-md-2">Unidad</div>
-          <div class="col-md-2 text-end">Total</div>
-        </div>
-
-        <div class="list-group list-group-flush">
-          <article class="list-group-item px-0">
-            <div class="row align-items-center g-2">
-              <div class="col-12 col-md-5">
-                <h2 class="h5 mb-1">iPhone 13 Pro</h2>
-                <p class="text-secondary small mb-0">Ref: 0K3OOSOV4V</p>
-              </div>
-              <div class="col-6 col-md-3 d-flex justify-content-md-center">
-                <div class="input-group input-group-sm">
-                  <button class="btn btn-outline-secondary" type="button" aria-label="Quitar una unidad">-</button>
-                  <input class="form-control text-center" type="number" min="0" max="99" value="3" aria-label="Cantidad de iPhone 13 Pro" />
-                  <button class="btn btn-outline-secondary" type="button" aria-label="Añadir una unidad">+</button>
-                </div>
-              </div>
-              <div class="col-3 col-md-2 text-nowrap">938,99 €</div>
-              <div class="col-3 col-md-2 text-end text-nowrap fw-semibold">2816,97 €</div>
+<body>
+    <header>
+    <!-- -------NAVBAR---------- -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand"><strong>agoodshop</strong></a>
+                <p class="navbar-text">
+                    <span>Tienda</span>
+                    <span>Accesorios</span>
+                    <span>Soporte</span>
+                </p>
+                <button class="btn btn-light">Contactar</button>
             </div>
-          </article>
+        </nav>
 
-          <article class="list-group-item px-0">
-            <div class="row align-items-center g-2">
-              <div class="col-12 col-md-5">
-                <h2 class="h5 mb-1">Cargador</h2>
-                <p class="text-secondary small mb-0">Ref: TGD5XORY1L</p>
-              </div>
-              <div class="col-6 col-md-3 d-flex justify-content-md-center">
-                <div class="input-group input-group-sm">
-                  <button class="btn btn-outline-secondary" type="button" aria-label="Quitar una unidad">-</button>
-                  <input class="form-control text-center" type="number" min="0" max="99" value="0" aria-label="Cantidad de Cargador" />
-                  <button class="btn btn-outline-secondary" type="button" aria-label="Añadir una unidad">+</button>
+        <!-- ---------CONTENEDORES---PRODUCTOS--------- -->
+        <main class="container py-4">
+            <section class="exercise-card py-4" aria-labelledby="titulo-ppt">
+            <!-- ------CONTENEDOR----LISTA------- -->
+                <div class="row g-4">
+                    <div class="col-12 col-lg-8">
+                        <h2 id="titulo-ppt" class="h4 mb-4">Carrito compra</h2>
+                        <div class="row g-2 border-bottom pb-2 mb-2 text-secondary small d-none d-md-flex">
+                            <div class="col-md-5">Producto</div>
+                            <div class="col-md-3 text-center">Cantidad</div>
+                            <div class="col-md-2">Unidad</div>
+                            <div class="col-md-2 text-end">Total</div>
+                        </div>
+                        <div id="productsList" class="list-group list-group-flush" aria-live="polite">
+                          @for (producto of carrito.productos; track producto.id) {
+                            <app-producto
+                              [producto]="producto"
+                              [moneda]="moneda()"
+                              (cambioUnidades)="carrito.actualizarUnidades(producto.id, $event)"
+                            />
+                          }
+                        </div>
+                    </div>
+
+                    <!-- ------CONTENEDOR---TOTAL----------- -->
+                    <aside class="col-12 col-lg-4" aria-labelledby="total-title">
+                        <div class="bg-light p-4">
+                            <h3 id="total-title" class="h4 mb-3">Total</h3>
+                            <ul id="listaCompra" class="list-unstyled mb-3"></ul>
+                            <div class="d-flex justify-content-between border-top pt-3">
+                                <span>TOTAL</span>
+                                <strong id="cartTotal">0,00 €</strong>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
-              </div>
-              <div class="col-3 col-md-2 text-nowrap">49,99 €</div>
-              <div class="col-3 col-md-2 text-end text-nowrap fw-semibold">0,00 €</div>
-            </div>
-          </article>
+            </section>
+        </main>
 
-          <article class="list-group-item px-0">
-            <div class="row align-items-center g-2">
-              <div class="col-12 col-md-5">
-                <h2 class="h5 mb-1">Funda de piel</h2>
-                <p class="text-secondary small mb-0">Ref: IOKW9BQ9F3</p>
-              </div>
-              <div class="col-6 col-md-3 d-flex justify-content-md-center">
-                <div class="input-group input-group-sm">
-                  <button class="btn btn-outline-secondary" type="button" aria-label="Quitar una unidad">-</button>
-                  <input class="form-control text-center" type="number" min="0" max="99" value="2" aria-label="Cantidad de Funda de piel" />
-                  <button class="btn btn-outline-secondary" type="button" aria-label="Añadir una unidad">+</button>
-                </div>
-              </div>
-              <div class="col-3 col-md-2 text-nowrap">79,99 €</div>
-              <div class="col-3 col-md-2 text-end text-nowrap fw-semibold">159,98 €</div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <aside class="col-12 col-lg-4" aria-labelledby="total-title">
-        <div class="bg-light p-4">
-          <h2 id="total-title" class="h4 mb-3">Total</h2>
-          <ul class="list-unstyled mb-3">
-            <li class="d-flex justify-content-between gap-3 mb-2">
-              <span>iPhone 13 Pro</span>
-              <span>2816,97 €</span>
-            </li>
-            <li class="d-flex justify-content-between gap-3 mb-2">
-              <span>Funda de piel</span>
-              <span>159,98 €</span>
-            </li>
-          </ul>
-          <div class="d-flex justify-content-between border-top pt-3">
-            <span>TOTAL</span>
-            <strong>2976,95 €</strong>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-</main>
-
-<footer class="text-center">
-  <small>©<strong>agoodshop</strong></small>
-</footer>
+        <footer class="text-center"><small>©<strong>agoodshop</strong></small></footer>
