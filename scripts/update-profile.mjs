@@ -1,4 +1,3 @@
-
 const API = "https://api.github.com";
 
 const owner = process.env.GITHUB_OWNER || "JoaquinDecroly";
@@ -41,15 +40,14 @@ async function getAllRepos() {
       `/users/${owner}/repos?per_page=100&page=${page}&type=owner&sort=pushed`
     );
 
+    if (!Array.isArray(data)) break;
+
     repos.push(...data);
 
     if (data.length < 100) break;
   }
 
-  // Incluye forks y excluye repositorios archivados o privados.
-  return repos.filter(
-    (repo) => !repo.archived && !repo.private
-  );
+  return repos.filter((repo) => !repo.archived && !repo.private);
 }
 
 /* =========================================================
@@ -89,6 +87,9 @@ const languageIconMap = {
   Astro: "astro",
   Markdown: "markdown",
   YAML: "yaml",
+  JSON: "json",
+  XML: "xml",
+  Dockerfile: "docker",
 };
 
 /* =========================================================
@@ -120,31 +121,29 @@ const toolIconMap = {
 async function buildStack(repos) {
   const totals = {};
 
-  // Excluir el repositorio del perfil para que su README
-  // no distorsione las estadísticas de lenguajes.
   const reposToAnalyze = repos.filter(
     (repo) => repo.name.toLowerCase() !== owner.toLowerCase()
   );
 
   for (const repo of reposToAnalyze) {
     try {
-      const languages = await github(
-        `/repos/${owner}/${repo.name}/languages`
-      );
+      const languages = await github(`/repos/${owner}/${repo.name}/languages`);
+
+      if (!languages || typeof languages !== "object") {
+        console.log(`${repo.name}: sin datos de lenguajes`);
+        continue;
+      }
 
       console.log(
-        `${repo.name}: ${
-          Object.keys(languages).join(", ") || "sin lenguajes"
-        }`
+        `${repo.name}: ${Object.keys(languages).join(", ") || "sin lenguajes"}`
       );
 
       for (const [language, bytes] of Object.entries(languages)) {
+        if (typeof bytes !== "number" || Number.isNaN(bytes)) continue;
         totals[language] = (totals[language] || 0) + bytes;
       }
     } catch (error) {
-      console.log(
-        `Error leyendo ${repo.name}: ${error.message}`
-      );
+      console.log(`Error leyendo ${repo.name}: ${error.message}`);
     }
   }
 
@@ -159,7 +158,8 @@ async function buildStack(repos) {
     return `<p align="center">No hay lenguajes detectados en los repositorios analizados.</p>`;
   }
 
-  const MIN_PERCENTAGE = 1;
+  // IMPORTANTE: debe ser 0.1 para no ocultar lenguajes muy minoritarios
+  const MIN_PERCENTAGE = 0.1;
 
   const languages = Object.entries(totals)
     .map(([language, bytes]) => ({
@@ -170,7 +170,7 @@ async function buildStack(repos) {
     .filter(
       (item) =>
         item.percentage >= MIN_PERCENTAGE &&
-        languageIconMap[item.language]
+        Boolean(languageIconMap[item.language])
     )
     .sort((a, b) => b.bytes - a.bytes)
     .slice(0, 12);
@@ -178,8 +178,7 @@ async function buildStack(repos) {
   console.log(
     "Lenguajes mostrados:",
     languages.map(
-      (item) =>
-        `${item.language} (${item.percentage.toFixed(2)}%)`
+      (item) => `${item.language} (${item.percentage.toFixed(2)}%)`
     )
   );
 
@@ -203,27 +202,23 @@ async function buildStack(repos) {
 async function detectEnvironment(repos) {
   const detected = new Set(["Git", "GitHub"]);
 
-  // Inspeccionar repositorios recientes, excluyendo el README del perfil.
   const reposToInspect = repos
-    .filter(
-      (repo) => repo.name.toLowerCase() !== owner.toLowerCase()
-    )
+    .filter((repo) => repo.name.toLowerCase() !== owner.toLowerCase())
     .slice(0, 30);
 
   for (const repo of reposToInspect) {
     try {
+      const branch = repo.default_branch || "main";
+
       const result = await github(
-        `/repos/${owner}/${repo.name}/git/trees/${repo.default_branch}?recursive=1`
+        `/repos/${owner}/${repo.name}/git/trees/${encodeURIComponent(branch)}?recursive=1`
       );
 
-      const paths = (result.tree || []).map(
-        (item) => item.path.toLowerCase()
-      );
+      const tree = Array.isArray(result.tree) ? result.tree : [];
+      const paths = tree.map((item) => String(item.path).toLowerCase());
 
       const has = (name) =>
-        paths.some(
-          (path) => path === name || path.startsWith(`${name}/`)
-        );
+        paths.some((path) => path === name || path.startsWith(`${name}/`));
 
       const hasFile = (name) =>
         paths.some((path) => path.endsWith(name.toLowerCase()));
@@ -283,7 +278,6 @@ async function detectEnvironment(repos) {
       }
 
       if (paths.some((p) => p.endsWith(".fxml"))) {
-        // JavaFX se detecta, pero no se mezcla con los IDE.
         console.log(`JavaFX detectado en ${repo.name}`);
       }
 
@@ -292,7 +286,8 @@ async function detectEnvironment(repos) {
           (p) =>
             p.includes("springframework") ||
             p.includes("spring-boot") ||
-            p.endsWith("application.properties")
+            p.endsWith("application.properties") ||
+            p.includes("spring")
         )
       ) {
         detected.add("Spring");
@@ -321,9 +316,7 @@ async function detectEnvironment(repos) {
       }
 
       if (
-        paths.some(
-          (p) => p.includes("postgres") || p.includes("postgresql")
-        )
+        paths.some((p) => p.includes("postgres") || p.includes("postgresql"))
       ) {
         detected.add("PostgreSQL");
       }
@@ -337,11 +330,8 @@ async function detectEnvironment(repos) {
       ) {
         detected.add("Bootstrap");
       }
-
     } catch (error) {
-      console.log(
-        `No se pudo analizar ${repo.name}: ${error.message}`
-      );
+      console.log(`No se pudo analizar ${repo.name}: ${error.message}`);
     }
   }
 
