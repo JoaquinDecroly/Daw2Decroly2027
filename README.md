@@ -145,7 +145,7 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <!-- AUTO-STACK:START -->
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=html,java&perline=8" alt="Lenguajes detectados"/>
+  <img src="https://skillicons.dev/icons?i=html,java,css,ts,php,js&perline=8" alt="Lenguajes detectados"/>
 </p>
 <!-- AUTO-STACK:END -->
 
