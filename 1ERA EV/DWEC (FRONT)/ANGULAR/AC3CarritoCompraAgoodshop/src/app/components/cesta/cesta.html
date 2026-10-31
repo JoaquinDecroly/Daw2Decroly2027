@@ -24,15 +24,13 @@
                             <div class="col-md-5">Producto</div>
                             <div class="col-md-3 text-center">Cantidad</div>
                             <div class="col-md-2">Unidad</div>
-                            <div class="col-md-2 text-end">Total</div>
                         </div>
                         <div id="productsList" class="list-group list-group-flush" aria-live="polite">
-                          @for (producto of carrito.productos; track producto.id) {
+                          @for (producto of carrito.productos(); track producto.id) {
                             <app-producto
                               [producto]="producto"
                               [moneda]="moneda()"
-                              (cambioUnidades)="carrito.actualizarUnidades(producto.id, $event)"
-                            />
+                              (cambioUnidades)="carrito.actualizarUnidades(producto.id, $event)"/>
                           }
                         </div>
                     </div>
@@ -43,8 +41,12 @@
                             <h3 id="total-title" class="h4 mb-3">Total</h3>
                             <ul id="listaCompra" class="list-unstyled mb-3"></ul>
                             <div class="d-flex justify-content-between border-top pt-3">
-                                <span>TOTAL</span>
-                                <strong id="cartTotal">0,00 €</strong>
+                                <strong id="cartTotal">{{carrito.total().toFixed(2)}} {{moneda()}}</strong>
+                                    <ul style="list-style: none;">
+                                        @for (producto of carrito.productosEnCarrito(); track producto.id) {
+                                            <li>{{producto.unidades}} x {{producto.nombre}} - {{producto.subtotal.toFixed(2)}} {{moneda()}}</li>
+                                        }
+                                    </ul>
                             </div>
                         </div>
                     </aside>

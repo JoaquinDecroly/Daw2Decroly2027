@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { IProducto } from '../../interfaces/Iproducto.interfaces';
+import { IProducto } from '../../interfaces/iproducto.interfaces';
 
 @Component({
   selector: 'app-producto',

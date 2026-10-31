@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { IProducto } from '../interfaces/Iproducto.interfaces';
+import { IProducto } from '../interfaces/iproducto.interfaces';
 
 type CatalogoProductos = {
   productos: IProducto[];
@@ -26,7 +26,9 @@ export class ProductosService {
   private readonly http = inject(HttpClient);
 
   async cargarProductos(): Promise<CatalogoProductos> {
+    // Se reutiliza la caché mientras siga vigente; si no, se consulta el catálogo remoto.
     const cache = this.leerCache();
+    // Una caché futura o con más de cinco horas se considera caducada.
     const cacheVigente =
       cache !== null &&
       Number.isFinite(cache.fecha) &&
@@ -46,6 +48,7 @@ export class ProductosService {
       return { ...catalogo, aviso: null };
     } catch (error) {
       if (cache) {
+        // Si falla la red, conserva los datos guardados; sin caché, deja que el error llegue al componente.
         console.error('No se pudieron actualizar los productos:', error);
         return {
           ...cache,
@@ -56,7 +59,7 @@ export class ProductosService {
       throw error;
     }
   }
-
+  //Leer productos guardados en LocalStorage del navegador
   private leerCache(): CacheProductos | null {
     try {
       const guardado = localStorage.getItem(CACHE_KEY);
@@ -66,6 +69,7 @@ export class ProductosService {
 
       const dato: unknown = JSON.parse(guardado);
       if (!this.esObjeto(dato) || !Array.isArray(dato['products'])) {
+        // Descarta la entrada corrupta para no volver a intentar usarla en la siguiente carga.
         localStorage.removeItem(CACHE_KEY);
         return null;
       }
@@ -83,6 +87,7 @@ export class ProductosService {
 
   private guardarCache(respuesta: unknown): void {
     try {
+      // Guarda la respuesta original normalizada junto con la fecha de caché.
       localStorage.setItem(
         CACHE_KEY,
         JSON.stringify({ ...this.normalizarRespuesta(respuesta), _cachedAt: Date.now() }),
@@ -93,6 +98,7 @@ export class ProductosService {
   }
 
   private normalizarCatalogo(respuesta: unknown): Omit<CatalogoProductos, 'aviso'> {
+    // Convierte el formato externo de la API al catálogo que consumen los componentes.
     const dato = this.normalizarRespuesta(respuesta);
     return {
       productos: this.normalizarProductos(dato['products'] as unknown[]),
@@ -101,6 +107,7 @@ export class ProductosService {
   }
 
   private normalizarRespuesta(respuesta: unknown): Record<string, unknown> {
+    // Comprueba la estructura mínima esperada antes de leer sus propiedades.
     if (!this.esObjeto(respuesta) || !Array.isArray(respuesta['products'])) {
       throw new Error('La respuesta del catálogo no contiene una lista de productos.');
     }
@@ -108,8 +115,10 @@ export class ProductosService {
   }
 
   private normalizarProductos(productos: unknown[]): IProducto[] {
+    // Adapta los nombres de campos de la API y aplica valores seguros si faltan datos.
     return productos.map((producto, id) => {
       const dato = this.esObjeto(producto) ? producto : {};
+      // Admite ambos nombres de precio y marca como inválidos los valores que no sean numéricos.
       const precioOriginal = dato['price'] ?? dato['precio'];
       const precioNumerico = Number(precioOriginal);
       const precio =
@@ -140,6 +149,7 @@ export class ProductosService {
   }
 
   private esObjeto(dato: unknown): dato is Record<string, unknown> {
+    // Comprueba que el dato se pueda leer como objeto y no sea null ni un array.
     return typeof dato === 'object' && dato !== null && !Array.isArray(dato);
   }
 }

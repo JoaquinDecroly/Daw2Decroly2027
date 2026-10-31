@@ -35,24 +35,6 @@ body {
     font-size: 0.95rem;
 }
 
-.navbar-brand::after {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 10;
-    width: 80px;
-    height: 80px;
-    background: url("resources/images/agoodshop.png") center / contain no-repeat;
-    content: "";
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-}
-
-.navbar-brand:hover::after {
-    opacity: 1;
-}
-
 .product-image {
     position: relative;
 }

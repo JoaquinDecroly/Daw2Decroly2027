@@ -19,7 +19,8 @@
         (change)="cambiarUnidades($event)"/>
 
       <button class="btn btn-outline-secondary" type="button" aria-label="Añadir una unidad" 
-        [disabled]="producto().precio === null || producto().unidades === 99">
+        [disabled]="producto().precio === null || producto().unidades === 99"
+        (click)="cambioUnidades.emit(producto().unidades + 1)">
         +
       </button>
 
