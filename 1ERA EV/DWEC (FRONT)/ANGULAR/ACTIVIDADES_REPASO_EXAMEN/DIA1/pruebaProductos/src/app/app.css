@@ -1,0 +1,40 @@
+/* Solo lo que Bootstrap no trae de serie */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f8f8fb;
+}
+
+.fs-13 { font-size: 13px; }
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #2a3042;
+  overflow-y: auto;
+  z-index: 1030;
+}
+.sidebar .brand { height: 70px; }
+.sidebar .menu-title { font-size: 11px; color: #6a7187; letter-spacing: .05em; }
+.sidebar .nav-link { color: #a6b0cf; font-size: 13px; padding: .6rem 1.5rem; }
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active { color: #fff; }
+.sidebar .submenu .nav-link { padding: .4rem 1.5rem .4rem 3.6rem; }
+
+/* Topbar */
+.topbar { height: 70px; left: 0; z-index: 1020; }
+.topbar .search { width: 220px; height: 38px; background: #f3f3f9; }
+.avatar { width: 34px; height: 34px; }
+
+/* Contenido */
+.main { padding: 94px 0 24px; }
+
+@media (min-width: 992px) {
+  .topbar { left: 250px; }
+  .main { margin-left: 250px; }
+}
+
+/* Productos */
+.product-svg { width: 100%; height: 190px; }
+.discount { width: 40px; height: 40px; font-size: 11px; }
+.page-link { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
