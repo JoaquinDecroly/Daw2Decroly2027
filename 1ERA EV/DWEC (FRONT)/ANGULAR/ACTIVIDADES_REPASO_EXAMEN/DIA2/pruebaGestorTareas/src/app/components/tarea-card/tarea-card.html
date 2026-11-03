@@ -1,0 +1,24 @@
+<div class="card border-0 bg-primary-subtle rounded-3 shadow-sm">
+  <div class="card-body p-3">
+    <div class="d-flex justify-content-between align-items-start gap-2">
+      <h3 class="fs-6 fw-semibold mb-1">{{tarea.titulo}}</h3>
+      <span class="rounded-circle bg-white text-secondary d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">
+        <i class="bi bi-person-fill"></i>
+      </span>
+    </div>
+    <p class="small text-secondary mb-2">{{tarea.completada}}</p>
+    <span class="badge bg-danger-subtle text-danger-emphasis fw-medium">{{tarea.descripcion}}</span>
+  </div>
+
+  <button class="btn btn-primary" (click)="eliminarTarea()">
+  Eliminar
+</button>
+
+<button class="btn btn-primary" (click)="editarTarea()">
+  Editar
+</button>
+
+<button class="btn btn-primary" (click)="cambiarEstado()">
+  Cambiar Estado
+</button>
+</div>
