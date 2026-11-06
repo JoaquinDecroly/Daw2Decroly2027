@@ -1,0 +1,113 @@
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+  <h4 class="mb-0 fw-bold">Gestión de usuarios</h4>
+  <a routerLink="/usuarios/nuevo" class="btn btn-primary">
+    <i class="bi bi-plus-lg me-1"></i> Nuevo usuario
+  </a>
+</div>
+
+<div class="card">
+  <!-- Filtros -->
+  <div class="card-header bg-white border-0 pt-3 pb-0">
+    <div class="row g-2">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-text bg-white">
+            <i class="bi bi-search"></i>
+          </span>
+          <input type="text" class="form-control" placeholder="Buscar usuarios...">
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <select class="form-select">
+          <option selected>Todos los roles</option>
+          <option>Administrador</option>
+          <option>Editor</option>
+          <option>Usuario</option>
+        </select>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <select class="form-select">
+          <option selected>Todos los estados</option>
+          <option>Activo</option>
+          <option>Inactivo</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="card-body px-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th class="ps-4">Usuario</th>
+            <th>Rol</th>
+            <th>Departamento</th>
+            <th>Estado</th>
+            <th>Creado</th>
+            <th class="text-end pe-4">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for(usuario of usuariosLista; track usuario.id) {
+            <tr>
+              <td class="ps-4">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="avatar bg-primary">
+                    {{ usuario.nombre.charAt(0) }}
+                  </span>
+
+                  <div class="lh-sm">
+                    <div class="fw-semibold">{{ usuario.nombre }}</div>
+                    <small class="text-muted">{{ usuario.email }}</small>
+                  </div>
+                </div>
+              </td>
+
+              <td>{{ usuario.rol }}</td>
+              <td>{{ usuario.departamento }}</td>
+
+              <td>
+                <span class="badge rounded-pill"
+                  [class.bg-success]="usuario.estado === 'Activo'"
+                  [class.bg-danger]="usuario.estado === 'Inactivo'">
+                  {{ usuario.estado }}
+                </span>
+              </td>
+
+              <td>{{ usuario.fechaCreacion }}</td>
+
+              <td class="text-end pe-4">
+                <button class="btn btn-sm btn-outline-primary btn-accion" title="Editar">
+                  <i class="bi bi-pencil"></i>
+                </button>
+
+                <button class="btn btn-sm btn-outline-danger btn-accion" title="Eliminar">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="text-center py-4 text-muted">
+                No hay usuarios registrados.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="card-footer bg-white d-flex justify-content-between align-items-center py-3">
+    <small class="text-muted">
+      Mostrando {{ usuariosLista.length }} usuarios
+    </small>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<!-- Sidebar -->
+<aside class="sidebar p-3">
+  <div class="logo d-flex align-items-center gap-2 px-2">
+    <i class="bi bi-grid-1x2-fill"></i> Panel Admin
+  </div>
+
+  <div class="seccion">Gestión</div>
+  <nav class="nav flex-column gap-1">
+    <a class="nav-link" routerLink="/usuarios" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="bi bi-people"></i> Usuarios
+    </a>
+    <a class="nav-link" routerLink="/usuarios/nuevo" routerLinkActive="active">
+      <i class="bi bi-person-plus"></i> Nuevo usuario
+    </a>
+  </nav>
+</aside>
+
+<div class="main">
+  <!-- Topbar -->
+  <header class="topbar d-flex align-items-center justify-content-between px-4">
+    <h6 class="mb-0 text-muted">Administración</h6>
+    <div class="d-flex align-items-center gap-2">
+      <span class="avatar bg-primary">AD</span>
+      <div class="lh-sm d-none d-md-block">
+        <div class="fw-semibold">Admin</div>
+        <small class="text-muted">Administrador</small>
+      </div>
+    </div>
+  </header>
+
+  <!-- Aquí se pintan los componentes -->
+  <main class="p-4">
+    <router-outlet/>
+  </main>
+</div>
