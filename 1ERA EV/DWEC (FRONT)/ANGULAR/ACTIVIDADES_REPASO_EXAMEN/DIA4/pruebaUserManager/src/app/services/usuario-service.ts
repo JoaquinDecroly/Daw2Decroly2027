@@ -57,4 +57,14 @@ export class UsuariosService {
     agregarUsuario(usuario: IUsuario) {
         this.usuarios.push(usuario);
     }
+
+    actualizarUsuario(usuarioActualizado: IUsuario){
+      const index = this.usuarios.findIndex((p) => 
+        p.id === usuarioActualizado.id
+      )
+
+      if(index != (-1)){
+        this.usuarios.splice(index, 1, usuarioActualizado);
+      }
+    }
 }

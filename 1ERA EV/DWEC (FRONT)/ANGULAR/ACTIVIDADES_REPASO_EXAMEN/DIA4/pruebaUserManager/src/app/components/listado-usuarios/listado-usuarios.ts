@@ -10,9 +10,20 @@ import { UsuariosService } from '../../services/usuario-service';
   templateUrl: './listado-usuarios.html',
 })
 export class ListadoUsuarios {
+
   private usuariosService = inject(UsuariosService);
 
   usuariosLista = this.usuariosService.usuarios;
 
+  
 
+  eliminarUsuario(id: number) {
+    const usuarioSeleccionado = this.usuariosService.usuarios.findIndex((p) => 
+      p.id === id
+    )
+
+    if(usuarioSeleccionado != (-1)){
+      this.usuariosLista.splice(usuarioSeleccionado, 1);
+    }
+  }
 }
