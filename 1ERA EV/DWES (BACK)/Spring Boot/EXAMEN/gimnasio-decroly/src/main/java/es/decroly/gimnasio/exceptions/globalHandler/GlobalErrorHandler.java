@@ -1,0 +1,35 @@
+package es.decroly.gimnasio.exceptions.globalHandler;
+import es.decroly.gimnasio.exceptions.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+
+@RestControllerAdvice
+    public class GlobalErrorHandler {
+
+    //----HANDLER ERROR RECURSO NO ENCONTRADO----
+    @ExceptionHandler(NotFoundException.class)
+        public ProblemDetail notFound(NotFoundException e){
+            ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
+                problem.setTitle("Recurso no encontrado");
+            return problem;
+        }
+
+    //-----HANDLER ERROR MALA PETICIÓN------
+    @ExceptionHandler(BadRequestException.class)
+        public ProblemDetail badRequest(BadRequestException e){
+            ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+                problem.setTitle("Petición errónea");
+            return problem;
+        }
+
+    //-----HANDLER ERROR CONFLICTO------
+    @ExceptionHandler(ConflictoException.class)
+    public ProblemDetail conflicts(ConflictoException e){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage());
+        problem.setTitle("Conflictos");
+        return problem;
+    }
+}
