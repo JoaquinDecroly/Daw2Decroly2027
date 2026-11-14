@@ -1,0 +1,58 @@
+<article class="card shadow-sm">
+  <div class="card-body">
+    <div class="row align-items-center g-3">
+      <div class="col-12 col-md-5">
+        <h3 class="h5 mb-1">{{ producto.nombre }}</h3>
+        @if (producto.sku) {
+          <p class="text-secondary small mb-0">{{ producto.sku }}</p>
+        }
+      </div>
+
+      <div class="col-7 col-md-4">
+        @if (producto.enCarrito) {
+          <div class="input-group input-group-sm">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              aria-label="Quitar una unidad"
+              [disabled]="producto.unidades <= 1"
+              (click)="restarUnidad()">−</button>
+
+            <input
+              class="form-control text-center"
+              type="number"
+              min="1"
+              max="99"
+              aria-label="Cantidad"
+              [value]="producto.unidades"
+              [disabled]="producto.precio === null"
+              (change)="cambiarUnidades($event)">
+
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              aria-label="Añadir una unidad"
+              [disabled]="producto.precio === null || producto.unidades >= 99"
+              (click)="sumarUnidad()">+</button>
+          </div>
+        } @else {
+          <button
+            class="btn btn-primary btn-sm"
+            type="button"
+            [disabled]="producto.precio === null"
+            (click)="anadirProducto()">
+            Añadir al carrito
+          </button>
+        }
+      </div>
+
+      <div class="col-5 col-md-3 text-end fw-semibold">
+        @if (producto.precio !== null) {
+          {{ producto.precio | number:'1.2-2' }} {{ moneda }}
+        } @else {
+          No disponible
+        }
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,17 @@
+<div class="row g-3">
+  @if (listaProductos.length === 0) {
+    <div class="col-12">
+      <p class="text-secondary">No se han podido cargar productos. Comprueba la conexión o la respuesta de la API.</p>
+    </div>
+  } @else {
+    @for (producto of listaProductos; track producto.id) {
+      <div class="col-12">
+        <app-producto-card
+          [producto]="producto"
+          (anadir)="anadirProducto($event)"
+          (cambioUnidades)="cambiarUnidades($event.producto, $event.unidades)">
+        </app-producto-card>
+      </div>
+    }
+  }
+</div>

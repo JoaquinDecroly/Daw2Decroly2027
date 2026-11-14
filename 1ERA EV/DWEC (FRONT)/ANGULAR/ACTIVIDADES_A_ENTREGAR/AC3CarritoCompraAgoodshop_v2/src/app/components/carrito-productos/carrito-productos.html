@@ -1,0 +1,25 @@
+<aside class="col-12 col-lg-4" aria-labelledby="total-title">
+  <div class="bg-white border rounded shadow-sm p-4">
+    <h2 id="total-title" class="h4 mb-3">Tu carrito</h2>
+
+    @if (productosEnCarrito().length === 0) {
+      <p class="text-secondary mb-3">Todavía no has añadido productos.</p>
+    } @else {
+      <ul class="list-unstyled mb-3">
+        @for (producto of productosEnCarrito(); track producto.id) {
+          <li class="d-flex justify-content-between gap-3 py-2 border-bottom">
+            <span>{{ producto.unidades }} × {{ producto.nombre }}</span>
+            <strong class="text-nowrap">
+              {{ subtotal(producto) | number:'1.2-2' }} {{ moneda }}
+            </strong>
+          </li>
+        }
+      </ul>
+    }
+
+    <div class="d-flex justify-content-between border-top pt-3">
+      <strong>Total</strong>
+      <strong>{{ total().toFixed(2) }} {{ moneda }}</strong>
+    </div>
+  </div>
+</aside>
