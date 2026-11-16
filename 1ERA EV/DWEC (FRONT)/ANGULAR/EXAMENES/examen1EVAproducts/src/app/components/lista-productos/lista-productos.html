@@ -1,0 +1,10 @@
+<section class="container">
+    <div class="d-grid">
+        @for(product of productService.listaProductos; track product.id){
+            <app-carta-producto>
+                [serie]="serie"
+                
+                </app-carta-producto>
+        } 
+    </div>
+</section>

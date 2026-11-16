@@ -1,0 +1,79 @@
+<form #miFormulario="ngForm" (ngSubmit)="getData(miFormulario)">
+    
+    <div class="form-floating mb-3">
+            <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                placeholder=""
+                [(ngModel)]="product.name"
+            />
+            <label for="name">Nombre del Producto</label>
+        </div>
+
+    <div class="form-floating mb-3">
+            <input
+                type="text"
+                class="form-control"
+                name="description"
+                id="description"
+                placeholder=""
+                [(ngModel)]="product.description"
+            />
+            <label for="description">Descripción del Producto</label>
+    </div>
+         
+    <select class="form-select" id="category" name="category"
+          single
+          [(ngModel)]="product.category">
+
+    <option value="Hombre">Hombre</option>
+    <option value="Mujer">Mujer</option>
+    <option value="Niño">Niño</option>
+
+  </select>
+<label for="category">Categoría del Producto</label>
+  
+    <div class="form-floating mb-3">
+    <input
+        type="url"
+        class="form-control"
+        name="image"
+        id="image"
+        placeholder="https://..."
+        [(ngModel)]="product.image"
+    />
+    <label for="imagen">URL de la imagen</label>
+</div>
+
+<div class="mb-3">
+    <label for="price" class="form-label">
+        Precio del producto
+    </label>
+
+    <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        [(ngModel)]="product.price"
+    />
+</div>
+
+<div class="form-floating mb-3">
+    <input
+        type="boolean"
+        class="form-control"
+        id="active"
+        name="active"
+        [(ngModel)]="product.active"
+    />
+
+    <label for="active">Sinopsis de la serie</label>
+</div>
+
+
+    <input type="submit" value="Enviar" class="container-fluid bg-gradient">
+
+</form>
