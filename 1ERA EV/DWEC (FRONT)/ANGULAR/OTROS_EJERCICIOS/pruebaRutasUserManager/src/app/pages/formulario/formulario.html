@@ -1,0 +1,97 @@
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+  <h4 class="mb-0 fw-bold">{{ isEditing ? 'Editar usuario' : 'Añadir nuevo usuario' }}</h4>
+  <button type="button" class="btn btn-outline-secondary" routerLink="/usuarios">
+    <i class="bi bi-arrow-left me-1"></i> Volver
+  </button>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="formulario" (ngSubmit)="getData()">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            formControlName="nombre"
+            name="nombre">
+          @if (formulario.controls['nombre'].touched && formulario.controls['nombre'].invalid) {
+            <small class="text-danger">El nombre debe tener al menos 2 caracteres.</small>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            formControlName="email">
+          @if (formulario.controls['email'].touched && formulario.controls['email'].invalid) {
+            <small class="text-danger">Introduce un email válido.</small>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label for="rol" class="form-label">Rol</label>
+          <select
+            class="form-select"
+            id="rol"
+            name="rol"
+            formControlName="rol">
+            <option value="" selected disabled>Selecciona un rol</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Editor">Editor</option>
+            <option value="Usuario">Usuario</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="estado" class="form-label">Estado</label>
+          <select
+            class="form-select"
+            id="estado"
+            name="estado"
+            formControlName="estado">
+            <option value="activo" selected>Activo</option>
+            <option value="inactivo">Inactivo</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="departamento" class="form-label">Departamento</label>
+          <select
+            class="form-select"
+            id="departamento"
+            name="departamento"
+            formControlName="departamento">
+            <option value="" selected>Selecciona departamento</option>
+            <option>IT</option>
+            <option>Marketing</option>
+            <option>Ventas</option>
+            <option>Soporte</option>
+          </select>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-light border" routerLink="/usuarios">
+          Cancelar
+        </button>
+
+        <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">
+          <i class="bi bi-check-lg me-1"></i> Guardar usuario
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
