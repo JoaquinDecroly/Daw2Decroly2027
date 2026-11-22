@@ -1,0 +1,41 @@
+
+<div class="mb-3">
+  <a routerLink="/juegos" routerLinkActive="true" class="text-decoration-none">← Volver al catálogo</a>
+</div>
+@if(juego){
+
+<div class="card shadow-sm">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <img [src]="juego?.imagen"
+        class="img-fluid rounded-start w-100 h-100"
+        alt="Videojuego">
+    </div>
+
+    <div class="col-md-7">
+      <div class="card-body p-4">
+        <h2 class="card-title fw-bold">{{juego?.nombre}}</h2>
+
+        <p class="text-muted">{{juego?.descripcion}}.</p>
+
+        <hr>
+
+        <p><strong>Plataforma:</strong> {{juego?.plataforma}}</p>
+        <p><strong>Género:</strong> {{juego?.genero}}</p>
+        <p><strong>Precio:</strong> {{juego?.precio}}</p>
+
+        <div class="d-flex gap-2 mt-4">
+          <button class="btn btn-primary" [routerLink]="['/juegos/editar', juego?.id]">Editar</button>
+          <button class="btn btn-outline-danger" (click)="eliminarJuego()">Eliminar</button>
+          <button class="btn btn-outline-warning" (click)="juego?.favorito ? eliminarFavorito() : anadirFavorito()">
+            {{ juego?.favorito ? 'Quitar de favoritos' : 'Añadir a favoritos' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
+@else{
+  <p class="alert alert-warning">No se ha encontrado el videojuego.</p>
+}
