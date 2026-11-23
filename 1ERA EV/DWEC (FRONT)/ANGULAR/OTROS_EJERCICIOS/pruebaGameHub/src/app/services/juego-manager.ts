@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { IJuego } from '../interfaces/ijuego.interfaces';
 
 @Injectable({ providedIn: 'root' })
@@ -68,6 +68,15 @@ juegos: IJuego[] = [
 
 favoritos: IJuego[] = [];
 
+readonly totalJuegos = signal(this.juegos.length);
+readonly totalFavoritos = signal(this.favoritos.length);
+readonly ultimosAnadidos = signal(this.juegos.slice(-3).reverse());
+
+private actualizarContadores() {
+    this.totalJuegos.set(this.juegos.length);
+    this.totalFavoritos.set(this.favoritos.length);
+    this.ultimosAnadidos.set(this.juegos.slice(-3).reverse());
+}
 
     obtenerJuegos() {
         return this.juegos;
@@ -96,6 +105,19 @@ favoritos: IJuego[] = [];
         } else {
             this.juegos.push(juego);
         }
+
+        const indexFavorito = this.favoritos.findIndex((p) => p.id === juego.id);
+        if (juego.favorito) {
+            if (indexFavorito !== -1) {
+                this.favoritos[indexFavorito] = juego;
+            } else {
+                this.favoritos.push(juego);
+            }
+        } else if (indexFavorito !== -1) {
+            this.favoritos.splice(indexFavorito, 1);
+        }
+
+        this.actualizarContadores();
     }
 
 
@@ -115,6 +137,8 @@ favoritos: IJuego[] = [];
         if (indexFavorito !== -1) {
             this.favoritos.splice(indexFavorito, 1);
         }
+
+        this.actualizarContadores();
     }
 
     anadirFavorito(id: number) {
@@ -122,11 +146,19 @@ favoritos: IJuego[] = [];
             p.id === id
         );
 
-        if (juegoSeleccionado && !this.favoritos.some((p) =>
-                p.id === juegoSeleccionado.id)) {
-            this.favoritos.push(juegoSeleccionado);
+        if (juegoSeleccionado) {
             juegoSeleccionado.favorito = true;
+            const indexFavorito = this.favoritos.findIndex((p) =>
+                p.id === juegoSeleccionado.id
+            );
+            if (indexFavorito !== -1) {
+                this.favoritos[indexFavorito] = juegoSeleccionado;
+            } else {
+                this.favoritos.push(juegoSeleccionado);
+            }
         }
+
+        this.actualizarContadores();
     }
 
     eliminarFavorito(id: number) {
@@ -136,7 +168,13 @@ favoritos: IJuego[] = [];
 
         if (index !== -1) {
             this.favoritos.splice(index, 1);
-            this.juegos.find((p) => p.id === id)!.favorito = false;
         }
+
+        const juego = this.juegos.find((p) => p.id === id);
+        if (juego) {
+            juego.favorito = false;
+        }
+
+        this.actualizarContadores();
     }
 }
