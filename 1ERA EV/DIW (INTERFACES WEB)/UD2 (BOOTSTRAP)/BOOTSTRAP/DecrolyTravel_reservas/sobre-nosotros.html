@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre nosotros | Decroly Travel</title>
+  <meta name="description" content="Conoce la historia, los valores y el equipo de Decroly Travel.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css" rel="stylesheet" integrity="sha384-nWN3KqaaVcbEsCjLSV+2jMjh62Iny/+mN3srM8TZeM8N6aj7eDl5wwYggjAJ4/sJ" crossorigin="anonymous">
+  <link href="styles/style.css" rel="stylesheet">
+  <link href="styles/sobre-nosotros.css" rel="stylesheet">
+</head>
+<body>
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <!-- ---------- 1. Navbar ---------- -->
+  <header>
+    <nav class="navbar lg:navbar-expand bg-white border-bottom travel-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-3 fw-bold" href="index.html">
+          <img src="resources/logo/logo.svg" alt="" width="64" height="40">
+          <span><span class="text-navy">Decroly</span> <span class="text-brand fw-normal">Travel</span></span>
+        </a>
+
+        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer"
+                data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+
+        <dialog class="drawer drawer-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuPrincipalTitulo">
+          <div class="drawer-header">
+            <h2 class="drawer-title fs-lg" id="menuPrincipalTitulo">Menú</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar menú"></button>
+          </div>
+          <div class="drawer-body">
+            <ul class="navbar-nav lg:ms-auto lg:align-items-center lg:gap-2">
+              <li class="nav-item"><a class="nav-link " aria-current="page" href="index.html">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link active" href="sobre-nosotros.html">Sobre nosotros</a></li>
+              <li class="nav-item"><a class="nav-link" href="reservas.html">Reservas</a></li>
+              <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+            <a class="btn-solid btn-navy btn-lg fw-semibold px-9 lg:ms-7" href="cuenta.html">Mi cuenta</a>
+          </div>
+        </dialog>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido" class="sobre-nosotros-page">
+    <section class="travel-hero about-hero" aria-labelledby="heroTitulo">
+      <div class="container">
+        <h1 id="heroTitulo" class="travel-hero-title fw-bold mb-1">Conócenos</h1>
+        <p class="mb-0">Viajar también es confiar en quien te acompaña.</p>
+      </div>
+    </section>
+
+    <div class="container about-content">
+      <section class="about-story" aria-labelledby="historiaTitulo">
+        <h2 id="historiaTitulo">Nuestra historia</h2>
+        <div class="about-story-grid">
+          <img src="resources/img/costa-mediterranea.png"
+               alt="Ilustración de la costa mediterránea con un faro y un velero"
+               width="166" height="130">
+          <div class="about-story-copy">
+            <h3>¿Quiénes somos?</h3>
+            <p>Decroly Travel es una agencia orientada a descubrir destinos, diseñar experiencias y ayudar a cada viajero a encontrar su próxima aventura.</p>
+            <p>Nuestra propuesta combina acompañamiento personal, información clara y opciones de viaje adaptadas a diferentes intereses.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-values-section" aria-labelledby="valoresTitulo">
+        <h2 id="valoresTitulo">Nuestros valores</h2>
+        <ul class="about-values">
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
+            <div><h3>Confianza</h3><p>Claridad y transparencia</p></div>
+          </li>
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-headset"></i></span>
+            <div><h3>Cercanía</h3><p>Atención personal</p></div>
+          </li>
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-clipboard-check"></i></span>
+            <div><h3>Sostenibilidad</h3><p>Viajar con respeto</p></div>
+          </li>
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-star"></i></span>
+            <div><h3>Calidad</h3><p>Experiencias cuidadas</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="about-team" aria-labelledby="equipoTitulo">
+        <h2 id="equipoTitulo">Nuestro equipo</h2>
+        <ul aria-label="Áreas del equipo">
+          <li>Asesoramiento</li>
+          <li>Atención al cliente</li>
+          <li>Especialistas en destinos</li>
+        </ul>
+        <a class="btn-solid btn-action fw-semibold" href="reservas.html">
+          Ver nuestros viajes <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- ---------- 6. Pie ---------- -->
+  <footer class="travel-footer fixed-bottom">
+    <div class="container d-flex flex-column md:flex-row justify-content-between md:align-items-center gap-5 py-7">
+      <div>
+        <p class="fs-lg fw-bold mb-0">Decroly Travel</p>
+        <p class="fs-sm mb-0">Tu próxima aventura empieza aquí</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="aviso-legal.html">Aviso legal</a></li>
+          <li class="nav-item"><a class="nav-link" href="privacidad.html">Privacidad</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Redes sociales</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ---------- 7. Scripts ---------- -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+</body>
+</html>

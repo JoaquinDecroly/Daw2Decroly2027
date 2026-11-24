@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decroly Travel</title>
+  <meta name="description" content="Paquetes, escapadas y actividades para tu próxima aventura.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css" rel="stylesheet" integrity="sha384-nWN3KqaaVcbEsCjLSV+2jMjh62Iny/+mN3srM8TZeM8N6aj7eDl5wwYggjAJ4/sJ" crossorigin="anonymous">
+  <link href="styles/style.css" rel="stylesheet">
+  <link href="styles/reservas.css" rel="stylesheet">
+</head>
+<body>
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <!-- ---------- 1. Navbar ---------- -->
+  <header>
+    <nav class="navbar lg:navbar-expand bg-white border-bottom travel-navbar" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-3 fw-bold" href="index.html">
+          <img src="resources/logo/logo.svg" alt="" width="64" height="40">
+          <span><span class="text-navy">Decroly</span> <span class="text-brand fw-normal">Travel</span></span>
+        </a>
+
+        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer"
+                data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+
+        <dialog class="drawer drawer-end" tabindex="-1" id="menuPrincipal" aria-labelledby="menuPrincipalTitulo">
+          <div class="drawer-header">
+            <h2 class="drawer-title fs-lg" id="menuPrincipalTitulo">Menú</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Cerrar menú"></button>
+          </div>
+          <div class="drawer-body">
+            <ul class="navbar-nav lg:ms-auto lg:align-items-center lg:gap-2">
+              <li class="nav-item"><a class="nav-link " aria-current="page" href="index.html">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre nosotros</a></li>
+              <li class="nav-item"><a class="nav-link active" href="reservas.html">Reservas</a></li>
+              <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+            <a class="btn-solid btn-navy btn-lg fw-semibold px-9 lg:ms-7" href="cuenta.html">Mi cuenta</a>
+          </div>
+        </dialog>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido" class="reservas-page">
+    <section class="travel-hero reservas-hero" aria-labelledby="heroTitulo">
+      <div class="container">
+        <h1 id="heroTitulo" class="travel-hero-title fw-bold mb-1">Reserva tu próxima aventura</h1>
+        <p class="mb-0">Selección de producto y formulario en una única pantalla</p>
+      </div>
+    </section>
+
+    <div class="container reservas-content">
+      <nav class="reservation-tabs" aria-label="Tipo de experiencia">
+        <button class="reservation-tab is-active" type="button" aria-pressed="true">Paquetes</button>
+        <button class="reservation-tab" type="button" aria-pressed="false">Escapadas</button>
+        <button class="reservation-tab" type="button" aria-pressed="false">Actividades</button>
+      </nav>
+
+      <section class="reservation-experiences" aria-labelledby="destacadosTitulo">
+        <h2 id="destacadosTitulo">Elige una experiencia</h2>
+        <div class="row g-4">
+          <article class="col-12 md:col-6 xl:col-4">
+            <div class="card card-row travel-card reservation-card h-100">
+              <img src="resources/img/grecia.png" class="card-img-start travel-card-img" width="166" height="130"
+                   alt="Ilustración de una isla griega con casas blancas y un velero">
+              <div class="card-body">
+                <h3 class="card-title">Grecia esencial</h3>
+                <p class="card-text fg-3">7 días · Vuelo + hotel</p>
+                <p class="reservation-price">Desde 899 €</p>
+                <button class="btn-solid btn-brand reservation-select" type="button"
+                        data-destination="Grecia esencial">Seleccionar</button>
+              </div>
+            </div>
+          </article>
+          <article class="col-12 md:col-6 xl:col-4">
+            <div class="card card-row travel-card reservation-card h-100">
+              <img src="resources/img/costa-mediterranea.png" class="card-img-start travel-card-img" width="166" height="130"
+                   alt="Ilustración de la costa mediterránea con un faro y un velero">
+              <div class="card-body">
+                <h3 class="card-title">Costa y aventura</h3>
+                <p class="card-text fg-3">5 días · Escapada</p>
+                <p class="reservation-price">Desde 469 €</p>
+                <button class="btn-solid btn-navy reservation-select" type="button"
+                        data-destination="Costa y aventura">Seleccionar</button>
+              </div>
+            </div>
+          </article>
+          <article class="col-12 md:col-6 xl:col-4">
+            <div class="card card-row travel-card reservation-card h-100">
+              <img src="resources/img/escappada-tropical.png" class="card-img-start travel-card-img" width="166" height="130"
+                   alt="Ilustración de una playa tropical con una palmera">
+              <div class="card-body">
+                <h3 class="card-title">Islas paradisíacas</h3>
+                <p class="card-text fg-3">8 días · Actividades</p>
+                <p class="reservation-price">Desde 1.099 €</p>
+                <button class="btn-solid btn-navy reservation-select" type="button"
+                        data-destination="Islas paradisíacas">Seleccionar</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="reservation-details">
+        <form class="travel-search reservation-form" id="formularioReserva">
+          <div>
+            <h2>Formulario de reserva</h2>
+            <p class="reservation-intro">Introduce tus datos para solicitar la reserva.</p>
+          </div>
+          <div class="reservation-fields">
+            <div class="reservation-field">
+              <label for="destino">Destino seleccionado</label>
+              <input id="destino" name="destino" type="text" class="form-control"
+                     value="Grecia esencial" readonly required>
+            </div>
+            <div class="reservation-field">
+              <label for="duracion">Fecha de entrada y salida</label>
+              <input id="duracion" name="duracion" type="text" class="form-control"
+                     placeholder="Selecciona entrada y salida" autocomplete="off" required
+                     data-bs-toggle="datepicker"
+                     data-bs-selection-mode="multiple-ranged"
+                     data-bs-display-months-count="2"
+                     data-bs-locale="es-ES"
+                     data-bs-date-format='{"day":"2-digit","month":"2-digit","year":"numeric"}'
+                     data-bs-vcp-options='{"disableDatesPast":true}'>
+            </div>
+            <div class="reservation-field">
+              <label for="viajeros">N.º viajeros</label>
+              <input type="hidden" id="viajerosValor" name="viajeros" value="2">
+              <button id="viajeros" class="form-control travel-select" type="button"
+                      data-bs-toggle="menu" aria-expanded="false" aria-haspopup="true">
+                <span class="travel-select-value">2 personas</span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="menu" id="viajerosMenu">
+                <button class="menu-item" type="button" value="1">1 persona <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
+                <button class="menu-item selected" type="button" value="2" aria-current="true">2 personas <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
+                <button class="menu-item" type="button" value="3">3 personas <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
+                <button class="menu-item" type="button" value="4">4 o más <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
+              </div>
+            </div>
+            <div class="reservation-field">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" class="form-control"
+                     autocomplete="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="reservation-field">
+              <label for="email">Correo electrónico</label>
+              <input id="email" name="email" type="email" class="form-control"
+                     autocomplete="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="reservation-field reservation-submit">
+              <button type="submit" class="btn-solid btn-action btn-lg fw-semibold w-100">Confirmar reserva</button>
+            </div>
+          </div>
+          <p class="reservation-status" id="reservaEstado" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="reservation-summary" aria-labelledby="resumenTitulo">
+          <h2 id="resumenTitulo">Resumen de reserva</h2>
+          <ul>
+            <li><i class="bi bi-check2" aria-hidden="true"></i>Destino: <span id="resumenDestino">Grecia esencial</span></li>
+            <li><i class="bi bi-check2" aria-hidden="true"></i>Personas: <span id="resumenViajeros">2 viajeros</span></li>
+            <li><i class="bi bi-check2" aria-hidden="true"></i>Incluye alojamiento</li>
+            <li><i class="bi bi-check2" aria-hidden="true"></i>Incluye actividades</li>
+          </ul>
+          <p class="reservation-summary-note"><i class="bi bi-check-circle" aria-hidden="true"></i> Selecciona una experiencia y completa tus datos</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- ---------- 6. Pie ---------- -->
+  <footer class="travel-footer">
+    <div class="container d-flex flex-column md:flex-row justify-content-between md:align-items-center gap-5 py-7">
+      <div>
+        <p class="fs-lg fw-bold mb-0">Decroly Travel</p>
+        <p class="fs-sm mb-0">Tu próxima aventura empieza aquí</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="aviso-legal.html">Aviso legal</a></li>
+          <li class="nav-item"><a class="nav-link" href="privacidad.html">Privacidad</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Redes sociales</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ---------- 7. Scripts ---------- -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+  <script type="module">
+    const menuViajeros = document.querySelector('#viajerosMenu');
+    const textoViajeros = document.querySelector('#viajeros .travel-select-value');
+    const valorViajeros = document.querySelector('#viajerosValor');
+
+    menuViajeros.addEventListener('click', (evento) => {
+      const opcion = evento.target.closest('.menu-item');
+      if (!opcion) return;
+      const anterior = menuViajeros.querySelector('.selected');
+      anterior.classList.remove('selected');
+      anterior.removeAttribute('aria-current');
+      opcion.classList.add('selected');
+      opcion.setAttribute('aria-current', 'true');
+      textoViajeros.textContent = opcion.textContent.trim();
+      valorViajeros.value = opcion.value;
+      document.querySelector('#resumenViajeros').textContent = `${opcion.value} ${opcion.value === '1' ? 'viajero' : 'viajeros'}`;
+    });
+
+    document.querySelectorAll('.reservation-select').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        const destino = boton.dataset.destination;
+        document.querySelector('#destino').value = destino;
+        document.querySelector('#resumenDestino').textContent = destino;
+        document.querySelector('#reservaEstado').textContent = '';
+      });
+    });
+
+    document.querySelectorAll('.reservation-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelector('.reservation-tab.is-active').classList.remove('is-active');
+        document.querySelector('.reservation-tab[aria-pressed="true"]').setAttribute('aria-pressed', 'false');
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-pressed', 'true');
+      });
+    });
+
+    document.querySelector('#formularioReserva').addEventListener('submit', (evento) => {
+      evento.preventDefault();
+      document.querySelector('#reservaEstado').textContent =
+        'Solicitud preparada. Esta demostración no envía reservas.';
+    });
+  </script>
+</body>
+</html>

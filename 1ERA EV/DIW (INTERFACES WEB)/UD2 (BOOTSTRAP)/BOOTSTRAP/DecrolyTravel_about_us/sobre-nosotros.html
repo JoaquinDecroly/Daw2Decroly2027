@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Decroly Travel</title>
-  <meta name="description" content="Paquetes, escapadas y actividades para tu próxima aventura.">
+  <title>Sobre nosotros | Decroly Travel</title>
+  <meta name="description" content="Conoce la historia, los valores y el equipo de Decroly Travel.">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css" rel="stylesheet" integrity="sha384-nWN3KqaaVcbEsCjLSV+2jMjh62Iny/+mN3srM8TZeM8N6aj7eDl5wwYggjAJ4/sJ" crossorigin="anonymous">
   <link href="styles/style.css" rel="stylesheet">
+  <link href="styles/sobre-nosotros.css" rel="stylesheet">
 </head>
 <body>
   <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
@@ -47,147 +48,67 @@
     </nav>
   </header>
 
-  <main id="contenido">
-
-    <!-- ---------- 2. Hero ---------- -->
-    <section class="travel-hero" aria-labelledby="heroTitulo">
+  <main id="contenido" class="sobre-nosotros-page">
+    <section class="travel-hero about-hero" aria-labelledby="heroTitulo">
       <div class="container">
-        <h1 id="heroTitulo" class="travel-hero-title fw-bold text-uppercase mb-5">
-          <span class="d-block mb-2">Conócenos</span>
-        </h1>
-        <p class="fs-xl mb-7">Viajar también es confiar en quien te acompaña.</p>
+        <h1 id="heroTitulo" class="travel-hero-title fw-bold mb-1">Conócenos</h1>
+        <p class="mb-0">Viajar también es confiar en quien te acompaña.</p>
       </div>
     </section>
 
-    <!-- ---------- 3. Buscador ---------- -->
-    <div class="container">
-        
-        <section class="container py-8" aria-labelledby="historiaTitulo">
-      <div class="row g-5 align-items-center">
-        <div class="col-12 md:col-3">
-          <h2 id="historiaTitulo" class="travel-story-title">Nuestra historia</h2>
-          <img class="travel-story-image" src="resources/img/costa-mediterranea.png"
+    <div class="container about-content">
+      <section class="about-story" aria-labelledby="historiaTitulo">
+        <h2 id="historiaTitulo">Nuestra historia</h2>
+        <div class="about-story-grid">
+          <img src="resources/img/costa-mediterranea.png"
                alt="Ilustración de la costa mediterránea con un faro y un velero"
                width="166" height="130">
-        </div>
-        <div class="col-12 md:col-9">
-          <form class="travel-search" role="info">
-          <h2 class="mt-2">¿Quiénes somos?</h2>
-            <div class="row g-5 lg:g-0 align-items-end lg:align-items-center lg:divide-x">
-              <span class="m-5">Decroly Travel es una agencia orientada a descubrir destinos, diseñar experiencias, y ayudar a cada viajero a encontrar su próxima aventura</span>
-          
-              <span class="m-7 mt-1 my-1" style="position: relative; bottom: 20px; color: gray;">Nuestra propuesta combina acompañamiento personal, información clara y opciones de viaje adaptadas a diferentes intereses.</span>
-            </div>
-        </form>
-        </div>
-      </div>
-    </section>
-
-        
-        
-        
-          <!-- <div class="col-12 md:col-6 lg:col-3 travel-search-field">
-            <label for="duracion" class="form-label">Duración</label>
-            <input id="duracion" name="duracion" type="text" class="form-control"
-                   placeholder="Selecciona ida y vuelta…" autocomplete="off"
-                   data-bs-toggle="datepicker"
-                   data-bs-selection-mode="multiple-ranged"
-                   data-bs-display-months-count="2"
-                   data-bs-locale="es-ES"
-                   data-bs-date-format='{"day":"2-digit","month":"2-digit","year":"numeric"}'
-                   data-bs-vcp-options='{"disableDatesPast":true}'>
-          </div> -->
-
-          <!-- <div class="col-12 md:col-6 lg:col-3 travel-search-field">
-            <label for="viajeros" class="form-label">Viajeros</label>
-            <input type="hidden" id="viajerosValor" name="viajeros" value="2">
-            <button id="viajeros" class="form-control travel-select" type="button"
-                    data-bs-toggle="menu" aria-expanded="false">
-              <span class="travel-select-value">2 personas</span>
-              <i class="bi bi-chevron-down" aria-hidden="true"></i>
-            </button>
-            <div class="menu" id="viajerosMenu">
-              <button class="menu-item" type="button" value="1">1 persona <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
-              <button class="menu-item selected" type="button" value="2" aria-current="true">2 personas <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
-              <button class="menu-item" type="button" value="3">3 personas <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
-              <button class="menu-item" type="button" value="4">4 o más <i class="bi bi-check2 menu-item-check" aria-hidden="true"></i></button>
-            </div>
+          <div class="about-story-copy">
+            <h3>¿Quiénes somos?</h3>
+            <p>Decroly Travel es una agencia orientada a descubrir destinos, diseñar experiencias y ayudar a cada viajero a encontrar su próxima aventura.</p>
+            <p>Nuestra propuesta combina acompañamiento personal, información clara y opciones de viaje adaptadas a diferentes intereses.</p>
           </div>
+        </div>
+      </section>
 
-          <div class="col-12 md:col-6 lg:col-3 travel-search-field">
-            <button type="submit" class="btn-solid btn-brand btn-lg fs-lg fw-semibold w-100">Buscar viajes</button>
-          </div> -->
-        
+      <section class="about-values-section" aria-labelledby="valoresTitulo">
+        <h2 id="valoresTitulo">Nuestros valores</h2>
+        <ul class="about-values">
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
+            <div><h3>Confianza</h3><p>Claridad y transparencia</p></div>
+          </li>
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-headset"></i></span>
+            <div><h3>Cercanía</h3><p>Atención personal</p></div>
+          </li>
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-clipboard-check"></i></span>
+            <div><h3>Sostenibilidad</h3><p>Viajar con respeto</p></div>
+          </li>
+          <li class="about-value">
+            <span class="travel-icon" aria-hidden="true"><i class="bi bi-star"></i></span>
+            <div><h3>Calidad</h3><p>Experiencias cuidadas</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="about-team" aria-labelledby="equipoTitulo">
+        <h2 id="equipoTitulo">Nuestro equipo</h2>
+        <ul aria-label="Áreas del equipo">
+          <li>Asesoramiento</li>
+          <li>Atención al cliente</li>
+          <li>Especialistas en destinos</li>
+        </ul>
+        <a class="btn-solid btn-action fw-semibold" href="reservas.html">
+          Ver nuestros viajes <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </section>
     </div>
-
-    <!-- ---------- 4. Nuestros valores ---------- -->
-    <section class=" g-2 ml-4 container py-12" aria-labelledby="ventajasTitulo">
-      <h2 id="ventajasTitulo" class="mb-7">Nuestros valores</h2>
-      <ul class=" row row-cols-1 sm:row-cols-2 xl:row-cols-4 g-7 list-unstyled mb-0">
-        <li class="text-center card col d-flex align-items-center gap-5">
-          <span class="travel-icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
-          <div>
-            <h3 class="fs-lg fw-semibold mb-1">Confianza</h3>
-            <p class="fg-3 mb-0">Claridad y transparencia</p>
-          </div>
-        </li>
-        <li class="text-center card col d-flex align-items-center gap-5">
-          <span class="travel-icon" aria-hidden="true"><i class="bi bi-headset"></i></span>
-          <div>
-            <h3 class="fs-lg fw-semibold mb-1">Cercanía</h3>
-            <p class="fg-3 mb-0">Atención personal</p>
-          </div>
-        </li>
-        <li class="text-center card col d-flex align-items-center gap-5">
-          <span class="travel-icon" aria-hidden="true"><i class="bi bi-clipboard-check"></i></span>
-          <div>
-            <h3 class="fs-lg fw-semibold mb-1">Sostenibilidad</h3>
-            <p class="fg-3 mb-0">Viajar con respeto</p>
-          </div>
-        </li>
-        <li class="card text-center col d-flex align-items-center gap-5">
-          <span class="travel-icon" aria-hidden="true"><i class="bi bi-star"></i></span>
-          <div>
-            <h3 class="fs-lg fw-semibold mb-1">Calidad</h3>
-            <p class="fg-3 mb-0">Experiencias cuidadas</p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ---------- 5. Nuestro equipo ---------- -->
-    <section class="container pb-12" aria-labelledby="destacadosTitulo">
-      <div class="d-flex flex-column sm:flex-row sm:align-items-center justify-content-between gap-3 mb-7">
-        
-      
-
-      <div class="row g-7">
-        <article class="col-12 md:col-6 xl:col-4">
-        </article>
-
-        <article class="col-12 md:col-6 xl:col-4">
-          <div class="h-100">
-            
-          </div>
-      </div>
-      </div>
-        </article>
-
-        <article class="col-12 xl:col-4">
-
-        <h2 id="destacadosTitulo" class="mb-0">Destinos destacados</h2><br>
- 
-          <span class="travel-link"><span>Asesoramiento <span>·</span>  Atención al cliente  <span>·</span>  Especialistas en destino</span></span>
-
-          <button type="btn-lg" class="hover-lift" href="reservas.html">Ver todas las ofertas <i class="bi bi-arrow-right" aria-hidden="true"></i></button>
-      </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- ---------- 6. Pie ---------- -->
-  <footer class="travel-footer">
+  <footer class="travel-footer fixed-bottom">
     <div class="container d-flex flex-column md:flex-row justify-content-between md:align-items-center gap-5 py-7">
       <div>
         <p class="fs-lg fw-bold mb-0">Decroly Travel</p>
@@ -206,22 +127,5 @@
 
   <!-- ---------- 7. Scripts ---------- -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
-  <script type="module">
-    const menuViajeros = document.querySelector('#viajerosMenu');
-    const textoViajeros = document.querySelector('#viajeros .travel-select-value');
-    const valorViajeros = document.querySelector('#viajerosValor');
-
-    menuViajeros.addEventListener('click', (evento) => {
-      const opcion = evento.target.closest('.menu-item');
-      if (!opcion) return;
-      const anterior = menuViajeros.querySelector('.selected');
-      anterior.classList.remove('selected');
-      anterior.removeAttribute('aria-current');
-      opcion.classList.add('selected');
-      opcion.setAttribute('aria-current', 'true');
-      textoViajeros.textContent = opcion.textContent.trim();
-      valorViajeros.value = opcion.value;
-    });
-  </script>
 </body>
 </html>
