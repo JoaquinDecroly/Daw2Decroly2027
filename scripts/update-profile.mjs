@@ -1,4 +1,3 @@
-
 const API = "https://api.github.com";
 
 const owner = process.env.GITHUB_OWNER || "JoaquinDecroly";
@@ -159,7 +158,6 @@ async function buildStack(repos) {
     return `<p align="center">No hay lenguajes detectados en los repositorios analizados.</p>`;
   }
 
-  // IMPORTANTE: debe ser 0.1 para no ocultar lenguajes muy minoritarios
   const MIN_PERCENTAGE = 0.1;
 
   const languages = Object.entries(totals)
@@ -221,9 +219,6 @@ async function detectEnvironment(repos) {
       const has = (name) =>
         paths.some((path) => path === name || path.startsWith(`${name}/`));
 
-      const hasFile = (name) =>
-        paths.some((path) => path.endsWith(name.toLowerCase()));
-
       if (has(".idea") || paths.some((p) => p.endsWith(".iml"))) {
         detected.add("IntelliJ IDEA");
       }
@@ -258,37 +253,29 @@ async function detectEnvironment(repos) {
           (p) =>
             p === "build.gradle" ||
             p === "settings.gradle" ||
-            p === "build.gradle.kts" ||
-            p === "settings.gradle.kts"
+            p.endsWith(".gradle") ||
+            p.endsWith(".gradle.kts")
         )
       ) {
         detected.add("Gradle");
       }
 
       if (
-        paths.includes("package.json") ||
-        paths.includes("package-lock.json") ||
-        paths.includes("yarn.lock") ||
-        paths.includes("pnpm-lock.yaml")
+        paths.some(
+          (p) =>
+            p === "package.json" ||
+            p.endsWith("/package.json") ||
+            p.includes("node_modules")
+        )
       ) {
         detected.add("Node.js");
-      }
-
-      if (has(".github/workflows")) {
-        detected.add("GitHub Actions");
-      }
-
-      if (paths.some((p) => p.endsWith(".fxml"))) {
-        console.log(`JavaFX detectado en ${repo.name}`);
       }
 
       if (
         paths.some(
           (p) =>
-            p.includes("springframework") ||
             p.includes("spring-boot") ||
-            p.endsWith("application.properties") ||
-            p.includes("spring")
+            p.includes("springframework")
         )
       ) {
         detected.add("Spring");
@@ -402,24 +389,264 @@ function replaceSection(content, startMarker, endMarker, replacement) {
 }
 
 /* =========================================================
-   PROGRESO ACADÉMICO POR EVALUACIONES
+   PROGRESO ACADÉMICO: HORARIO + CALENDARIO ESCOLAR
    ========================================================= */
 
-// Solo se contabilizan estos 6 módulos.
-// IPE está convalidado y no participa en ningún cálculo.
+// Solo se contabilizan estos seis módulos.
+// IPE II está convalidado y Proyecto Intermodular queda excluido.
+
 const courseModules = [
-  { code: "DIW", name: "DIW" },
-  { code: "DWEC", name: "DWEC" },
-  { code: "DWES", name: "DWES" },
-  { code: "DAW", name: "DAW" },
-  { code: "OP-CN", name: "OP-CN" },
-  { code: "DASP", name: "DASP" },
+  {
+    code: "DIW",
+    name: "DIW",
+    weeklyPeriods: 4,
+    evalDistribution: [54, 34, 0],
+  },
+  {
+    code: "DWEC",
+    name: "DWEC",
+    weeklyPeriods: 8,
+    evalDistribution: [66, 82, 98],
+  },
+  {
+    code: "DWES",
+    name: "DWES",
+    weeklyPeriods: 8,
+    evalDistribution: [68, 76, 116],
+  },
+  {
+    code: "DAW",
+    name: "DAW",
+    weeklyPeriods: 3,
+    evalDistribution: [72.5, 54.5, 0],
+  },
+  {
+    code: "OP-CN",
+    name: "OP-CN",
+    weeklyPeriods: 2,
+    evalDistribution: [40, 40, 0],
+  },
+  {
+    code: "DASP",
+    name: "DASP",
+    weeklyPeriods: 1,
+    evalDistribution: [16, 14, 0],
+  },
 ];
 
+// Calendario lectivo de FP.
+// Inicio: 9 de septiembre de 2026.
+// Final: 24 de junio de 2027.
+
+const schoolCalendar = {
+  start: "2026-09-09",
+  end: "2027-06-24",
+
+  // Cada sesión del horario dura 55 minutos.
+  periodMinutes: 55,
+
+  // Festivos y días no lectivos comunes.
+  nonTeachingDates: [
+    // Noviembre
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06",
+
+    // Diciembre
+    "2026-12-07",
+    "2026-12-08",
+    "2026-12-23",
+    "2026-12-24",
+    "2026-12-25",
+    "2026-12-28",
+    "2026-12-29",
+    "2026-12-30",
+    "2026-12-31",
+
+    // Enero
+    "2027-01-04",
+    "2027-01-05",
+    "2027-01-07",
+    "2027-01-08",
+
+    // Febrero
+    "2027-02-10",
+    "2027-02-11",
+    "2027-02-12",
+
+    // Marzo
+    "2027-03-22",
+    "2027-03-23",
+    "2027-03-24",
+
+    // Mayo
+    "2027-05-03",
+    "2027-05-04",
+  ],
+
+  // Añade aquí los festivos locales que afecten al centro.
+  // El calendario indica que se recuperarán en junio,
+  // pero no especifica sus fechas.
+  localHolidays: [],
+
+  // Fechas amarillas del calendario:
+  // no lectivas solo si no se declaran festivas.
+  // No se descuentan automáticamente.
+  // Añade aquí las que confirme el centro.
+  conditionalNonTeachingDates: [
+    "2026-09-10",
+    "2026-09-11",
+    "2026-09-17",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24",
+    "2026-09-25",
+    "2026-09-28",
+    "2026-09-29",
+    "2026-09-30",
+    "2027-01-01",
+    "2027-01-06",
+    "2027-03-25",
+    "2027-03-26",
+    "2027-06-01",
+    "2027-06-02",
+    "2027-06-03",
+    "2027-06-04",
+    "2027-06-07",
+    "2027-06-08",
+    "2027-06-09",
+    "2027-06-10",
+    "2027-06-11",
+    "2027-06-14",
+    "2027-06-15",
+    "2027-06-16",
+    "2027-06-17",
+    "2027-06-18",
+    "2027-06-21",
+    "2027-06-22",
+  ],
+};
+
+// Sesiones semanales por día.
+// Lunes=1, martes=2, miércoles=3, jueves=4, viernes=5.
+
+const weeklyTimetable = {
+  DIW: {
+    2: 1,
+    4: 1,
+    5: 2,
+  },
+
+  DWEC: {
+    1: 3,
+    2: 1,
+    3: 2,
+    4: 2,
+  },
+
+  DWES: {
+    1: 3,
+    2: 1,
+    3: 2,
+    4: 2,
+  },
+
+  DAW: {
+    2: 1,
+    5: 2,
+  },
+
+  "OP-CN": {
+    5: 2,
+  },
+
+  DASP: {
+    2: 1,
+  },
+};
+
+function getDateKey(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+// Calcula las horas reales de cada módulo según el horario
+// y los días lectivos del calendario escolar.
+
+function calculateScheduledModuleHours() {
+  const excludedDates = new Set([
+    ...schoolCalendar.nonTeachingDates,
+    ...schoolCalendar.localHolidays,
+  ]);
+
+  const sessionsByModule = Object.fromEntries(
+    courseModules.map((module) => [module.code, 0])
+  );
+
+  const date = new Date(`${schoolCalendar.start}T12:00:00Z`);
+  const endDate = new Date(`${schoolCalendar.end}T12:00:00Z`);
+
+  while (date <= endDate) {
+    const weekday = date.getUTCDay();
+    const key = getDateKey(date);
+
+    if (weekday >= 1 && weekday <= 5 && !excludedDates.has(key)) {
+      for (const module of courseModules) {
+        sessionsByModule[module.code] +=
+          weeklyTimetable[module.code]?.[weekday] || 0;
+      }
+    }
+
+    date.setUTCDate(date.getUTCDate() + 1);
+  }
+
+  for (const module of courseModules) {
+    module.totalHours =
+      (sessionsByModule[module.code] * schoolCalendar.periodMinutes) / 60;
+
+    const distributionTotal = module.evalDistribution.reduce(
+      (sum, value) => sum + value,
+      0
+    );
+
+    module.evalHours = module.evalDistribution.map((value) =>
+      distributionTotal > 0
+        ? (module.totalHours * value) / distributionTotal
+        : 0
+    );
+  }
+
+  return {
+    totalSessions: Object.values(sessionsByModule).reduce(
+      (sum, value) => sum + value,
+      0
+    ),
+
+    totalHours: Object.values(sessionsByModule).reduce(
+      (sum, value) =>
+        sum + (value * schoolCalendar.periodMinutes) / 60,
+      0
+    ),
+
+    sessionsByModule,
+  };
+}
+
 const courseEvaluations = [
-  { name: "1.ª Evaluación", folder: "1ERA EV" },
-  { name: "2.ª Evaluación", folder: "2DA EV" },
-  { name: "3.ª Evaluación", folder: "3ERA EV" },
+  {
+    name: "1.ª Evaluación",
+    folder: "1ERA EV",
+  },
+  {
+    name: "2.ª Evaluación",
+    folder: "2DA EV",
+  },
+  {
+    name: "3.ª Evaluación",
+    folder: "3ERA EV",
+  },
 ];
 
 function normalizeFolderName(value) {
@@ -435,8 +662,8 @@ function createProgressBar(label, percentage, color = "#2563EB") {
   const filledWidth = 500 * (safePercentage / 100);
 
   return `<p align="center">
-  <strong>${label} · ${safePercentage.toFixed(0)}%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}: ${safePercentage.toFixed(0)}%">
+  <strong>${label} · ${safePercentage.toFixed(1)}%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}: ${safePercentage.toFixed(1)}%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
     <rect x="0" y="2" width="${filledWidth.toFixed(1)}" height="18" rx="9" fill="${color}"/>
   </svg>
@@ -444,6 +671,17 @@ function createProgressBar(label, percentage, color = "#2563EB") {
 }
 
 async function buildAcademicProgress(fs) {
+  const calendarStats = calculateScheduledModuleHours();
+
+  console.log(
+    `Calendario lectivo: ${calendarStats.totalSessions} periodos / ${calendarStats.totalHours.toFixed(1)} horas estimadas`
+  );
+
+  const totalCourseHours = courseModules.reduce(
+    (sum, module) => sum + module.totalHours,
+    0
+  );
+
   const evaluationResults = [];
 
   for (const evaluation of courseEvaluations) {
@@ -458,7 +696,6 @@ async function buildAcademicProgress(fs) {
         .filter((entry) => entry.isDirectory())
         .map((entry) => normalizeFolderName(entry.name));
     } catch (error) {
-      // Si la evaluación todavía no existe, su progreso será 0%.
       if (error.code !== "ENOENT") {
         throw new Error(
           `No se pudo leer la carpeta "${evaluation.folder}": ${error.message}`
@@ -477,26 +714,50 @@ async function buildAcademicProgress(fs) {
       );
     });
 
-    const completed = detectedModules.length;
-    const total = courseModules.length;
-    const percentage = (completed / total) * 100;
+    const completedCodes = new Set(
+      detectedModules.map((module) => module.code)
+    );
+
+    const evaluationIndex = courseEvaluations.findIndex(
+      (item) => item.folder === evaluation.folder
+    );
+
+    const evaluationHours = courseModules.reduce(
+      (sum, module) => sum + module.evalHours[evaluationIndex],
+      0
+    );
+
+    const completedHours = courseModules.reduce((sum, module) => {
+      return (
+        sum +
+        (completedCodes.has(module.code)
+          ? module.evalHours[evaluationIndex]
+          : 0)
+      );
+    }, 0);
+
+    const evaluationContribution =
+      (completedHours / totalCourseHours) * 100;
+
+    const evaluationCoverage =
+      evaluationHours > 0
+        ? (completedHours / evaluationHours) * 100
+        : 0;
 
     evaluationResults.push({
       ...evaluation,
-      completed,
-      total,
-      percentage,
-      detectedModules: detectedModules.map((module) => module.name),
+      detectedModules,
+      evaluationHours,
+      completedHours,
+      evaluationContribution,
+      evaluationCoverage,
     });
   }
 
-  // 6 módulos por evaluación y 3 evaluaciones: 18 unidades módulo/evaluación.
-  const totalPossible = courseModules.length * courseEvaluations.length;
-  const totalDetected = evaluationResults.reduce(
-    (sum, evaluation) => sum + evaluation.completed,
+  const globalPercentage = evaluationResults.reduce(
+    (sum, evaluation) => sum + evaluation.evaluationContribution,
     0
   );
-  const globalPercentage = (totalDetected / totalPossible) * 100;
 
   const globalBar = createProgressBar(
     "Progreso global del curso",
@@ -507,35 +768,54 @@ async function buildAcademicProgress(fs) {
   const evaluationBars = evaluationResults
     .map((evaluation) =>
       createProgressBar(
-        `${evaluation.name} · ${evaluation.completed}/${evaluation.total} módulos`,
-        evaluation.percentage
+        `${evaluation.name} · aporta ${evaluation.evaluationContribution.toFixed(1)}% del curso`,
+        evaluation.evaluationCoverage
       )
     )
     .join("\n");
 
   const details = evaluationResults
     .map((evaluation) => {
-      const modules =
-        evaluation.detectedModules.length > 0
-          ? evaluation.detectedModules.join(", ")
-          : "Sin módulos detectados";
+      const modules = evaluation.detectedModules.length
+        ? evaluation.detectedModules
+            .map((module) => module.name)
+            .join(", ")
+        : "Sin módulos detectados";
 
       return `<tr>
   <td>${evaluation.name}</td>
-  <td align="center">${evaluation.completed}/${evaluation.total}</td>
-  <td align="center">${evaluation.percentage.toFixed(0)}%</td>
+  <td align="center">${evaluation.evaluationHours.toFixed(1)} h</td>
+  <td align="center">${evaluation.evaluationContribution.toFixed(2)}%</td>
+  <td align="center">${evaluation.evaluationCoverage.toFixed(1)}%</td>
   <td>${modules}</td>
 </tr>`;
     })
     .join("\n");
 
+  const moduleRows = courseModules
+    .map((module) => {
+      const percentages = module.evalHours.map(
+        (hours) => (hours / module.totalHours) * 100
+      );
+
+      return `<tr>
+  <td><strong>${module.name}</strong></td>
+  <td align="center">${module.totalHours.toFixed(1)} h</td>
+  <td align="center">${percentages[0].toFixed(1)}%</td>
+  <td align="center">${percentages[1].toFixed(1)}%</td>
+  <td align="center">${percentages[2].toFixed(1)}%</td>
+</tr>`;
+    })
+    .join("\n");
+
   console.log(
-    `Progreso global: ${totalDetected}/${totalPossible} (${globalPercentage.toFixed(1)}%)`
+    `Progreso global ponderado: ${globalPercentage.toFixed(2)}%`
   );
 
   for (const evaluation of evaluationResults) {
     console.log(
-      `${evaluation.name}: ${evaluation.completed}/${evaluation.total} módulos`
+      `${evaluation.name}: ${evaluation.completedHours.toFixed(1)}/${evaluation.evaluationHours.toFixed(1)} horas representadas; ` +
+      `aporta ${evaluation.evaluationContribution.toFixed(2)}% del curso`
     );
   }
 
@@ -547,13 +827,16 @@ ${evaluationBars}
 
 </div>
 
+<h3>Peso de cada evaluación dentro del curso</h3>
+
 <table>
   <thead>
     <tr>
       <th>Evaluación</th>
-      <th>Módulos</th>
-      <th>Progreso</th>
-      <th>Carpetas detectadas</th>
+      <th>Horas asignadas</th>
+      <th>Parte del curso completada</th>
+      <th>Cobertura de la evaluación</th>
+      <th>Módulos detectados</th>
     </tr>
   </thead>
   <tbody>
@@ -561,7 +844,24 @@ ${details}
   </tbody>
 </table>
 
-<sub>Cálculo automático: 6 módulos cursados × 3 evaluaciones. IPE, al estar convalidado, queda excluido.</sub>`;
+<h3>Distribución por módulo</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Módulo</th>
+      <th>Horas totales</th>
+      <th>1.ª evaluación</th>
+      <th>2.ª evaluación</th>
+      <th>3.ª evaluación</th>
+    </tr>
+  </thead>
+  <tbody>
+${moduleRows}
+  </tbody>
+</table>
+
+<sub>Las horas de cada módulo se estiman contando sus periodos semanales del horario oficial (55 minutos) entre el 09/09/2026 y el 24/06/2027, descontando los días no lectivos configurados. IPE II y Proyecto Intermodular quedan excluidos. El calendario no concreta las fechas de las evaluaciones ni las fiestas locales: el reparto entre evaluaciones sigue siendo provisional y las fiestas locales deben añadirse en schoolCalendar.localHolidays. Una carpeta detectada indica que existe contenido, no que todos los ejercicios estén terminados o aprobados.</sub>`;
 }
 
 /* =========================================================
