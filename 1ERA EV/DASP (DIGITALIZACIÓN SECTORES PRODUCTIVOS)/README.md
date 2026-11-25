@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏭 DAW · Sectores Productivos
+# 🏭 DASP · Sectores Productivos
 
 ### 2º DAW · Digitalización aplicada a los sectores productivos
 
