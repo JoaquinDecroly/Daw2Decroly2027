@@ -210,9 +210,72 @@ Daw2Decroly2027/
 ### 2026 / 2027
 
 <!-- AUTO-PROGRESS:START -->
+<div align="center">
+
 <p align="center">
-  <i>El progreso se actualizará automáticamente según los módulos detectados en las carpetas de cada evaluación.</i>
+  <strong>Progreso global del curso · 33%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progreso global del curso: 33%">
+    <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
+    <rect x="0" y="2" width="166.7" height="18" rx="9" fill="#7C3AED"/>
+  </svg>
 </p>
+
+<p align="center">
+  <strong>1.ª Evaluación · 6/6 módulos · 100%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="1.ª Evaluación · 6/6 módulos: 100%">
+    <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
+    <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
+  </svg>
+</p>
+<p align="center">
+  <strong>2.ª Evaluación · 0/6 módulos · 0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · 0/6 módulos: 0%">
+    <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
+    <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
+  </svg>
+</p>
+<p align="center">
+  <strong>3.ª Evaluación · 0/6 módulos · 0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · 0/6 módulos: 0%">
+    <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
+    <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
+  </svg>
+</p>
+
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Evaluación</th>
+      <th>Módulos</th>
+      <th>Progreso</th>
+      <th>Carpetas detectadas</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+  <td>1.ª Evaluación</td>
+  <td align="center">6/6</td>
+  <td align="center">100%</td>
+  <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
+</tr>
+<tr>
+  <td>2.ª Evaluación</td>
+  <td align="center">0/6</td>
+  <td align="center">0%</td>
+  <td>Sin módulos detectados</td>
+</tr>
+<tr>
+  <td>3.ª Evaluación</td>
+  <td align="center">0/6</td>
+  <td align="center">0%</td>
+  <td>Sin módulos detectados</td>
+</tr>
+  </tbody>
+</table>
+
+<sub>Cálculo automático: 6 módulos cursados × 3 evaluaciones. IPE, al estar convalidado, queda excluido.</sub>
 <!-- AUTO-PROGRESS:END -->
 
 <br>
