@@ -339,7 +339,6 @@ Daw2Decroly2027/
   </tbody>
 </table>
 
-<sub>Las horas de cada módulo se estiman contando sus periodos semanales del horario oficial (55 minutos) entre el 09/09/2026 y el 24/06/2027, descontando los días no lectivos configurados. IPE II y Proyecto Intermodular quedan excluidos. El calendario no concreta las fechas de las evaluaciones ni las fiestas locales: el reparto entre evaluaciones sigue siendo provisional y las fiestas locales deben añadirse en schoolCalendar.localHolidays. Una carpeta detectada indica que existe contenido, no que todos los ejercicios estén terminados o aprobados.</sub>
 <!-- AUTO-PROGRESS:END -->
 
 <br>
