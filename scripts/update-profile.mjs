@@ -1,3 +1,4 @@
+
 const API = "https://api.github.com";
 
 const owner = process.env.GITHUB_OWNER || "JoaquinDecroly";
@@ -401,6 +402,169 @@ function replaceSection(content, startMarker, endMarker, replacement) {
 }
 
 /* =========================================================
+   PROGRESO ACADÉMICO POR EVALUACIONES
+   ========================================================= */
+
+// Solo se contabilizan estos 6 módulos.
+// IPE está convalidado y no participa en ningún cálculo.
+const courseModules = [
+  { code: "DIW", name: "DIW" },
+  { code: "DWEC", name: "DWEC" },
+  { code: "DWES", name: "DWES" },
+  { code: "DAW", name: "DAW" },
+  { code: "OP-CN", name: "OP-CN" },
+  { code: "DASP", name: "DASP" },
+];
+
+const courseEvaluations = [
+  { name: "1.ª Evaluación", folder: "1ERA EV" },
+  { name: "2.ª Evaluación", folder: "2DA EV" },
+  { name: "3.ª Evaluación", folder: "3ERA EV" },
+];
+
+function normalizeFolderName(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .trim();
+}
+
+function createProgressBar(label, percentage, color = "#2563EB") {
+  const safePercentage = Math.max(0, Math.min(100, percentage));
+  const filledWidth = 500 * (safePercentage / 100);
+
+  return `<p align="center">
+  <strong>${label} · ${safePercentage.toFixed(0)}%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}: ${safePercentage.toFixed(0)}%">
+    <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
+    <rect x="0" y="2" width="${filledWidth.toFixed(1)}" height="18" rx="9" fill="${color}"/>
+  </svg>
+</p>`;
+}
+
+async function buildAcademicProgress(fs) {
+  const evaluationResults = [];
+
+  for (const evaluation of courseEvaluations) {
+    let detectedFolders = [];
+
+    try {
+      const entries = await fs.readdir(evaluation.folder, {
+        withFileTypes: true,
+      });
+
+      detectedFolders = entries
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => normalizeFolderName(entry.name));
+    } catch (error) {
+      // Si la evaluación todavía no existe, su progreso será 0%.
+      if (error.code !== "ENOENT") {
+        throw new Error(
+          `No se pudo leer la carpeta "${evaluation.folder}": ${error.message}`
+        );
+      }
+    }
+
+    const detectedModules = courseModules.filter((module) => {
+      const modulePrefix = normalizeFolderName(module.code);
+
+      return detectedFolders.some(
+        (folder) =>
+          folder === modulePrefix ||
+          folder.startsWith(`${modulePrefix} `) ||
+          folder.startsWith(`${modulePrefix} (`)
+      );
+    });
+
+    const completed = detectedModules.length;
+    const total = courseModules.length;
+    const percentage = (completed / total) * 100;
+
+    evaluationResults.push({
+      ...evaluation,
+      completed,
+      total,
+      percentage,
+      detectedModules: detectedModules.map((module) => module.name),
+    });
+  }
+
+  // 6 módulos por evaluación y 3 evaluaciones: 18 unidades módulo/evaluación.
+  const totalPossible = courseModules.length * courseEvaluations.length;
+  const totalDetected = evaluationResults.reduce(
+    (sum, evaluation) => sum + evaluation.completed,
+    0
+  );
+  const globalPercentage = (totalDetected / totalPossible) * 100;
+
+  const globalBar = createProgressBar(
+    "Progreso global del curso",
+    globalPercentage,
+    "#7C3AED"
+  );
+
+  const evaluationBars = evaluationResults
+    .map((evaluation) =>
+      createProgressBar(
+        `${evaluation.name} · ${evaluation.completed}/${evaluation.total} módulos`,
+        evaluation.percentage
+      )
+    )
+    .join("\n");
+
+  const details = evaluationResults
+    .map((evaluation) => {
+      const modules =
+        evaluation.detectedModules.length > 0
+          ? evaluation.detectedModules.join(", ")
+          : "Sin módulos detectados";
+
+      return `<tr>
+  <td>${evaluation.name}</td>
+  <td align="center">${evaluation.completed}/${evaluation.total}</td>
+  <td align="center">${evaluation.percentage.toFixed(0)}%</td>
+  <td>${modules}</td>
+</tr>`;
+    })
+    .join("\n");
+
+  console.log(
+    `Progreso global: ${totalDetected}/${totalPossible} (${globalPercentage.toFixed(1)}%)`
+  );
+
+  for (const evaluation of evaluationResults) {
+    console.log(
+      `${evaluation.name}: ${evaluation.completed}/${evaluation.total} módulos`
+    );
+  }
+
+  return `<div align="center">
+
+${globalBar}
+
+${evaluationBars}
+
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Evaluación</th>
+      <th>Módulos</th>
+      <th>Progreso</th>
+      <th>Carpetas detectadas</th>
+    </tr>
+  </thead>
+  <tbody>
+${details}
+  </tbody>
+</table>
+
+<sub>Cálculo automático: 6 módulos cursados × 3 evaluaciones. IPE, al estar convalidado, queda excluido.</sub>`;
+}
+
+/* =========================================================
    MAIN
    ========================================================= */
 
@@ -420,6 +584,9 @@ async function main() {
   const tools = await detectEnvironment(repos);
   const environment = buildToolIcons(tools);
 
+  console.log("Calculando progreso académico...");
+  const academicProgress = await buildAcademicProgress(fs);
+
   let readme = await fs.readFile("README.md", "utf8");
 
   readme = replaceSection(
@@ -434,6 +601,13 @@ async function main() {
     "<!-- AUTO-ENV:START -->",
     "<!-- AUTO-ENV:END -->",
     environment
+  );
+
+  readme = replaceSection(
+    readme,
+    "<!-- AUTO-PROGRESS:START -->",
+    "<!-- AUTO-PROGRESS:END -->",
+    academicProgress
   );
 
   await fs.writeFile("README.md", readme);
