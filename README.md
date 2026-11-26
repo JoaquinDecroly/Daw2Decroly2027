@@ -185,17 +185,118 @@ La estructura se genera automáticamente a partir de las carpetas y archivos rea
 <!-- AUTO-STRUCTURE:START -->
 ```text
 Daw2Decroly2027/
-├── 📚 1ERA EV/
-│   ├── 🎨 DIW (INTERFACES WEB)/
-│   ├── ⚡ DWEC (FRONT)/
-│   ├── ⚙️ DWES (BACK)/
-│   ├── 🚀 DAW (DESPLIEGUE)/
-│   ├── ☁️ OP-CN (COMPUTACIÓN NUBE)/
-│   └── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
-├── 📚 2DA EV/
-├── 📚 3ERA EV/
-├── ⚙️ scripts/
 ├── 🔧 .github/
+│   └── 📁 workflows/
+│       └── 📄 profile-dinamico.yml
+├── 📚 1ERA EV/
+│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
+│   │   ├── 📁 UD1/
+│   │   │   ├── 📄 jOttonello_mPila_rCalvo_DASP_UD2_P1.pdf
+│   │   │   └── 📄 rCalvo_jvOttonello_mPila_DASP_UD1_P1-1.pdf
+│   │   ├── 📁 UD2/
+│   │   │   └── 📄 rCalvo_jvOttonello_mPila_DASP_UD1_P2.pdf
+│   │   └── 📄 README.md
+│   ├── 🚀 DAW (DESPLIEGUE)/
+│   │   ├── 📁 UD2/
+│   │   │   ├── 📄 UD2.1 Añadiendo seguridad-1.pdf
+│   │   │   └── 📄 UD2.2 Trabajando con hosts.pdf
+│   │   └── 📄 README.md
+│   ├── 🎨 DIW (INTERFACES WEB)/
+│   │   ├── 📁 UD1 (INTERFACES)/
+│   │   │   └── 📁 INTERFACES/
+│   │   └── 📄 README.md
+│   ├── ⚡ DWEC (FRONT)/
+│   │   ├── 📁 ANGULAR/
+│   │   │   ├── 📁 ACTIVIDADES_A_ENTREGAR/
+│   │   │   ├── 📁 ACTIVIDADES_REPASO_EXAMEN/
+│   │   │   ├── 📁 EXAMENES/
+│   │   │   ├── 📁 OTROS_EJERCICIOS/
+│   │   │   ├── 📁 primeraAppAngular/
+│   │   │   ├── 📁 pruebaAppAngular/
+│   │   │   ├── 📁 pruebaReactiveForm/
+│   │   │   ├── 📁 RECETAS_FORMULARIOS/
+│   │   │   ├── 📄 guia_angular_input_output.pdf
+│   │   │   ├── 📄 guia_angular_paso_a_paso_examen.pdf
+│   │   │   ├── 📄 guia_bootstrap5_buscador.html
+│   │   │   ├── 📄 guia_bootstrap5_completa.pdf
+│   │   │   └── 📄 README.md
+│   │   ├── 📁 BOOTSTRAP/
+│   │   │   ├── 📁 CON JS/
+│   │   │   └── 📁 webBootstrap/
+│   │   ├── 📁 GIT/
+│   │   │   └── 📁 PRUEBAS/
+│   │   ├── 📁 JS/
+│   │   │   ├── 📁 EJERCICIOS/
+│   │   │   └── 📄 practicandoJSarrowFunctions.js
+│   │   ├── 📁 JUEGOS/
+│   │   │   └── 📁 CSS/
+│   │   ├── 📁 OTROS/
+│   │   │   ├── 📄 jvOttonello_DWEC_Arquitectura_Cliente_Servidor.docx
+│   │   │   └── 📄 jvOttonello_DWEC_Arquitectura_Cliente_Servidor.pdf
+│   │   ├── 📁 TYPESCRIPT/
+│   │   │   ├── 📁 entrenamiento1.ts/
+│   │   │   ├── 📁 entrenamiento2.ts/
+│   │   │   ├── 📁 entrenamiento3.ts/
+│   │   │   └── 📄 scriptEjemploBase.ts
+│   │   └── 📄 README.md
+│   ├── ⚙️ DWES (BACK)/
+│   │   ├── 📁 PHP/
+│   │   │   ├── 📁 examen19Octubre/
+│   │   │   ├── 📁 php1Actividad/
+│   │   │   ├── 📁 php2Actividad/
+│   │   │   ├── 📁 php3Actividad/
+│   │   │   ├── 📁 php4Actividad/
+│   │   │   └── 📁 repasoPHP/
+│   │   ├── 📁 Spring Boot/
+│   │   │   ├── ⚡ DWEC (FRONT)/
+│   │   │   └── 📁 EXAMEN/
+│   │   └── 📄 README.md
+│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
+│       ├── 📁 UD1/
+│       │   └── 📄 UD1.1 Identificando componentes y modelos de servicio.docx
+│       ├── 📁 UD2/
+│       │   ├── 📄 UD2.1 Comenzando con Azure-1.docx
+│       │   ├── 📄 UD2.2 Monitorización de recursos y automatización.docx
+│       │   ├── 📄 UD2.3 Comenzando con contenedores.docx
+│       │   └── 📄 UD2.3 Comenzando con contenedores.pdf
+│       ├── 📄 chuleta_completa_UD2_infraestructura_almacenamiento.pdf
+│       └── 📄 README.md
+├── 📁 2NDA EV/
+│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
+│   │   ├── 📁 UD3/
+│   │   │   └── 📄 rCalvo_jvOttonello_mPila_DASP_UD3_P1.pdf
+│   │   └── 📄 README.md
+│   ├── 🚀 DAW (DESPLIEGUE)/
+│   │   ├── 📁 UD2/
+│   │   │   ├── 📄 UD2.1 Añadiendo seguridad-1.pdf
+│   │   │   └── 📄 UD2.2 Trabajando con hosts.pdf
+│   │   └── 📄 README.md
+│   ├── 🎨 DIW (INTERFACES WEB)/
+│   │   ├── 📁 UD2 (BOOTSTRAP)/
+│   │   │   └── 📁 BOOTSTRAP/
+│   │   └── 📄 README.md
+│   ├── ⚡ DWEC (FRONT)/
+│   │   ├── 📁 ANGULAR/
+│   │   │   ├── 📁 ACTIVIDADES_REPASO_EXAMEN/
+│   │   │   ├── 📁 OTROS_EJERCICIOS/
+│   │   │   ├── 📁 pruebaReactiveForm/
+│   │   │   ├── 📁 RECETAS_FORMULARIOS/
+│   │   │   ├── 📄 guia_angular_input_output.pdf
+│   │   │   ├── 📄 guia_angular_paso_a_paso_examen.pdf
+│   │   │   ├── 📄 guia_bootstrap5_buscador.html
+│   │   │   ├── 📄 guia_bootstrap5_completa.pdf
+│   │   │   └── 📄 README.md
+│   │   └── 📄 README.md
+│   ├── ⚙️ DWES (BACK)/
+│   │   ├── 📁 Spring Boot/
+│   │   │   ├── ⚡ DWEC (FRONT)/
+│   │   │   └── 📁 EXAMEN/
+│   │   └── 📄 README.md
+│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
+│       └── 📄 README.md
+├── ⚙️ scripts/
+│   └── 📄 update-profile.mjs
+├── 📄 .gitignore
 └── 📄 README.md
 ```
 <!-- AUTO-STRUCTURE:END -->
@@ -228,7 +329,6 @@ Daw2Decroly2027/
     <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
-
 <p align="center">
   <strong>2.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
   <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · aporta 0.0% del curso: 0.0%">
@@ -236,7 +336,6 @@ Daw2Decroly2027/
     <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
-
 <p align="center">
   <strong>3.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
   <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · aporta 0.0% del curso: 0.0%">
@@ -260,27 +359,27 @@ Daw2Decroly2027/
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1.ª Evaluación</td>
-      <td align="center">330.1 h</td>
-      <td align="center">38.31%</td>
-      <td align="center">100.0%</td>
-      <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
-    </tr>
-    <tr>
-      <td>2.ª Evaluación</td>
-      <td align="center">308.6 h</td>
-      <td align="center">0.00%</td>
-      <td align="center">0.0%</td>
-      <td>Sin módulos detectados</td>
-    </tr>
-    <tr>
-      <td>3.ª Evaluación</td>
-      <td align="center">223.0 h</td>
-      <td align="center">0.00%</td>
-      <td align="center">0.0%</td>
-      <td>Sin módulos detectados</td>
-    </tr>
+<tr>
+  <td>1.ª Evaluación</td>
+  <td align="center">330.1 h</td>
+  <td align="center">38.31%</td>
+  <td align="center">100.0%</td>
+  <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
+</tr>
+<tr>
+  <td>2.ª Evaluación</td>
+  <td align="center">308.6 h</td>
+  <td align="center">0.00%</td>
+  <td align="center">0.0%</td>
+  <td>Sin módulos detectados</td>
+</tr>
+<tr>
+  <td>3.ª Evaluación</td>
+  <td align="center">223.0 h</td>
+  <td align="center">0.00%</td>
+  <td align="center">0.0%</td>
+  <td>Sin módulos detectados</td>
+</tr>
   </tbody>
 </table>
 
@@ -297,48 +396,48 @@ Daw2Decroly2027/
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><strong>DIW</strong></td>
-      <td align="center">133.8 h</td>
-      <td align="center">61.4%</td>
-      <td align="center">38.6%</td>
-      <td align="center">0.0%</td>
-    </tr>
-    <tr>
-      <td><strong>DWEC</strong></td>
-      <td align="center">264.0 h</td>
-      <td align="center">26.8%</td>
-      <td align="center">33.3%</td>
-      <td align="center">39.8%</td>
-    </tr>
-    <tr>
-      <td><strong>DWES</strong></td>
-      <td align="center">264.0 h</td>
-      <td align="center">26.2%</td>
-      <td align="center">29.2%</td>
-      <td align="center">44.6%</td>
-    </tr>
-    <tr>
-      <td><strong>DAW</strong></td>
-      <td align="center">99.9 h</td>
-      <td align="center">57.1%</td>
-      <td align="center">42.9%</td>
-      <td align="center">0.0%</td>
-    </tr>
-    <tr>
-      <td><strong>OP-CN</strong></td>
-      <td align="center">67.8 h</td>
-      <td align="center">50.0%</td>
-      <td align="center">50.0%</td>
-      <td align="center">0.0%</td>
-    </tr>
-    <tr>
-      <td><strong>DASP</strong></td>
-      <td align="center">32.1 h</td>
-      <td align="center">53.3%</td>
-      <td align="center">46.7%</td>
-      <td align="center">0.0%</td>
-    </tr>
+<tr>
+  <td><strong>DIW</strong></td>
+  <td align="center">133.8 h</td>
+  <td align="center">61.4%</td>
+  <td align="center">38.6%</td>
+  <td align="center">0.0%</td>
+</tr>
+<tr>
+  <td><strong>DWEC</strong></td>
+  <td align="center">264.0 h</td>
+  <td align="center">26.8%</td>
+  <td align="center">33.3%</td>
+  <td align="center">39.8%</td>
+</tr>
+<tr>
+  <td><strong>DWES</strong></td>
+  <td align="center">264.0 h</td>
+  <td align="center">26.2%</td>
+  <td align="center">29.2%</td>
+  <td align="center">44.6%</td>
+</tr>
+<tr>
+  <td><strong>DAW</strong></td>
+  <td align="center">99.9 h</td>
+  <td align="center">57.1%</td>
+  <td align="center">42.9%</td>
+  <td align="center">0.0%</td>
+</tr>
+<tr>
+  <td><strong>OP-CN</strong></td>
+  <td align="center">67.8 h</td>
+  <td align="center">50.0%</td>
+  <td align="center">50.0%</td>
+  <td align="center">0.0%</td>
+</tr>
+<tr>
+  <td><strong>DASP</strong></td>
+  <td align="center">32.1 h</td>
+  <td align="center">53.3%</td>
+  <td align="center">46.7%</td>
+  <td align="center">0.0%</td>
+</tr>
   </tbody>
 </table>
 
