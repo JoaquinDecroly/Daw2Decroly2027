@@ -1,4 +1,5 @@
- <div align="center">
+
+<div align="center">
 
 # 🌐 Daw2Decroly2027
 
@@ -111,7 +112,6 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 ---
 
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=2" width="90%"/>
@@ -123,27 +123,27 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 <div align="center">
 
 ```text
-       🎨 DIW
-      Diseño
-        │
-        ▼
-       ⚡ DWEC
-     Frontend
-        │
-        ▼
-       ⚙️ DWES
-      Backend
-        │
-        ▼
-       🚀 DAW
-    Despliegue
-        │
-        ▼
-       ☁️ OP-CN
-       Cloud
+      🎨 DIW
+     Diseño
+       │
+       ▼
+      ⚡ DWEC
+    Frontend
+       │
+       ▼
+      ⚙️ DWES
+     Backend
+       │
+       ▼
+      🚀 DAW
+   Despliegue
+       │
+       ▼
+      ☁️ OP-CN
+      Cloud
 
-       🧠 DASP
-   Digitalización
+      🧠 DASP
+  Digitalización
 ```
 
 </div>
@@ -178,28 +178,37 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 ---
 
-# 📂 Estructura
+# 📂 Estructura del repositorio
 
+La estructura se genera automáticamente a partir de las carpetas y archivos reales del repositorio.
+
+<!-- AUTO-STRUCTURE:START -->
 ```text
 Daw2Decroly2027/
-│
-├── 📁 1ERA EV/
-│   │
+├── 🔧 .github/
+│   └── 📁 workflows/
+├── 📚 1ERA EV/
+│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
+│   ├── 🚀 DAW (DESPLIEGUE)/
 │   ├── 🎨 DIW (INTERFACES WEB)/
 │   ├── ⚡ DWEC (FRONT)/
 │   ├── ⚙️ DWES (BACK)/
+│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
+├── 📚 2NDA EV/
+│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
 │   ├── 🚀 DAW (DESPLIEGUE)/
-│   ├── ☁️ OP-CN (COMPUTACIÓN NUBE)/
-│   └── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
-│
-├── 📁 2DA EV/          (Pendiente de creación)
-├── 📁 3ERA EV/         (Pendiente de creación)
-│
-├── 📁 scripts/
-├── 📁 .github/
-│
+│   ├── 🎨 DIW (INTERFACES WEB)/
+│   ├── ⚡ DWEC (FRONT)/
+│   ├── ⚙️ DWES (BACK)/
+│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
+├── ⚙️ scripts/
+│   └── 📄 update-profile.mjs
+├── 📄 .gitignore
 └── 📄 README.md
 ```
+<!-- AUTO-STRUCTURE:END -->
+
+<sub>La estructura se actualiza automáticamente al ejecutar el workflow. Se muestran hasta tres niveles de profundidad y se excluyen directorios técnicos o generados.</sub>
 
 ---
 
@@ -213,30 +222,30 @@ Daw2Decroly2027/
 <div align="center">
 
 <p align="center">
-  <strong>Progreso global del curso · 38.3%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progreso global del curso: 38.3%">
+  <strong>Progreso registrado del curso · 74.1%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progreso registrado del curso: 74.1%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
-    <rect x="0" y="2" width="191.5" height="18" rx="9" fill="#7C3AED"/>
+    <rect x="0" y="2" width="370.6" height="18" rx="9" fill="#7C3AED"/>
   </svg>
 </p>
 
 <p align="center">
-  <strong>1.ª Evaluación · aporta 38.3% del curso · 100.0%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="1.ª Evaluación · aporta 38.3% del curso: 100.0%">
+  <strong>1.ª Evaluación · peso registrado en el curso · 100.0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="1.ª Evaluación · peso registrado en el curso: 100.0%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
     <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
 <p align="center">
-  <strong>2.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · aporta 0.0% del curso: 0.0%">
+  <strong>2.ª Evaluación · peso registrado en el curso · 100.0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · peso registrado en el curso: 100.0%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
-    <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
+    <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
 <p align="center">
-  <strong>3.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · aporta 0.0% del curso: 0.0%">
+  <strong>3.ª Evaluación · peso registrado en el curso · 0.0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · peso registrado en el curso: 0.0%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
     <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
@@ -251,7 +260,7 @@ Daw2Decroly2027/
     <tr>
       <th>Evaluación</th>
       <th>Horas asignadas</th>
-      <th>Parte del curso completada</th>
+      <th>Parte del curso registrada</th>
       <th>Cobertura de la evaluación</th>
       <th>Módulos detectados</th>
     </tr>
@@ -267,12 +276,12 @@ Daw2Decroly2027/
 <tr>
   <td>2.ª Evaluación</td>
   <td align="center">308.6 h</td>
-  <td align="center">0.00%</td>
-  <td align="center">0.0%</td>
-  <td>Sin módulos detectados</td>
+  <td align="center">35.82%</td>
+  <td align="center">100.0%</td>
+  <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
 </tr>
 <tr>
-  <td>3.ª Evaluación</td>
+  <td>3.ª Evaluación <em>(carpeta no encontrada)</em></td>
   <td align="center">223.0 h</td>
   <td align="center">0.00%</td>
   <td align="center">0.0%</td>
@@ -339,7 +348,7 @@ Daw2Decroly2027/
   </tbody>
 </table>
 
-<sub>Las horas de cada módulo se estiman contando sus periodos semanales del horario oficial (55 minutos) entre el 09/09/2026 y el 24/06/2027, descontando los días no lectivos configurados. IPE II y Proyecto Intermodular quedan excluidos. El calendario no concreta las fechas de las evaluaciones ni las fiestas locales: el reparto entre evaluaciones sigue siendo provisional y las fiestas locales deben añadirse en schoolCalendar.localHolidays. Una carpeta detectada indica que existe contenido, no que todos los ejercicios estén terminados o aprobados.</sub>
+<sub>Las horas se estiman a partir de los periodos semanales configurados (55 minutos) entre el 2026-09-09 y el 2027-06-24. Se descuentan las fechas de schoolCalendar.nonTeachingDates y schoolCalendar.localHolidays. Las fechas condicionales no se descuentan (includeConditionalNonTeachingDates = false). IPE II y Proyecto Intermodular quedan excluidos. El reparto por evaluación es provisional y editable en courseModules[].evalDistribution. Las carpetas detectadas indican contenido registrado, no que todos los ejercicios estén terminados o aprobados.</sub>
 <!-- AUTO-PROGRESS:END -->
 
 <br>
@@ -347,7 +356,6 @@ Daw2Decroly2027/
 `🎨 DIW` ━━━━━━━━ `⚡ Front` ━━━━━━━━ `⚙️ Back` ━━━━━━━━ `🚀 Deploy` ━━━━━━━━ `☁️ Cloud` ━━━━━━━━ `🧠 DASP`
 
 </div>
-
 
 > 🚧 El repositorio seguirá creciendo durante el curso con nuevas actividades, prácticas y proyectos.
 
