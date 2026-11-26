@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary border-2">
+  <div class="container">
+
+    <a class="navbar-brand fw-bold fs-4" href="#">
+      <span class="text-primary">GAME</span>HUB
+      <span class="badge bg-primary ms-1">GAMES</span>
+    </a>
+
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navbarGameHub">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarGameHub">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+        <li class="nav-item">
+          <a class="nav-link active fw-semibold" routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bi bi-house-door me-1"></i>
+            Inicio
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/juegos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bi bi-controller me-1"></i>
+            Catálogo
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/favoritos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bi bi-heart me-1"></i>
+            Favoritos
+          </a>
+        </li>
+
+        <li class="nav-item ms-lg-3">
+          <a class="btn btn-primary rounded-pill px-4" routerLink="/juegos/crear" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bi bi-plus-circle me-1"></i>
+            Añadir juego
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
