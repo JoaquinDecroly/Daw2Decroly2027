@@ -1,0 +1,221 @@
+<!-- SVG reutilizables (camisetas, sudadera, percha) -->
+<svg width="0" height="0" class="position-absolute">
+  <defs>
+    <symbol id="tshirt" viewBox="0 0 200 200">
+      <path fill="currentColor" d="M72 32 L48 40 L18 64 L36 96 L56 86 L56 180 L144 180 L144 86 L164 96 L182 64 L152 40 L128 32 Q100 54 72 32 Z" />
+      <path fill="#000" opacity=".18" d="M72 32 Q100 54 128 32 L122 30 Q100 46 78 30 Z" />
+      <path fill="#000" opacity=".08" d="M56 86 L56 180 L72 180 L70 90 Z M144 86 L144 180 L128 180 L130 90 Z" />
+    </symbol>
+    <symbol id="hanger" viewBox="0 0 200 200">
+      <g fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round">
+        <path d="M100 26 V18 a6 6 0 1 1 6 -6" />
+        <path d="M66 34 L100 24 L134 34" />
+      </g>
+    </symbol>
+    <symbol id="hoodie" viewBox="0 0 200 200">
+      <path fill="currentColor" d="M74 30 Q100 2 126 30 L132 42 L152 48 L176 84 L186 168 L164 172 L152 104 L150 184 L50 184 L48 104 L36 172 L14 168 L24 84 L48 48 L68 42 Z" />
+      <path fill="#000" opacity=".2" d="M80 34 Q100 14 120 34 Q110 58 100 60 Q90 58 80 34 Z" />
+      <path fill="#000" opacity=".12" d="M70 140 H130 L136 170 H64 Z" />
+      <path fill="none" stroke="#fff" stroke-width="2" opacity=".8" d="M94 56 V80 M106 56 V80" />
+      <g fill="#fff" opacity=".85">
+        <rect x="76" y="92" width="48" height="4" rx="2" />
+        <rect x="82" y="100" width="36" height="3" rx="1.5" />
+        <rect x="86" y="107" width="28" height="3" rx="1.5" />
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ======================= SIDEBAR ======================= -->
+<aside class="sidebar position-fixed top-0 start-0 bottom-0 d-none d-lg-block">
+  <a href="#" class="d-flex align-items-center gap-2 px-4 text-white text-decoration-none fw-semibold fs-5 brand">
+    <i class="bi bi-hexagon-fill text-primary"></i> DASHUP
+  </a>
+
+  <div class="menu-title text-uppercase fw-semibold px-4 pt-3 pb-1">Menu</div>
+  <nav class="nav flex-column">
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-house-door fs-6"></i> Dashboard <span class="badge rounded-pill bg-info ms-auto">04</span></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-layout-sidebar fs-6"></i> Layouts <i class="bi bi-chevron-down ms-auto small"></i></a>
+  </nav>
+
+  <div class="menu-title text-uppercase fw-semibold px-4 pt-3 pb-1">Apps</div>
+  <nav class="nav flex-column">
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-calendar3 fs-6"></i> Calendar</a>
+    <a class="nav-link active d-flex align-items-center gap-3" href="#"><i class="bi bi-shop fs-6"></i> Ecommerce <i class="bi bi-chevron-up ms-auto small"></i></a>
+    <div class="submenu">
+      <a class="nav-link active" href="#">Products</a>
+      <a class="nav-link" href="#">Product Detail</a>
+      <a class="nav-link" href="#">Orders</a>
+      <a class="nav-link" href="#">Customers</a>
+      <a class="nav-link" href="#">Cart</a>
+      <a class="nav-link" href="#">Checkout</a>
+      <a class="nav-link" href="#">Shops</a>
+      <a class="nav-link" href="#">Add Product</a>
+    </div>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-envelope fs-6"></i> Email <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-receipt fs-6"></i> Invoices <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-briefcase fs-6"></i> Projects <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-list-task fs-6"></i> Tasks <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-person-lines-fill fs-6"></i> Contacts <i class="bi bi-chevron-down ms-auto small"></i></a>
+  </nav>
+
+  <div class="menu-title text-uppercase fw-semibold px-4 pt-3 pb-1">Pages</div>
+  <nav class="nav flex-column">
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-person-circle fs-6"></i> Authentication <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-file-earmark fs-6"></i> Utility <i class="bi bi-chevron-down ms-auto small"></i></a>
+  </nav>
+
+  <div class="menu-title text-uppercase fw-semibold px-4 pt-3 pb-1">Components</div>
+  <nav class="nav flex-column pb-4">
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-gem fs-6"></i> UI Elements <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-ui-checks fs-6"></i> Forms <span class="badge rounded-pill bg-danger ms-auto">8</span></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-table fs-6"></i> Tables <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-bar-chart fs-6"></i> Charts <i class="bi bi-chevron-down ms-auto small"></i></a>
+    <a class="nav-link d-flex align-items-center gap-3" href="#"><i class="bi bi-emoji-smile fs-6"></i> Icons <i class="bi bi-chevron-down ms-auto small"></i></a>
+  </nav>
+</aside>
+
+<!-- ======================= TOPBAR ======================= -->
+<header class="topbar position-fixed top-0 end-0 bg-white shadow-sm d-flex align-items-center px-3">
+  <button class="btn btn-link text-secondary fs-4 px-2" type="button"><i class="bi bi-list"></i></button>
+
+  <div class="position-relative d-none d-md-block ms-2">
+    <i class="bi bi-search position-absolute top-50 translate-middle-y text-secondary ms-3"></i>
+    <input type="text" class="form-control rounded-pill border-0 ps-5 search fs-13" placeholder="Search..." (input)="filtrarNombre($event.target.value)">
+  </div>
+
+  <button class="btn btn-link text-secondary text-decoration-none d-none d-lg-inline-block ms-3 fs-13" type="button">
+    Mega Menu <i class="bi bi-caret-down-fill small"></i>
+  </button>
+
+  <div class="ms-auto d-flex align-items-center gap-1">
+    <button class="btn btn-link text-decoration-none px-2" type="button">🇺🇸</button>
+    <button class="btn btn-link text-secondary fs-5 px-2 d-none d-sm-inline-block" type="button"><i class="bi bi-grid-3x3-gap"></i></button>
+    <button class="btn btn-link text-secondary fs-5 px-2 d-none d-sm-inline-block" type="button"><i class="bi bi-fullscreen"></i></button>
+    <button class="btn btn-link text-secondary fs-5 px-2 position-relative" type="button">
+      <i class="bi bi-bell"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2 ms-n2 small">3</span>
+    </button>
+    <button class="btn btn-link text-secondary text-decoration-none d-flex align-items-center gap-2 px-2" type="button">
+      <span class="rounded-circle bg-primary text-white fw-semibold d-inline-flex align-items-center justify-content-center avatar">H</span>
+      <span class="d-none d-xl-inline fs-13">Henry</span>
+      <i class="bi bi-chevron-down small d-none d-xl-inline"></i>
+    </button>
+    <button class="btn btn-link text-secondary fs-5 px-2" type="button"><i class="bi bi-gear"></i></button>
+  </div>
+</header>
+
+<!-- ======================= CONTENIDO ======================= -->
+<main class="main fs-13">
+  <div class="container-fluid px-4">
+
+    <!-- Título + breadcrumb -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+      <h4 class="text-uppercase fw-semibold fs-6 mb-0">Products</h4>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#" class="text-body text-decoration-none">Ecommerce</a></li>
+          <li class="breadcrumb-item active">Products</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="row g-4">
+      <!-- ========== FILTROS ========== -->
+      <div class="col-lg-3">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold fs-6 mb-3">Filter</h5>
+
+            <h6 class="fw-medium fs-13 mb-2">Categorías</h6>
+            <ul class="list-unstyled ps-1 mb-4">
+              <li class="py-1"><button type="button" class="btn btn-link p-0 text-body text-decoration-none" (click)="quitarFiltro()"><i class="bi bi-chevron-right small me-1"></i> Todas</button></li>
+              <li class="py-1"><button type="button" class="btn btn-link p-0 text-body text-decoration-none" (click)="filtrarCategoria('Periféricos')"><i class="bi bi-chevron-right small me-1"></i> Periféricos</button></li>
+              <li class="py-1"><button type="button" class="btn btn-link p-0 text-body text-decoration-none" (click)="filtrarCategoria('Monitores')"><i class="bi bi-chevron-right small me-1"></i> Monitores</button></li>
+              <li class="py-1"><button type="button" class="btn btn-link p-0 text-body text-decoration-none" (click)="filtrarCategoria('Audio')"><i class="bi bi-chevron-right small me-1"></i> Audio</button></li>
+            </ul>
+
+            <h6 class="fw-medium fs-13 mb-2">Price</h6>
+            <div class="d-flex justify-content-between mb-1">
+              <span class="badge bg-primary">$200</span>
+              <span class="badge bg-primary">$800</span>
+            </div>
+            <label for="minPrice" class="form-label small text-secondary mb-0">Min</label>
+            <input type="range" class="form-range" id="minPrice" min="0" max="1000" step="10" value="200">
+            <label for="maxPrice" class="form-label small text-secondary mb-0">Max</label>
+            <input type="range" class="form-range" id="maxPrice" min="0" max="1000" step="10" value="800">
+            <div class="d-flex justify-content-between small text-secondary mb-4">
+              <span>0</span><span>250</span><span>500</span><span>750</span><span>1000</span>
+            </div>
+
+            <h6 class="fw-medium fs-13 mb-2">Discount</h6>
+            <div class="mb-4">
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="d1"><label class="form-check-label" for="d1">Less than 10%</label></div>
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="d2"><label class="form-check-label" for="d2">10% or more</label></div>
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="d3" checked><label class="form-check-label" for="d3">20% or more</label></div>
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="d4"><label class="form-check-label" for="d4">30% or more</label></div>
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="d5"><label class="form-check-label" for="d5">40% or more</label></div>
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="d6"><label class="form-check-label" for="d6">50% or more</label></div>
+            </div>
+
+            <h6 class="fw-medium fs-13 mb-2">Customer Rating</h6>
+            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="r4"><label class="form-check-label" for="r4">4 <i class="bi bi-star-fill text-warning"></i> &amp; Above</label></div>
+            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="r3"><label class="form-check-label" for="r3">3 <i class="bi bi-star-fill text-warning"></i> &amp; Above</label></div>
+            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="r2"><label class="form-check-label" for="r2">2 <i class="bi bi-star-fill text-warning"></i> &amp; Above</label></div>
+            <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="r1"><label class="form-check-label" for="r1">1 <i class="bi bi-star-fill text-warning"></i></label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PRODUCTOS ========== -->
+      <div class="col-lg-9">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+          <h5 class="fw-medium fs-6 mb-0">Clothes</h5>
+          <div class="d-flex align-items-center gap-2">
+            <div class="position-relative">
+              <i class="bi bi-search position-absolute top-50 translate-middle-y text-secondary ms-3"></i>
+              <input type="text" class="form-control rounded-pill border-0 shadow-sm ps-5 fs-13" placeholder="Search...">
+            </div>
+            <button class="btn btn-primary rounded-circle btn-sm" type="button"><i class="bi bi-grid-fill"></i></button>
+            <button class="btn btn-link text-secondary btn-sm" type="button"><i class="bi bi-list-ul fs-6"></i></button>
+          </div>
+        </div>
+
+        <div class="row g-4">
+        @for(producto of productosVisibles; track producto.id){
+
+          <!-- Producto 1 -->
+          <div class="col-xl-4 col-sm-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="position-relative p-3 pb-0">
+                <span class="position-absolute top-0 end-0 m-3 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center discount">-25 %</span>
+                <svg class="product-svg" viewBox="0 0 200 200" style="color:#8b2e2e"><use [attr.href]="producto.imagen" /></svg>
+              </div>
+              <div class="card-body text-center pt-2">
+                <h5 class="fs-6 fw-medium mb-2"><a href="#" class="text-body text-decoration-none">{{producto.nombre}}</a></h5>
+                <div class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star text-secondary"></i></div>
+                <p class="fs-6 fw-semibold mt-2 mb-0"><del class="text-secondary fw-medium me-1">{{producto.precio}}</del> {{producto.precio * (25/100)}}</p>
+              </div>
+            </div>
+          </div>
+        }
+          
+        </div>
+
+        <!-- Paginación -->
+        <nav class="d-flex justify-content-center mt-4">
+          <ul class="pagination pagination-sm gap-1">
+            <li class="page-item disabled"><a class="page-link rounded-circle border-0" href="#"><i class="bi bi-chevron-left"></i></a></li>
+            <li class="page-item"><a class="page-link rounded-circle border-0" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link rounded-circle border-0" href="#">2</a></li>
+            <li class="page-item"><a class="page-link rounded-circle border-0" href="#">3</a></li>
+            <li class="page-item"><a class="page-link rounded-circle border-0" href="#">4</a></li>
+            <li class="page-item"><a class="page-link rounded-circle border-0" href="#">5</a></li>
+            <li class="page-item"><a class="page-link rounded-circle border-0" href="#"><i class="bi bi-chevron-right"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</main>

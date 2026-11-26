@@ -1,0 +1,111 @@
+<form #Formulario="ngForm" (ngSubmit)="getData(Formulario)">
+    
+    <div class="form-floating mb-3">
+            <input
+                type="text"
+                class="form-control"
+                name="nombre"
+                id="nombre"
+                placeholder=""
+                [(ngModel)]="serie.name"
+            />
+            <label for="nombre">Nombre de la Serie</label>
+        </div>
+
+    <div class="mb-3">
+  <label for="idioma" class="form-label">Idioma</label>
+
+  <select class="form-select" id="idioma" name="idioma"
+          [(ngModel)]="serie.language">
+
+    <option value="" disabled>Selecciona un idioma</option>
+    <option value="English">Inglés</option>
+    <option value="Spanish">Español</option>
+    <option value="French">Francés</option>
+    <option value="German">Alemán</option>
+    <option value="Japanese">Japonés</option>
+  </select>
+</div>
+
+    <div class="mb-3">
+  <label for="estado" class="form-label">Estado</label>
+
+  <select class="form-select" id="estado" name="estado"
+          [(ngModel)]="serie.status">
+
+    <option value="" disabled>Selecciona un estado</option>
+    <option value="Running">En emisión</option>
+    <option value="Ended">Finalizada</option>
+    <option value="To Be Determined">Por determinar</option>
+    <option value="In Development">En desarrollo</option>
+  </select>
+</div>
+
+    <div class="mb-3">
+  <label for="generos" class="form-label">Géneros</label>
+
+  <select class="form-select" id="generos" name="generos"
+          multiple
+          [(ngModel)]="serie.genres">
+
+    <option value="Drama">Drama</option>
+    <option value="Comedy">Comedia</option>
+    <option value="Action">Acción</option>
+    <option value="Crime">Crimen</option>
+    <option value="Science-Fiction">Ciencia ficción</option>
+    <option value="Fantasy">Fantasía</option>
+    <option value="Romance">Romance</option>
+    <option value="Thriller">Suspense</option>
+    <option value="Horror">Terror</option>
+
+  </select>
+
+  <div class="form-text">
+    Puedes seleccionar varios géneros manteniendo pulsada la tecla Ctrl.
+  </div>
+</div>
+
+  
+    <div class="form-floating mb-3">
+    <input
+        type="url"
+        class="form-control"
+        name="imagen"
+        id="imagen"
+        placeholder="https://..."
+        [(ngModel)]="imagen"
+    />
+    <label for="imagen">URL de la imagen</label>
+</div>
+
+<div class="mb-3">
+    <label for="premiered" class="form-label">
+        Fecha de estreno
+    </label>
+
+    <input
+        type="date"
+        class="form-control"
+        id="premiered"
+        name="premiered"
+        [(ngModel)]="serie.premiered"
+    />
+</div>
+
+<div class="form-floating mb-3">
+    <textarea
+        class="form-control"
+        placeholder="Escribe la sinopsis"
+        id="summary"
+        name="summary"
+        style="height: 130px"
+        [(ngModel)]="serie.summary"
+    ></textarea>
+
+    <label for="summary">Sinopsis de la serie</label>
+</div>
+
+
+    <input type="submit" value="Enviar" class="container-fluid bg-gradient">
+
+</form>

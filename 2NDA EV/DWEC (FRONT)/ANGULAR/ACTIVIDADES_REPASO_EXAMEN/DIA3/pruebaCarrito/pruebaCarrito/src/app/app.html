@@ -1,0 +1,30 @@
+
+<div class="bg-body-tertiary min-vh-100 py-4">
+  <div class="container">
+
+    <header class="mb-4">
+      <h1 class="fw-bold mb-1">TechStore</h1>
+      <p class="text-body-secondary mb-0">Tu tienda de tecnología</p>
+    </header>
+
+    <div class="row g-4">
+
+      <!-- Catálogo -->
+      <main class="col-12 col-lg-8">
+        <app-catalogo
+          [productos]="productos"
+          (anadir)="anadirAlCarrito($event)">
+        </app-catalogo>
+      </main>
+
+      <!-- Carrito -->
+      <aside class="col-12 col-lg-4">
+        <app-carrito
+          [productosCarrito]="carrito"
+          (eliminar)="eliminarDelCarrito($event)">
+        </app-carrito>
+      </aside>
+
+    </div>
+  </div>
+</div>

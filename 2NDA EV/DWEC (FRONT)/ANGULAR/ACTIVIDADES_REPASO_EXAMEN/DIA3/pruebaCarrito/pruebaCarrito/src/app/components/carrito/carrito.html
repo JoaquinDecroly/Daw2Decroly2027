@@ -1,0 +1,82 @@
+
+<div class="card border-0 shadow-sm">
+
+  <div class="card-body p-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="h5 fw-bold mb-0">Tu carrito</h2>
+      <span class="badge text-bg-primary">
+        {{ productosCarrito.length }} artículos
+      </span>
+    </div>
+
+    @if(productosCarrito.length === 0) {
+
+      <div class="text-center py-5">
+        <i class="bi bi-cart3 display-3 text-body-secondary"></i>
+        <h3 class="h6 fw-semibold mt-3">Tu carrito está vacío</h3>
+        <p class="small text-body-secondary mb-0">
+          Añade productos para empezar tu compra.
+        </p>
+      </div>
+
+    } @else {
+
+      <ul class="list-group list-group-flush">
+
+        @for(producto of productosCarrito; track $index) {
+          <li class="list-group-item px-0 py-3">
+
+            <div class="d-flex align-items-center gap-3">
+
+              <img
+                [src]="producto.imagen"
+                [alt]="producto.nombre"
+                width="64"
+                height="64"
+                class="object-fit-contain flex-shrink-0">
+
+              <div class="flex-grow-1 min-w-0">
+                <div class="fw-semibold small">
+                  {{ producto.nombre }}
+                </div>
+                <div class="text-body-secondary small">
+                  {{ producto.precio }} €
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-danger flex-shrink-0"
+                (click)="eliminarProductoCarrito(producto)"
+                aria-label="Eliminar producto">
+                <i class="bi bi-trash"></i>
+              </button>
+
+            </div>
+
+          </li>
+        }
+
+      </ul>
+
+      <div class="border-top pt-3 mt-3">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="fw-semibold">Total</span>
+          <span class="fs-4 fw-bold">
+            {{ calcularTotal() }} €
+          </span>
+        </div>
+
+        <button type="button" class="btn btn-primary w-100 mt-3">
+          <i class="bi bi-bag-check me-2"></i>
+          Finalizar compra
+        </button>
+
+      </div>
+
+    }
+
+  </div>
+</div>

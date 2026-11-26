@@ -1,0 +1,11 @@
+<section class="container">
+    <div class="row">
+        @for(serie of seriesService.listaSeries;track serie.id){
+            <app-serie-card
+                [serie]="serie"
+                (eliminar)="eliminarSerie($event)"
+                (editar)="editarSerie($event)">
+            </app-serie-card> 
+        } 
+    </div>
+</section>

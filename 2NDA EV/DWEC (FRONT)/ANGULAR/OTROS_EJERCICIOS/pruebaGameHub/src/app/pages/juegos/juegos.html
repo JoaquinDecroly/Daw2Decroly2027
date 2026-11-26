@@ -1,0 +1,36 @@
+
+<div class="container py-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold">Catálogo de videojuegos</h2>
+      <p class="text-muted">Explora y administra tus videojuegos.</p>
+    </div>
+
+    <a routerLink="/juegos/crear" class="btn btn-primary">
+      <i class="bi bi-plus-circle me-1"></i>
+      Añadir juego
+    </a>
+  </div>
+
+  <div class="row g-4">
+
+    @for (juego of obtenerJuegos(); track juego.id) {
+      <div class="col-md-6 col-lg-4">
+        <app-juego-card
+          [juego]="juego"
+          (favorito)="aFavoritos($event)"
+          (eliminar)="eliminarJuego($event)"
+          (editar)="editarJuego($event)"
+        />
+      </div>
+    } @empty {
+      <div class="col-12">
+        <div class="alert alert-info text-center">
+          No hay videojuegos disponibles.
+        </div>
+      </div>
+    }
+
+  </div>
+</div>

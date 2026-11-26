@@ -1,0 +1,95 @@
+<div class="bg-body-tertiary min-vh-100 py-4">
+  <div class="container">
+    <div class="card border-0 shadow-sm rounded-4">
+
+      <!-- ===== CABECERA ===== -->
+      <header class="d-flex align-items-center gap-3 px-4 py-3 border-bottom">
+        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-body fw-semibold fs-5">
+          <i class="bi bi-check-square-fill text-primary fs-4"></i>
+          TaskFlow
+        </a>
+
+        <div class="flex-grow-1 mx-md-4">
+          <div class="input-group bg-light rounded-3">
+            <span class="input-group-text bg-transparent border-0 text-secondary"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control bg-transparent border-0 shadow-none" placeholder="Search">
+          </div>
+        </div>
+
+        <span class="rounded-circle bg-secondary-subtle text-secondary-emphasis fw-semibold d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width: 40px; height: 40px;">
+          <i class="bi bi-person-fill fs-5"></i>
+        </span>
+      </header>
+
+      <section>
+        <app-formulario-tarea 
+        (guardar)="guardarFormulario($event)"
+        [tareaEditar]="tareaSeleccionada"
+        (cancelar)="cancelarTarea()">
+        </app-formulario-tarea>
+      </section>
+
+      <!-- ===== TABLERO ===== -->
+      <div class="card-body p-4">
+        <div class="row g-4">
+
+          <!-- To Do -->
+          <section class="col-md-4">
+            <h2 class="fs-6 fw-semibold mb-3">To Do</h2>
+            <div class="bg-light rounded-3 p-2 d-flex flex-column gap-2" style="min-height: 420px;">
+              <!-- tareas aquí -->
+              @for(tarea of tareas; track tarea.id){
+                @if(tarea.estado ==='To Do'){
+                  <app-tarea-card 
+                    [tarea]="tarea"
+                    (eliminar)="eliminarTareas($event)"
+                    (editar)="editarTarea($event)"
+                    (cambioEstado)="cambiarEstado($event)">
+                  </app-tarea-card>
+                }
+              }
+            </div>
+          </section>
+
+          <!-- In Progress -->
+          <section class="col-md-4">
+            <h2 class="fs-6 fw-semibold mb-3">In Progress</h2>
+            <div class="bg-light rounded-3 p-2 d-flex flex-column gap-2" style="min-height: 420px;">
+              <!-- tareas aquí -->
+              @for(tarea of tareas; track tarea.id){
+                @if(tarea.estado ==='In Progress'){
+                  <app-tarea-card 
+                    [tarea]="tarea"
+                    (eliminar)="eliminarTareas($event)"
+                    (editar)="editarTarea($event)"
+                    (cambioEstado)="cambiarEstado($event)">
+                  </app-tarea-card>
+                }
+              }
+            </div>
+          </section>
+
+          <!-- Done -->
+          <section class="col-md-4">
+            <h2 class="fs-6 fw-semibold mb-3">Done</h2>
+            <div class="bg-light rounded-3 p-2 d-flex flex-column gap-2" style="min-height: 420px;">
+              <!-- tareas aquí -->
+              @for(tarea of tareas; track tarea.id){
+                @if(tarea.estado ==='Done'){
+                  <app-tarea-card 
+                    [tarea]="tarea"
+                    (eliminar)="eliminarTareas($event)"
+                    (editar)="editarTarea($event)"
+                    (cambioEstado)="cambiarEstado($event)">
+                  </app-tarea-card>
+                }
+              }
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
