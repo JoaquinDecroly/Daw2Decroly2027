@@ -1,4 +1,5 @@
- <div align="center">
+
+<div align="center">
 
 # 🌐 Daw2Decroly2027
 
@@ -111,7 +112,6 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 ---
 
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=2" width="90%"/>
@@ -123,27 +123,27 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 <div align="center">
 
 ```text
-       🎨 DIW
-      Diseño
-        │
-        ▼
-       ⚡ DWEC
-     Frontend
-        │
-        ▼
-       ⚙️ DWES
-      Backend
-        │
-        ▼
-       🚀 DAW
-    Despliegue
-        │
-        ▼
-       ☁️ OP-CN
-       Cloud
+      🎨 DIW
+     Diseño
+       │
+       ▼
+      ⚡ DWEC
+    Frontend
+       │
+       ▼
+      ⚙️ DWES
+     Backend
+       │
+       ▼
+      🚀 DAW
+   Despliegue
+       │
+       ▼
+      ☁️ OP-CN
+      Cloud
 
-       🧠 DASP
-   Digitalización
+      🧠 DASP
+  Digitalización
 ```
 
 </div>
@@ -178,28 +178,29 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 ---
 
-# 📂 Estructura
+# 📂 Estructura del repositorio
 
+La estructura se genera automáticamente a partir de las carpetas y archivos reales del repositorio.
+
+<!-- AUTO-STRUCTURE:START -->
 ```text
 Daw2Decroly2027/
-│
-├── 📁 1ERA EV/
-│   │
+├── 📚 1ERA EV/
 │   ├── 🎨 DIW (INTERFACES WEB)/
 │   ├── ⚡ DWEC (FRONT)/
 │   ├── ⚙️ DWES (BACK)/
 │   ├── 🚀 DAW (DESPLIEGUE)/
 │   ├── ☁️ OP-CN (COMPUTACIÓN NUBE)/
 │   └── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
-│
-├── 📁 2DA EV/          (Pendiente de creación)
-├── 📁 3ERA EV/         (Pendiente de creación)
-│
-├── 📁 scripts/
-├── 📁 .github/
-│
+├── 📚 2DA EV/
+├── 📚 3ERA EV/
+├── ⚙️ scripts/
+├── 🔧 .github/
 └── 📄 README.md
 ```
+<!-- AUTO-STRUCTURE:END -->
+
+<sub>La estructura se actualiza automáticamente al ejecutar el workflow. Se muestran hasta tres niveles de profundidad y se excluyen directorios técnicos o generados.</sub>
 
 ---
 
@@ -227,6 +228,7 @@ Daw2Decroly2027/
     <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
+
 <p align="center">
   <strong>2.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
   <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · aporta 0.0% del curso: 0.0%">
@@ -234,6 +236,7 @@ Daw2Decroly2027/
     <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
+
 <p align="center">
   <strong>3.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
   <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · aporta 0.0% del curso: 0.0%">
@@ -257,27 +260,27 @@ Daw2Decroly2027/
     </tr>
   </thead>
   <tbody>
-<tr>
-  <td>1.ª Evaluación</td>
-  <td align="center">330.1 h</td>
-  <td align="center">38.31%</td>
-  <td align="center">100.0%</td>
-  <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
-</tr>
-<tr>
-  <td>2.ª Evaluación</td>
-  <td align="center">308.6 h</td>
-  <td align="center">0.00%</td>
-  <td align="center">0.0%</td>
-  <td>Sin módulos detectados</td>
-</tr>
-<tr>
-  <td>3.ª Evaluación</td>
-  <td align="center">223.0 h</td>
-  <td align="center">0.00%</td>
-  <td align="center">0.0%</td>
-  <td>Sin módulos detectados</td>
-</tr>
+    <tr>
+      <td>1.ª Evaluación</td>
+      <td align="center">330.1 h</td>
+      <td align="center">38.31%</td>
+      <td align="center">100.0%</td>
+      <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
+    </tr>
+    <tr>
+      <td>2.ª Evaluación</td>
+      <td align="center">308.6 h</td>
+      <td align="center">0.00%</td>
+      <td align="center">0.0%</td>
+      <td>Sin módulos detectados</td>
+    </tr>
+    <tr>
+      <td>3.ª Evaluación</td>
+      <td align="center">223.0 h</td>
+      <td align="center">0.00%</td>
+      <td align="center">0.0%</td>
+      <td>Sin módulos detectados</td>
+    </tr>
   </tbody>
 </table>
 
@@ -294,48 +297,48 @@ Daw2Decroly2027/
     </tr>
   </thead>
   <tbody>
-<tr>
-  <td><strong>DIW</strong></td>
-  <td align="center">133.8 h</td>
-  <td align="center">61.4%</td>
-  <td align="center">38.6%</td>
-  <td align="center">0.0%</td>
-</tr>
-<tr>
-  <td><strong>DWEC</strong></td>
-  <td align="center">264.0 h</td>
-  <td align="center">26.8%</td>
-  <td align="center">33.3%</td>
-  <td align="center">39.8%</td>
-</tr>
-<tr>
-  <td><strong>DWES</strong></td>
-  <td align="center">264.0 h</td>
-  <td align="center">26.2%</td>
-  <td align="center">29.2%</td>
-  <td align="center">44.6%</td>
-</tr>
-<tr>
-  <td><strong>DAW</strong></td>
-  <td align="center">99.9 h</td>
-  <td align="center">57.1%</td>
-  <td align="center">42.9%</td>
-  <td align="center">0.0%</td>
-</tr>
-<tr>
-  <td><strong>OP-CN</strong></td>
-  <td align="center">67.8 h</td>
-  <td align="center">50.0%</td>
-  <td align="center">50.0%</td>
-  <td align="center">0.0%</td>
-</tr>
-<tr>
-  <td><strong>DASP</strong></td>
-  <td align="center">32.1 h</td>
-  <td align="center">53.3%</td>
-  <td align="center">46.7%</td>
-  <td align="center">0.0%</td>
-</tr>
+    <tr>
+      <td><strong>DIW</strong></td>
+      <td align="center">133.8 h</td>
+      <td align="center">61.4%</td>
+      <td align="center">38.6%</td>
+      <td align="center">0.0%</td>
+    </tr>
+    <tr>
+      <td><strong>DWEC</strong></td>
+      <td align="center">264.0 h</td>
+      <td align="center">26.8%</td>
+      <td align="center">33.3%</td>
+      <td align="center">39.8%</td>
+    </tr>
+    <tr>
+      <td><strong>DWES</strong></td>
+      <td align="center">264.0 h</td>
+      <td align="center">26.2%</td>
+      <td align="center">29.2%</td>
+      <td align="center">44.6%</td>
+    </tr>
+    <tr>
+      <td><strong>DAW</strong></td>
+      <td align="center">99.9 h</td>
+      <td align="center">57.1%</td>
+      <td align="center">42.9%</td>
+      <td align="center">0.0%</td>
+    </tr>
+    <tr>
+      <td><strong>OP-CN</strong></td>
+      <td align="center">67.8 h</td>
+      <td align="center">50.0%</td>
+      <td align="center">50.0%</td>
+      <td align="center">0.0%</td>
+    </tr>
+    <tr>
+      <td><strong>DASP</strong></td>
+      <td align="center">32.1 h</td>
+      <td align="center">53.3%</td>
+      <td align="center">46.7%</td>
+      <td align="center">0.0%</td>
+    </tr>
   </tbody>
 </table>
 
@@ -347,7 +350,6 @@ Daw2Decroly2027/
 `🎨 DIW` ━━━━━━━━ `⚡ Front` ━━━━━━━━ `⚙️ Back` ━━━━━━━━ `🚀 Deploy` ━━━━━━━━ `☁️ Cloud` ━━━━━━━━ `🧠 DASP`
 
 </div>
-
 
 > 🚧 El repositorio seguirá creciendo durante el curso con nuevas actividades, prácticas y proyectos.
 
