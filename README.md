@@ -186,9 +186,23 @@ La estructura se genera automáticamente a partir de las carpetas y archivos rea
 ```text
 Daw2Decroly2027/
 ├── 🔧 .github/
+│   └── 📁 workflows/
 ├── 📚 1ERA EV/
+│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
+│   ├── 🚀 DAW (DESPLIEGUE)/
+│   ├── 🎨 DIW (INTERFACES WEB)/
+│   ├── ⚡ DWEC (FRONT)/
+│   ├── ⚙️ DWES (BACK)/
+│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
 ├── 📚 2NDA EV/
+│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
+│   ├── 🚀 DAW (DESPLIEGUE)/
+│   ├── 🎨 DIW (INTERFACES WEB)/
+│   ├── ⚡ DWEC (FRONT)/
+│   ├── ⚙️ DWES (BACK)/
+│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
 ├── ⚙️ scripts/
+│   └── 📄 update-profile.mjs
 ├── 📄 .gitignore
 └── 📄 README.md
 ```
