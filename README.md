@@ -186,116 +186,9 @@ La estructura se genera automáticamente a partir de las carpetas y archivos rea
 ```text
 Daw2Decroly2027/
 ├── 🔧 .github/
-│   └── 📁 workflows/
-│       └── 📄 profile-dinamico.yml
 ├── 📚 1ERA EV/
-│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
-│   │   ├── 📁 UD1/
-│   │   │   ├── 📄 jOttonello_mPila_rCalvo_DASP_UD2_P1.pdf
-│   │   │   └── 📄 rCalvo_jvOttonello_mPila_DASP_UD1_P1-1.pdf
-│   │   ├── 📁 UD2/
-│   │   │   └── 📄 rCalvo_jvOttonello_mPila_DASP_UD1_P2.pdf
-│   │   └── 📄 README.md
-│   ├── 🚀 DAW (DESPLIEGUE)/
-│   │   ├── 📁 UD2/
-│   │   │   ├── 📄 UD2.1 Añadiendo seguridad-1.pdf
-│   │   │   └── 📄 UD2.2 Trabajando con hosts.pdf
-│   │   └── 📄 README.md
-│   ├── 🎨 DIW (INTERFACES WEB)/
-│   │   ├── 📁 UD1 (INTERFACES)/
-│   │   │   └── 📁 INTERFACES/
-│   │   └── 📄 README.md
-│   ├── ⚡ DWEC (FRONT)/
-│   │   ├── 📁 ANGULAR/
-│   │   │   ├── 📁 ACTIVIDADES_A_ENTREGAR/
-│   │   │   ├── 📁 ACTIVIDADES_REPASO_EXAMEN/
-│   │   │   ├── 📁 EXAMENES/
-│   │   │   ├── 📁 OTROS_EJERCICIOS/
-│   │   │   ├── 📁 primeraAppAngular/
-│   │   │   ├── 📁 pruebaAppAngular/
-│   │   │   ├── 📁 pruebaReactiveForm/
-│   │   │   ├── 📁 RECETAS_FORMULARIOS/
-│   │   │   ├── 📄 guia_angular_input_output.pdf
-│   │   │   ├── 📄 guia_angular_paso_a_paso_examen.pdf
-│   │   │   ├── 📄 guia_bootstrap5_buscador.html
-│   │   │   ├── 📄 guia_bootstrap5_completa.pdf
-│   │   │   └── 📄 README.md
-│   │   ├── 📁 BOOTSTRAP/
-│   │   │   ├── 📁 CON JS/
-│   │   │   └── 📁 webBootstrap/
-│   │   ├── 📁 GIT/
-│   │   │   └── 📁 PRUEBAS/
-│   │   ├── 📁 JS/
-│   │   │   ├── 📁 EJERCICIOS/
-│   │   │   └── 📄 practicandoJSarrowFunctions.js
-│   │   ├── 📁 JUEGOS/
-│   │   │   └── 📁 CSS/
-│   │   ├── 📁 OTROS/
-│   │   │   ├── 📄 jvOttonello_DWEC_Arquitectura_Cliente_Servidor.docx
-│   │   │   └── 📄 jvOttonello_DWEC_Arquitectura_Cliente_Servidor.pdf
-│   │   ├── 📁 TYPESCRIPT/
-│   │   │   ├── 📁 entrenamiento1.ts/
-│   │   │   ├── 📁 entrenamiento2.ts/
-│   │   │   ├── 📁 entrenamiento3.ts/
-│   │   │   └── 📄 scriptEjemploBase.ts
-│   │   └── 📄 README.md
-│   ├── ⚙️ DWES (BACK)/
-│   │   ├── 📁 PHP/
-│   │   │   ├── 📁 examen19Octubre/
-│   │   │   ├── 📁 php1Actividad/
-│   │   │   ├── 📁 php2Actividad/
-│   │   │   ├── 📁 php3Actividad/
-│   │   │   ├── 📁 php4Actividad/
-│   │   │   └── 📁 repasoPHP/
-│   │   ├── 📁 Spring Boot/
-│   │   │   ├── ⚡ DWEC (FRONT)/
-│   │   │   └── 📁 EXAMEN/
-│   │   └── 📄 README.md
-│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
-│       ├── 📁 UD1/
-│       │   └── 📄 UD1.1 Identificando componentes y modelos de servicio.docx
-│       ├── 📁 UD2/
-│       │   ├── 📄 UD2.1 Comenzando con Azure-1.docx
-│       │   ├── 📄 UD2.2 Monitorización de recursos y automatización.docx
-│       │   ├── 📄 UD2.3 Comenzando con contenedores.docx
-│       │   └── 📄 UD2.3 Comenzando con contenedores.pdf
-│       ├── 📄 chuleta_completa_UD2_infraestructura_almacenamiento.pdf
-│       └── 📄 README.md
-├── 📁 2NDA EV/
-│   ├── 🧠 DASP (DIGITALIZACIÓN SECTORES PRODUCTIVOS)/
-│   │   ├── 📁 UD3/
-│   │   │   └── 📄 rCalvo_jvOttonello_mPila_DASP_UD3_P1.pdf
-│   │   └── 📄 README.md
-│   ├── 🚀 DAW (DESPLIEGUE)/
-│   │   ├── 📁 UD2/
-│   │   │   ├── 📄 UD2.1 Añadiendo seguridad-1.pdf
-│   │   │   └── 📄 UD2.2 Trabajando con hosts.pdf
-│   │   └── 📄 README.md
-│   ├── 🎨 DIW (INTERFACES WEB)/
-│   │   ├── 📁 UD2 (BOOTSTRAP)/
-│   │   │   └── 📁 BOOTSTRAP/
-│   │   └── 📄 README.md
-│   ├── ⚡ DWEC (FRONT)/
-│   │   ├── 📁 ANGULAR/
-│   │   │   ├── 📁 ACTIVIDADES_REPASO_EXAMEN/
-│   │   │   ├── 📁 OTROS_EJERCICIOS/
-│   │   │   ├── 📁 pruebaReactiveForm/
-│   │   │   ├── 📁 RECETAS_FORMULARIOS/
-│   │   │   ├── 📄 guia_angular_input_output.pdf
-│   │   │   ├── 📄 guia_angular_paso_a_paso_examen.pdf
-│   │   │   ├── 📄 guia_bootstrap5_buscador.html
-│   │   │   ├── 📄 guia_bootstrap5_completa.pdf
-│   │   │   └── 📄 README.md
-│   │   └── 📄 README.md
-│   ├── ⚙️ DWES (BACK)/
-│   │   ├── 📁 Spring Boot/
-│   │   │   ├── ⚡ DWEC (FRONT)/
-│   │   │   └── 📁 EXAMEN/
-│   │   └── 📄 README.md
-│   └── ☁️ OP-CN (COMPUTACIÓN NUBE)/
-│       └── 📄 README.md
+├── 📚 2NDA EV/
 ├── ⚙️ scripts/
-│   └── 📄 update-profile.mjs
 ├── 📄 .gitignore
 └── 📄 README.md
 ```
@@ -315,30 +208,30 @@ Daw2Decroly2027/
 <div align="center">
 
 <p align="center">
-  <strong>Progreso global del curso · 38.3%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progreso global del curso: 38.3%">
+  <strong>Progreso registrado del curso · 74.1%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progreso registrado del curso: 74.1%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
-    <rect x="0" y="2" width="191.5" height="18" rx="9" fill="#7C3AED"/>
+    <rect x="0" y="2" width="370.6" height="18" rx="9" fill="#7C3AED"/>
   </svg>
 </p>
 
 <p align="center">
-  <strong>1.ª Evaluación · aporta 38.3% del curso · 100.0%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="1.ª Evaluación · aporta 38.3% del curso: 100.0%">
+  <strong>1.ª Evaluación · peso registrado en el curso · 100.0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="1.ª Evaluación · peso registrado en el curso: 100.0%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
     <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
 <p align="center">
-  <strong>2.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · aporta 0.0% del curso: 0.0%">
+  <strong>2.ª Evaluación · peso registrado en el curso · 100.0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2.ª Evaluación · peso registrado en el curso: 100.0%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
-    <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
+    <rect x="0" y="2" width="500.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
 </p>
 <p align="center">
-  <strong>3.ª Evaluación · aporta 0.0% del curso · 0.0%</strong><br/>
-  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · aporta 0.0% del curso: 0.0%">
+  <strong>3.ª Evaluación · peso registrado en el curso · 0.0%</strong><br/>
+  <svg width="500" height="24" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3.ª Evaluación · peso registrado en el curso: 0.0%">
     <rect x="0" y="2" width="500" height="18" rx="9" fill="#111827"/>
     <rect x="0" y="2" width="0.0" height="18" rx="9" fill="#2563EB"/>
   </svg>
@@ -353,7 +246,7 @@ Daw2Decroly2027/
     <tr>
       <th>Evaluación</th>
       <th>Horas asignadas</th>
-      <th>Parte del curso completada</th>
+      <th>Parte del curso registrada</th>
       <th>Cobertura de la evaluación</th>
       <th>Módulos detectados</th>
     </tr>
@@ -369,12 +262,12 @@ Daw2Decroly2027/
 <tr>
   <td>2.ª Evaluación</td>
   <td align="center">308.6 h</td>
-  <td align="center">0.00%</td>
-  <td align="center">0.0%</td>
-  <td>Sin módulos detectados</td>
+  <td align="center">35.82%</td>
+  <td align="center">100.0%</td>
+  <td>DIW, DWEC, DWES, DAW, OP-CN, DASP</td>
 </tr>
 <tr>
-  <td>3.ª Evaluación</td>
+  <td>3.ª Evaluación <em>(carpeta no encontrada)</em></td>
   <td align="center">223.0 h</td>
   <td align="center">0.00%</td>
   <td align="center">0.0%</td>
@@ -441,7 +334,7 @@ Daw2Decroly2027/
   </tbody>
 </table>
 
-<sub>Las horas de cada módulo se estiman contando sus periodos semanales del horario oficial (55 minutos) entre el 09/09/2026 y el 24/06/2027, descontando los días no lectivos configurados. IPE II y Proyecto Intermodular quedan excluidos. El calendario no concreta las fechas de las evaluaciones ni las fiestas locales: el reparto entre evaluaciones sigue siendo provisional y las fiestas locales deben añadirse en schoolCalendar.localHolidays. Una carpeta detectada indica que existe contenido, no que todos los ejercicios estén terminados o aprobados.</sub>
+<sub>Las horas se estiman a partir de los periodos semanales configurados (55 minutos) entre el 2026-09-09 y el 2027-06-24. Se descuentan las fechas de schoolCalendar.nonTeachingDates y schoolCalendar.localHolidays. Las fechas condicionales no se descuentan (includeConditionalNonTeachingDates = false). IPE II y Proyecto Intermodular quedan excluidos. El reparto por evaluación es provisional y editable en courseModules[].evalDistribution. Las carpetas detectadas indican contenido registrado, no que todos los ejercicios estén terminados o aprobados.</sub>
 <!-- AUTO-PROGRESS:END -->
 
 <br>
