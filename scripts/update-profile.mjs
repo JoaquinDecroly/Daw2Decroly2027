@@ -407,7 +407,7 @@ const ignoredStructureDirectories = new Set([
 ]);
 
 // Profundidad 1: únicamente el contenido de la raíz.
-const MAX_STRUCTURE_DEPTH = 1;
+const MAX_STRUCTURE_DEPTH = 2;
 
 function getStructureFolderIcon(name) {
   const normalized = name
