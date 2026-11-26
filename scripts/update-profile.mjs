@@ -1,3 +1,4 @@
+
 const API = "https://api.github.com";
 
 const owner = process.env.GITHUB_OWNER || "JoaquinDecroly";
@@ -386,6 +387,159 @@ function replaceSection(content, startMarker, endMarker, replacement) {
     "\n" +
     content.slice(end)
   );
+}
+
+/* =========================================================
+   ESTRUCTURA DINÁMICA DEL REPOSITORIO
+   ========================================================= */
+
+// Directorios técnicos o generados que no aportan información
+// útil a la estructura académica del repositorio.
+const ignoredStructureDirectories = new Set([
+  ".git",
+  "node_modules",
+  "dist",
+  "build",
+  "coverage",
+  ".next",
+  ".angular",
+  ".cache",
+  ".turbo",
+  ".parcel-cache",
+  "vendor"
+]);
+
+// Profundidad máxima para que el README no se convierta
+// en un listado excesivamente largo.
+const MAX_STRUCTURE_DEPTH = 3;
+
+function getStructureFolderIcon(name) {
+  const normalized = name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase();
+
+  if (
+    normalized === "1ERA EV" ||
+    normalized === "2DA EV" ||
+    normalized === "3ERA EV"
+  ) {
+    return "📚";
+  }
+
+  if (normalized.startsWith("DIW")) return "🎨";
+  if (normalized.startsWith("DWEC")) return "⚡";
+  if (normalized.startsWith("DWES")) return "⚙️";
+  if (normalized.startsWith("DAW")) return "🚀";
+  if (normalized.startsWith("OP-CN")) return "☁️";
+  if (normalized.startsWith("DASP")) return "🧠";
+  if (normalized === "SCRIPTS") return "⚙️";
+  if (normalized === ".GITHUB") return "🔧";
+
+  return "📁";
+}
+
+async function buildRepositoryStructure(fs) {
+  const path = await import("node:path");
+  const root = process.cwd();
+
+  const repositoryName =
+    process.env.GITHUB_REPOSITORY?.split("/").pop() || path.basename(root);
+
+  async function readDirectory(directory, prefix = "", depth = 0) {
+    const entries = await fs.readdir(directory, {
+      withFileTypes: true,
+    });
+
+    const visibleEntries = entries
+      .filter((entry) => {
+        const entryName = entry.name.toLowerCase();
+
+        if (
+          entry.isDirectory() &&
+          ignoredStructureDirectories.has(entryName)
+        ) {
+          return false;
+        }
+
+        // Conservamos .github y archivos de configuración habituales.
+        // Otros elementos ocultos (por ejemplo .env) no se muestran.
+        const visibleDotEntries = new Set([
+          ".github",
+          ".gitignore",
+          ".gitattributes",
+          ".editorconfig",
+        ]);
+
+        if (
+          entry.name.startsWith(".") &&
+          !visibleDotEntries.has(entryName)
+        ) {
+          return false;
+        }
+
+        return true;
+      })
+      .sort((a, b) => {
+        if (a.isDirectory() !== b.isDirectory()) {
+          return a.isDirectory() ? -1 : 1;
+        }
+
+        return a.name.localeCompare(
+          b.name,
+          "es",
+          { sensitivity: "base" }
+        );
+      });
+
+    const lines = [];
+
+    for (let index = 0; index < visibleEntries.length; index++) {
+      const entry = visibleEntries[index];
+
+      const isLast = index === visibleEntries.length - 1;
+
+      const branch = isLast
+        ? "└── "
+        : "├── ";
+
+      const childPrefix =
+        prefix + (isLast ? "    " : "│   ");
+
+      const entryPath = path.join(directory, entry.name);
+
+      if (entry.isDirectory()) {
+        lines.push(
+          `${prefix}${branch}${getStructureFolderIcon(entry.name)} ${entry.name}/`
+        );
+
+        if (depth < MAX_STRUCTURE_DEPTH) {
+          const children = await readDirectory(
+            entryPath,
+            childPrefix,
+            depth + 1
+          );
+
+          lines.push(...children);
+        }
+      } else if (entry.isFile()) {
+        lines.push(
+          `${prefix}${branch}📄 ${entry.name}`
+        );
+      }
+    }
+
+    return lines;
+  }
+
+  const entries = await readDirectory(root);
+
+  return [
+    "```text",
+    `${repositoryName}/`,
+    ...entries,
+    "```",
+  ].join("\n");
 }
 
 /* =========================================================
@@ -884,6 +1038,9 @@ async function main() {
   const tools = await detectEnvironment(repos);
   const environment = buildToolIcons(tools);
 
+  console.log("Generando estructura del repositorio...");
+  const repositoryStructure = await buildRepositoryStructure(fs);
+
   console.log("Calculando progreso académico...");
   const academicProgress = await buildAcademicProgress(fs);
 
@@ -901,6 +1058,13 @@ async function main() {
     "<!-- AUTO-ENV:START -->",
     "<!-- AUTO-ENV:END -->",
     environment
+  );
+
+  readme = replaceSection(
+    readme,
+    "<!-- AUTO-STRUCTURE:START -->",
+    "<!-- AUTO-STRUCTURE:END -->",
+    repositoryStructure
   );
 
   readme = replaceSection(
