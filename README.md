@@ -52,13 +52,20 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 <br>
 
+
 ### 🎨 DIW · Diseño de Interfaces Web
 
 > Diseñar interfaces claras, atractivas y adaptables.
 
 `HTML` `CSS` `Responsive` `Accesibilidad` `Tipografía` `Color` `UI/UX`
 
-📂 **[Abrir módulo →](./1ERA%20EV/DIW%20%28INTERFACES%20WEB%29)**
+<details>
+<summary>📂 Consultar evaluaciones</summary>
+
+- 📘 [1.ª Evaluación](./1ERA%20EV/DIW%20%28INTERFACES%20WEB%29)
+- 📗 [2.ª Evaluación](./2NDA%20EV/DIW%20%28INTERFACES%20WEB%29)
+
+</details>
 
 ---
 
@@ -68,7 +75,13 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 `JavaScript` `DOM` `Eventos` `Formularios` `JSON` `Bootstrap`
 
-📂 **[Abrir módulo →](./1ERA%20EV/DWEC%20%28FRONT%29)**
+<details>
+<summary>📂 Consultar evaluaciones</summary>
+
+- 📘 [1.ª Evaluación](./1ERA%20EV/DWEC%20%28FRONT%29)
+- 📗 [2.ª Evaluación](./2NDA%20EV/DWEC%20%28FRONT%29)
+
+</details>
 
 ---
 
@@ -78,7 +91,13 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 `PHP` `Java` `Spring Boot` `REST` `HTTP`
 
-📂 **[Abrir módulo →](./1ERA%20EV/DWES%20%28BACK%29)**
+<details>
+<summary>📂 Consultar evaluaciones</summary>
+
+- 📘 [1.ª Evaluación](./1ERA%20EV/DWES%20%28BACK%29)
+- 📗 [2.ª Evaluación](./2NDA%20EV/DWES%20%28BACK%29)
+
+</details>
 
 ---
 
@@ -88,7 +107,13 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 `Servidores` `Docker` `Contenedores` `Configuración` `Deploy`
 
-📂 **[Abrir módulo →](./1ERA%20EV/DAW%20%28DESPLIEGUE%29)**
+<details>
+<summary>📂 Consultar evaluaciones</summary>
+
+- 📘 [1.ª Evaluación](./1ERA%20EV/DAW%20%28DESPLIEGUE%29)
+- 📗 [2.ª Evaluación](./2NDA%20EV/DAW%20%28DESPLIEGUE%29)
+
+</details>
 
 ---
 
@@ -98,7 +123,13 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 `Cloud` `IaaS` `PaaS` `SaaS` `Virtualización`
 
-📂 **[Abrir módulo →](./1ERA%20EV/OP-CN%20%28COMPUTACIÓN%20NUBE%29)**
+<details>
+<summary>📂 Consultar evaluaciones</summary>
+
+- 📘 [1.ª Evaluación](./1ERA%20EV/OP-CN%20%28COMPUTACIÓN%20NUBE%29)
+- 📗 [2.ª Evaluación](./2NDA%20EV/OP-CN%20%28COMPUTACIÓN%20NUBE%29)
+
+</details>
 
 ---
 
@@ -108,7 +139,14 @@ Más que una colección de archivos, es un recorrido por las diferentes etapas d
 
 `Digitalización` `Transformación digital` `Tecnología` `Industria`
 
-📂 **[Abrir módulo →](./1ERA%20EV/DASP%20%28DIGITALIZACIÓN%20SECTORES%20PRODUCTIVOS%29)**
+<details>
+<summary>📂 Consultar evaluaciones</summary>
+
+- 📘 [1.ª Evaluación](./1ERA%20EV/DASP%20%28DIGITALIZACIÓN%20SECTORES%20PRODUCTIVOS%29)
+- 📗 [2.ª Evaluación](./2NDA%20EV/DASP%20%28DIGITALIZACIÓN%20SECTORES%20PRODUCTIVOS%29)
+
+</details>
+
 
 ---
 
